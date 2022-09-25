@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-BadgeSpace-E74C3C0B-0D2D-4FCB-8F3B-7AF67C657D47</UserSecretsId>
+    <UserSecretsId>aspnet-BadgeSpace-310BF3FD-454B-4CB0-A60C-86D1ACB10BBB</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

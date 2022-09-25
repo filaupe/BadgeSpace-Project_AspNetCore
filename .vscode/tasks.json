@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BadgeSpace.csproj",
+                "${workspaceFolder}/BadgeSpace/BadgeSpace.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/BadgeSpace.csproj",
+                "${workspaceFolder}/BadgeSpace/BadgeSpace.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/BadgeSpace.csproj"
+                "${workspaceFolder}/BadgeSpace/BadgeSpace.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
