@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BadgeSpace.Data;
 using BadgeSpace.Models;
+using System.Reflection.Metadata;
+using System.IO.Compression;
 
 namespace BadgeSpace.Controllers
 {
@@ -56,15 +58,30 @@ namespace BadgeSpace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeAluno,AlunoCPF,Curso,Tipo,Nivel,Tempo,Descricao,Imagem,Habilidades")] Student student)
+        public async Task<IActionResult> Create(int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, Student student)
         {
-            if (ModelState.IsValid)
+            using (var memoryStream = new MemoryStream())
             {
-                _context.Add(student);
+                await Imagem.CopyToAsync(memoryStream);
+
+                var file = new Student()
+                {
+                    Id = Id,
+                    NomeAluno = NomeAluno,
+                    AlunoCPF = AlunoCPF,
+                    Curso = Curso,
+                    Tipo = Tipo,
+                    Nivel = Nivel,
+                    Tempo = Tempo,
+                    Descricao = Descricao,
+                    Imagem = memoryStream.ToArray(),
+                    Habilidades = Habilidades,
+                };
+                _context.Students.Add(file);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+
         }
 
         // GET: Students/Edit/5
