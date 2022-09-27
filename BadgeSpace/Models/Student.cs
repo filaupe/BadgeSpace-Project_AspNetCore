@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace BadgeSpace.Models
 {
@@ -9,6 +10,7 @@ namespace BadgeSpace.Models
         [DisplayName("Nome do Aluno")]
         public string NomeAluno { get; set; }
 
+        [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
         public string AlunoCPF { get; set; }
 
         [DisplayName("Curso")]
@@ -27,7 +29,7 @@ namespace BadgeSpace.Models
         public string Descricao { get; set; }
 
         [DisplayName("Badge")]
-        public byte[] Imagem { get; set; }
+        public byte[]? Imagem { get; set; }
 
         [DisplayName("Habilidades Adquiridas")]
         public string Habilidades { get; set; }
