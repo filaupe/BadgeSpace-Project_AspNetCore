@@ -9,6 +9,7 @@ using BadgeSpace.Data;
 using BadgeSpace.Models;
 using System.Reflection.Metadata;
 using System.IO.Compression;
+using Microsoft.AspNetCore.Identity;
 
 namespace BadgeSpace.Controllers
 {
@@ -81,7 +82,7 @@ namespace BadgeSpace.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
+            return View(student);
         }
 
         // GET: Students/Edit/5
