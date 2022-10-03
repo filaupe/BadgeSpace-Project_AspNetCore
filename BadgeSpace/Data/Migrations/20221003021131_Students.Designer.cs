@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BadgeSpace.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221003002513_Students")]
+    [Migration("20221003021131_Students")]
     partial class Students
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,8 @@ namespace BadgeSpace.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -287,7 +288,7 @@ namespace BadgeSpace.Data.Migrations
             modelBuilder.Entity("BadgeSpace.Models.StudentModel", b =>
                 {
                     b.HasOne("BadgeSpace.Models.ApplicationUser", "AppUser")
-                        .WithOne("Student")
+                        .WithOne("student")
                         .HasForeignKey("BadgeSpace.Models.StudentModel", "AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -348,7 +349,7 @@ namespace BadgeSpace.Data.Migrations
 
             modelBuilder.Entity("BadgeSpace.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Student")
+                    b.Navigation("student")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

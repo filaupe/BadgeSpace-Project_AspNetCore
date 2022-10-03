@@ -71,6 +71,7 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            public bool Empresa { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -108,7 +109,6 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -121,7 +121,13 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, CPF = Input.CPF };
+                var user = new ApplicationUser
+                { 
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    CPF = Input.CPF,
+                    Empresa = Input.Empresa
+                };
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

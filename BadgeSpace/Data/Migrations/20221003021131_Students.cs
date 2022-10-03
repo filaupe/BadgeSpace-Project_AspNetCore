@@ -15,9 +15,9 @@ namespace BadgeSpace.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeAluno = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AlunoCPF = table.Column<string>(type: "nvarchar(14)", nullable: false),
+                    NomeAluno = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AlunoCPF = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Curso = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nivel = table.Column<string>(type: "nvarchar(max)", nullable: false),

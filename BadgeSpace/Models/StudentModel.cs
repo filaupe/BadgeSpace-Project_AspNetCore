@@ -6,18 +6,18 @@ namespace BadgeSpace.Models
 {
     public class StudentModel
     {
+        public ApplicationUser AppUser { get; set; }
+
         public int Id { get; set; }
+
+        [ForeignKey("AppUser")]
+        public string AppUserId { get; set; }
 
         [DisplayName("Nome do Aluno")]
         public string NomeAluno { get; set; }
 
-        [ForeignKey("AppUser")]
-        public string AppUserId { get; set; }
-        public ApplicationUser AppUser { get; set; }
-
         [Required]
         [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
-        [Compare("AppUser", ErrorMessage = "O CPF não existe.")]
         public string AlunoCPF { get; set; }
 
         [DisplayName("Curso")]

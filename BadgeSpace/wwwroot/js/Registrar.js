@@ -1,17 +1,12 @@
 ﻿const CheckBox = document.getElementById("Switch")
 const CPF = document.getElementById("CPF")
-const span = document.getElementById("spancpf")
 
-CheckBox.onchange = function () {
+CheckBox.onclick = function () {
     CheckBox.classList.toggle('active')
     if (CheckBox.classList.contains('active')) {
         CPF.setAttribute("disabled", "disabled")
-        CPF.removeAttribute("required")
-        span.style.display = "none"
     } else {
         CPF.removeAttribute("disabled")
-        CPF.setAttribute("required", "")
-        span.style.display = "block"
     }
 }
 
