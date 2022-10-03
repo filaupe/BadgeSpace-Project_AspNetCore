@@ -31,7 +31,6 @@ namespace BadgeSpace.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -91,7 +90,7 @@ namespace BadgeSpace.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.Student", b =>
+            modelBuilder.Entity("BadgeSpace.Models.StudentModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,6 +101,10 @@ namespace BadgeSpace.Data.Migrations
                     b.Property<string>("AlunoCPF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Curso")
                         .IsRequired()
@@ -135,6 +138,9 @@ namespace BadgeSpace.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });
@@ -276,6 +282,17 @@ namespace BadgeSpace.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BadgeSpace.Models.StudentModel", b =>
+                {
+                    b.HasOne("BadgeSpace.Models.ApplicationUser", "AppUser")
+                        .WithOne("Student")
+                        .HasForeignKey("BadgeSpace.Models.StudentModel", "AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -324,6 +341,12 @@ namespace BadgeSpace.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BadgeSpace.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Student")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

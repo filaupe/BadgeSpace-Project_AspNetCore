@@ -1,12 +1,16 @@
 https://youtu.be/NFQAj5bCgd8
 https://youtu.be/SV-HGRmItjU
+https://youtu.be/6uf3LsFVBmI
 
 cria o arquivo na model com os dados pra página e o resto é isso
+
+"Data Source=.\\LUNARY;Initial Catalog=BadgeSpace;Integrated Security=True;"
+var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, CPF = Input.CPF };
 
 dotnet new mvc --auth Individual -o BadgeSpace
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet tool update -g Dotnet-aspnet-codegenerator
-dotnet-aspnet-codegenerator controller -name StudentsController -dc ApplicationDbContext -m Students --useDefaultLayout --referenceScriptLibraries
+dotnet-aspnet-codegenerator controller -name StudentsController -dc ApplicationDbContext -m StudentModel --useDefaultLayout --referenceScriptLibraries
 dotnet tool update -g Dotnet-ef
 dotnet-ef migrations add CreateTodoTable
 dotnet-ef database update

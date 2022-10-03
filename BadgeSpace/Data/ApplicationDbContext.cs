@@ -10,7 +10,6 @@ namespace BadgeSpace.Data
             : base(options)
         {
         }
-
-        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentModel> Students { get; set; }
     }
 }

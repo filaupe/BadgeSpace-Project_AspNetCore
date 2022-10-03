@@ -84,12 +84,10 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
-            [StringLength(14, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
             [Display(Name = "CPF")]
+            [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
             public string CPF { get; set; }
-             
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.

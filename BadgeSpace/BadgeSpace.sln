@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpace", "BadgeSpace.csproj", "{00BB632F-088E-44EF-8896-6C50C4679811}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpace", "BadgeSpace.csproj", "{9099F2A0-8948-4819-9E64-78F720B23266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{00BB632F-088E-44EF-8896-6C50C4679811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00BB632F-088E-44EF-8896-6C50C4679811}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00BB632F-088E-44EF-8896-6C50C4679811}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00BB632F-088E-44EF-8896-6C50C4679811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9099F2A0-8948-4819-9E64-78F720B23266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9099F2A0-8948-4819-9E64-78F720B23266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9099F2A0-8948-4819-9E64-78F720B23266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9099F2A0-8948-4819-9E64-78F720B23266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D125A611-D33B-4CCB-9344-EFD5FAF0D2A8}
+		SolutionGuid = {27F59CAA-805B-442D-B548-2CD0CC156752}
 	EndGlobalSection
 EndGlobal
