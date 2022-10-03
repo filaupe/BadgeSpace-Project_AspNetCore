@@ -8,6 +8,5 @@ namespace BadgeSpace.Models
         [StringLength(14)]
         public string? CPF { get; set; }
         public bool Empresa { get; set; }
-        public StudentModel student { get; set; }
     }
 }

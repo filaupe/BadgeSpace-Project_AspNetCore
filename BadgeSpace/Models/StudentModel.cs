@@ -6,39 +6,35 @@ namespace BadgeSpace.Models
 {
     public class StudentModel
     {
-        public ApplicationUser AppUser { get; set; }
-
+        [DisplayName("Id")]
         public int Id { get; set; }
 
-        [ForeignKey("AppUser")]
-        public string AppUserId { get; set; }
-
         [DisplayName("Nome do Aluno")]
-        public string NomeAluno { get; set; }
+        public string? NomeAluno { get; set; }
 
         [Required]
         [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
         public string AlunoCPF { get; set; }
 
         [DisplayName("Curso")]
-        public string Curso { get; set; }
+        public string? Curso { get; set; }
 
         [DisplayName("Tipo")]
-        public string Tipo { get; set; }
+        public string? Tipo { get; set; }
 
         [DisplayName("Nivel")]
-        public string Nivel { get; set; }
+        public string? Nivel { get; set; }
 
         [DisplayName("Tempo de Curso")]
-        public string Tempo { get; set; }
+        public string? Tempo { get; set; }
 
         [DisplayName("Descrição")]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
 
         [DisplayName("Badge")]
         public byte[]? Imagem { get; set; }
 
         [DisplayName("Habilidades Adquiridas")]
-        public string Habilidades { get; set; }
+        public string? Habilidades { get; set; }
     }
 }
