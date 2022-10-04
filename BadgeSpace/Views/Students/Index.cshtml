@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.NomeAluno)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AlunoCPF)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Curso)
             </th>
             <th>
@@ -46,6 +49,9 @@
                 @Html.DisplayFor(modelItem => item.NomeAluno)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.AlunoCPF)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Curso)
             </td>
             <td>
@@ -68,7 +74,7 @@
                         var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                         <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
                     }
-                 }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Habilidades)

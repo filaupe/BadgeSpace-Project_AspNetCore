@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BadgeSpace.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221003170112_Students")]
+    [Migration("20221004140951_Students")]
     partial class Students
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

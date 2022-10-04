@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BadgeSpace.Data;
 using BadgeSpace.Models;
-using BadgeSpace.Data.Migrations;
 
 namespace BadgeSpace.Controllers
 {
@@ -59,30 +58,42 @@ namespace BadgeSpace.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, StudentModel studentModel)
         {
-            if (ModelState.IsValid)
+            var ok = 0;
+            foreach (var item in _context.Users)
             {
-                using (var memoryStream = new MemoryStream())
+                if (item.CPF == AlunoCPF)
                 {
-                    await Imagem.CopyToAsync(memoryStream);
-                    var file = new StudentModel()
-                    {
-                        Id = Id,
-                        NomeAluno = NomeAluno,
-                        AlunoCPF = AlunoCPF,
-                        Curso = Curso,
-                        Tipo = Tipo,
-                        Nivel = Nivel,
-                        Tempo = Tempo,
-                        Descricao = Descricao,
-                        Imagem = memoryStream.ToArray(),
-                        Habilidades = Habilidades,
-                    };
-                    _context.Add(file);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    ok = 1;
+                    break;
                 }
-               
             }
+            if (ok == 1)
+            {
+                if (ModelState.IsValid)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await Imagem.CopyToAsync(memoryStream);
+                        var file = new StudentModel()
+                        {
+                            Id = Id,
+                            NomeAluno = NomeAluno,
+                            AlunoCPF = AlunoCPF,
+                            Curso = Curso,
+                            Tipo = Tipo,
+                            Nivel = Nivel,
+                            Tempo = Tempo,
+                            Descricao = Descricao,
+                            Imagem = memoryStream.ToArray(),
+                            Habilidades = Habilidades,
+                        };
+                        _context.Add(file);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            }
+            ViewBag.AuthCPF = "Este CPF não existe";
             return View(studentModel);
         }
 
@@ -109,47 +120,58 @@ namespace BadgeSpace.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, StudentModel studentModel)
         {
+            var ok = 0;
             if (id != studentModel.Id)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            foreach (var item in _context.Users)
             {
-                try
+                if (item.CPF == AlunoCPF)
                 {
-                    using (var memoryStream = new MemoryStream())
+                    ok = 1;
+                    break;
+                }
+            }
+            if (ok == 1)
+            {
+                if (ModelState.IsValid)
+                {
+                    try
                     {
-                        await Imagem.CopyToAsync(memoryStream);
-                        var file = new StudentModel()
+                        using (var memoryStream = new MemoryStream())
                         {
-                            Id = Id,
-                            NomeAluno = NomeAluno,
-                            AlunoCPF = AlunoCPF,
-                            Curso = Curso,
-                            Tipo = Tipo,
-                            Nivel = Nivel,
-                            Tempo = Tempo,
-                            Descricao = Descricao,
-                            Imagem = memoryStream.ToArray(),
-                            Habilidades = Habilidades,
-                        };
-                        _context.Update(file);
-                        await _context.SaveChangesAsync();
-                    }  
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StudentModelExists(studentModel.Id))
-                    {
-                        return NotFound();
+                            await Imagem.CopyToAsync(memoryStream);
+                            var file = new StudentModel()
+                            {
+                                Id = Id,
+                                NomeAluno = NomeAluno,
+                                AlunoCPF = AlunoCPF,
+                                Curso = Curso,
+                                Tipo = Tipo,
+                                Nivel = Nivel,
+                                Tempo = Tempo,
+                                Descricao = Descricao,
+                                Imagem = memoryStream.ToArray(),
+                                Habilidades = Habilidades,
+                            };
+                            _context.Update(file);
+                            await _context.SaveChangesAsync();
+                        }
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!StudentModelExists(studentModel.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(studentModel);
         }
