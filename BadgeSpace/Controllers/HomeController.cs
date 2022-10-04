@@ -1,5 +1,7 @@
-﻿using BadgeSpace.Models;
+﻿using BadgeSpace.Data;
+using BadgeSpace.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace BadgeSpace.Controllers
@@ -7,10 +9,12 @@ namespace BadgeSpace.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -18,9 +22,18 @@ namespace BadgeSpace.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Dashboard()
         {
-            return View();
+            var identidy = "";
+            foreach (var item in _context.Users)
+            {
+                if (item.Email == User.Identity.Name)
+                {
+                    identidy = item.CPF;
+                }
+            }
+            ViewBag.CPF = identidy;
+            return View(_context.Students.ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

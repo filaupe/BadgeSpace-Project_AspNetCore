@@ -8,81 +8,81 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BadgeSpace
 build_property.RootNamespace = BadgeSpace
-build_property.ProjectDir = C:\Users\MulinhaGPlays\Documents\GitHub\BadgeSpace-Project\BadgeSpace\
+build_property.ProjectDir = C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\MulinhaGPlays\Documents\GitHub\BadgeSpace-Project\BadgeSpace
+build_property.MSBuildProjectDirectory = C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Home/Index.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Home/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/Error.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Create.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Delete.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Details.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Edit.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Index.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Students/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/_ViewImports.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/_ViewStart.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MulinhaGPlays/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_Layout.cshtml]
+[C:/Users/android/Documents/GitHub/BadgeSpace-Project/BadgeSpace/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ah0b31jsbc
