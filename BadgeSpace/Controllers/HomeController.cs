@@ -1,5 +1,6 @@
 ﻿using BadgeSpace.Data;
 using BadgeSpace.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -21,7 +22,7 @@ namespace BadgeSpace.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Dashboard()
         {
             var identidy = "";

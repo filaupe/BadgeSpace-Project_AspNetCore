@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BadgeSpace.Data;
 using BadgeSpace.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BadgeSpace.Controllers
 {
+    [Authorize]
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
