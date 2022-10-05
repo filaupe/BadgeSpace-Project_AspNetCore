@@ -26,14 +26,20 @@ namespace BadgeSpace.Controllers
         public IActionResult Dashboard()
         {
             var identidy = "";
+            var empresa = false;
             foreach (var item in _context.Users)
             {
                 if (item.Email == User.Identity.Name)
                 {
                     identidy = item.CPF;
+                    empresa = item.Empresa;
                 }
             }
             ViewBag.CPF = identidy;
+            if (empresa)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(_context.Students.ToList());
         }
 
