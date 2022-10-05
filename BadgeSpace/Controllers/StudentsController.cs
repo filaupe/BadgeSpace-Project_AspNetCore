@@ -24,9 +24,21 @@ namespace BadgeSpace.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            return _context.Students != null ?
+            var identidy = false;
+            foreach (var item in _context.Users)
+            {
+                if (item.Email == User.Identity.Name)
+                {
+                    identidy = item.Empresa;
+                }
+            }
+            if (identidy)
+            {
+                return _context.Students != null ?
                         View(await _context.Students.ToListAsync()) :
                         Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Students/Details/5
@@ -58,7 +70,7 @@ namespace BadgeSpace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, StudentModel studentModel)
+        public async Task<IActionResult> Create(int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, string EmpresaId, StudentModel studentModel)
         {
             var ok = 0;
             foreach (var item in _context.Users)
@@ -88,6 +100,7 @@ namespace BadgeSpace.Controllers
                             Descricao = Descricao,
                             Imagem = memoryStream.ToArray(),
                             Habilidades = Habilidades,
+                            EmpresaId = EmpresaId,
                         };
                         _context.Add(file);
                         await _context.SaveChangesAsync();

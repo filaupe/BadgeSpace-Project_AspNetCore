@@ -36,5 +36,7 @@ namespace BadgeSpace.Models
 
         [DisplayName("Habilidades Adquiridas")]
         public string? Habilidades { get; set; }
+
+        public string EmpresaId { get; set; }
     }
 }

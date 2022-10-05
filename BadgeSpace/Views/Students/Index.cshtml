@@ -44,6 +44,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    if (item.EmpresaId == User.Identity.Name)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeAluno)
@@ -85,6 +87,7 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>

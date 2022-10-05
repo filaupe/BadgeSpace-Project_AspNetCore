@@ -112,6 +112,10 @@ namespace BadgeSpace.Data.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmpresaId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Habilidades")
                         .HasColumnType("nvarchar(max)");
 

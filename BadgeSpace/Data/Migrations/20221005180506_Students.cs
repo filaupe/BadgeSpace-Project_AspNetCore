@@ -24,7 +24,8 @@ namespace BadgeSpace.Data.Migrations
                     Tempo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Imagem = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Habilidades = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Habilidades = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmpresaId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,6 +37,7 @@ namespace BadgeSpace.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Students");
+
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BadgeSpace.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221004140951_Students")]
+    [Migration("20221005180506_Students")]
     partial class Students
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,6 +112,10 @@ namespace BadgeSpace.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmpresaId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Habilidades")

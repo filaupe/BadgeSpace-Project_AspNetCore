@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MulinhaGPlays\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {}
+    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MulinhaGPlays\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {
+    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MulinhaGPlays\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
+        "projectUniqueName": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
         "projectName": "BadgeSpace",
-        "projectPath": "C:\\Users\\MulinhaGPlays\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
-        "packagesPath": "C:\\Users\\MulinhaGPlays\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MulinhaGPlays\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\",
+        "projectPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
+        "packagesPath": "C:\\Users\\android\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\SDKs\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\MulinhaGPlays\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\android\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
