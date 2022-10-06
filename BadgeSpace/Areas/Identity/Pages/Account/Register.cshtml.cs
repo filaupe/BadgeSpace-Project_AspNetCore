@@ -125,7 +125,7 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
                 { 
                     UserName = Input.Email,
                     Email = Input.Email,
-                    CPF = Input.CPF,
+                    CPF_CNPJ = Input.CPF,
                     Empresa = Input.Empresa
                 };
 

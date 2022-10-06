@@ -71,7 +71,7 @@ namespace BadgeSpace.Controllers
             var ok = 0;
             foreach (var item in _context.Users)
             {
-                if (item.CPF == AlunoCPF)
+                if (item.CPF_CNPJ == AlunoCPF)
                 {
                     ok = 1;
                     break;
@@ -138,7 +138,7 @@ namespace BadgeSpace.Controllers
             }
             foreach (var item in _context.Users)
             {
-                if (item.CPF == AlunoCPF)
+                if (item.CPF_CNPJ == AlunoCPF)
                 {
                     ok = 1;
                     break;

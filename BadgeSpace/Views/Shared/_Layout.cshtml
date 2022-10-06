@@ -8,7 +8,7 @@
         {
             if (item.Email == User.Identity.Name && item.Empresa == true)
             {
-                ViewBag.Empresa = true;
+                Empresa = true;
             }
         }
     }
@@ -39,7 +39,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-<<<<<<< HEAD
                             @if (ViewBag.Empresa)
                             {
                                 <li class="nav-item">
@@ -53,14 +52,6 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
                                 </li>
                             }    
-=======
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Sistema</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                        </li>
->>>>>>> 6ac1cf292f7824063d7ad464b85758659b06c6fa
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

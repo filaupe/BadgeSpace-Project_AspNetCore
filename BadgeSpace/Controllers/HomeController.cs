@@ -30,7 +30,7 @@ namespace BadgeSpace.Controllers
             {
                 if (item.Email == User.Identity.Name)
                 {
-                    identidy = item.CPF;
+                    identidy = item.CPF_CNPJ;
                 }
             }
             ViewBag.CPF = identidy;
