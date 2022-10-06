@@ -1,4 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    bool Empresa = false;
+    if (UserManager.Users != null)
+    {
+        foreach (var item in UserManager.Users)
+        {
+            if (item.Email == User.Identity.Name && item.Empresa == true)
+            {
+                ViewBag.Empresa = true;
+            }
+        }
+    }
+    ViewBag.Empresa = Empresa;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,12 +39,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">CRUD</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                        </li>
+                            @if (ViewBag.Empresa)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">CRUD</a>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                            }    
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

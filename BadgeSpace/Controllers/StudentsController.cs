@@ -32,13 +32,9 @@ namespace BadgeSpace.Controllers
                     identidy = item.Empresa;
                 }
             }
-            if (identidy)
-            {
-                return _context.Students != null ?
-                        View(await _context.Students.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Students'  is null.");
-            }
-            return RedirectToAction("Index", "Home");
+            return _context.Students != null ?
+                    View(await _context.Students.ToListAsync()) :
+                    Problem("Entity set 'ApplicationDbContext.Students'  is null.");
         }
 
         // GET: Students/Details/5
