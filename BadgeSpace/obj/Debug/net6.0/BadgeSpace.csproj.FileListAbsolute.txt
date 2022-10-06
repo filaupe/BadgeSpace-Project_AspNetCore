@@ -542,3 +542,8 @@ C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\obj\Debug\net6.0
 C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\obj\Debug\net6.0\BadgeSpace.pdb
 C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\obj\Debug\net6.0\BadgeSpace.genruntimeconfig.cache
 C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\obj\Debug\net6.0\ref\BadgeSpace.dll
+C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\bin\Debug\net6.0\API\appsettings.Development.json
+C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\bin\Debug\net6.0\API\appsettings.json
+C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\bin\Debug\net6.0\API\obj\API.csproj.nuget.dgspec.json
+C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\bin\Debug\net6.0\API\obj\project.assets.json
+C:\Users\android\Documents\GitHub\BadgeSpace-Project\BadgeSpace\bin\Debug\net6.0\API\Properties\launchSettings.json
