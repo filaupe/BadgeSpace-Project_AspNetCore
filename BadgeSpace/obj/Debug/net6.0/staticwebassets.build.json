@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0BGfyT406OEB93nW+HwgeybWfMY7BJSml6IlJd228HM=",
+  "Hash": "w9O8SfSsZyocyEk+O9bpcuexYfRJl39J96vQo6+W3Ug=",
   "Source": "BadgeSpace",
   "BasePath": "_content/BadgeSpace",
   "Mode": "Default",
@@ -1105,6 +1105,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\banner1.png"
     },
     {
+      "Identity": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\assets\\Card.png",
+      "SourceId": "BadgeSpace",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\",
+      "BasePath": "_content/BadgeSpace",
+      "RelativePath": "assets/Card.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Card.png"
+    },
+    {
       "Identity": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\assets\\logo.png",
       "SourceId": "BadgeSpace",
       "SourceType": "Discovered",
@@ -1120,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\assets\\logos.png",
+      "SourceId": "BadgeSpace",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\",
+      "BasePath": "_content/BadgeSpace",
+      "RelativePath": "assets/logos.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\logos.png"
     },
     {
       "Identity": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\wwwroot\\css\\site.css",
