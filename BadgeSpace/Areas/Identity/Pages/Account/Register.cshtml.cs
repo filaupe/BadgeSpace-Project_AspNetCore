@@ -86,7 +86,7 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Display(Name = "CPF")]
-            [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
+            [RegularExpression("[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}|[0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2}")]
             public string CPF { get; set; }
 
             /// <summary>

@@ -1,17 +1,17 @@
 ﻿const CheckBox = document.getElementById("Switch")
-const CPF = document.getElementById("CPF")
-const span = document.getElementById("spancpf")
+const CPF_CNPJ = document.getElementById("CPF")
+const LabelCPF = document.getElementById("labelcpf")
 
 CheckBox.onchange = function () {
     CheckBox.classList.toggle('active')
     if (CheckBox.classList.contains('active')) {
-        CPF.setAttribute("disabled", "disabled")
-        CPF.removeAttribute("required")
-        span.style.display = "none"
+        LabelCPF.innerHTML = "CNPJ"
+        CPF_CNPJ.setAttribute("maxlength", "18")
+        CPF_CNPJ.value = null
     } else {
-        CPF.removeAttribute("disabled")
-        CPF.setAttribute("required", "")
-        span.style.display = "block"
+        LabelCPF.innerHTML = "CPF"
+        CPF_CNPJ.setAttribute("maxlength", "14")
+        CPF_CNPJ.value = null
     }
 }
 
