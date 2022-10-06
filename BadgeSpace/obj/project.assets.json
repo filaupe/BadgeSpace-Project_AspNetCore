@@ -10292,6 +10292,11 @@
   },
   "packageFolders": {
     "C:\\Users\\android\\.nuget\\packages\\": {},
+<<<<<<< HEAD
+=======
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+>>>>>>> 6ac1cf292f7824063d7ad464b85758659b06c6fa
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -10304,11 +10309,22 @@
       "outputPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+<<<<<<< HEAD
+=======
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+>>>>>>> 6ac1cf292f7824063d7ad464b85758659b06c6fa
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\android\\AppData\\Roaming\\NuGet\\NuGet.Config",
+<<<<<<< HEAD
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> 6ac1cf292f7824063d7ad464b85758659b06c6fa
       ],
       "originalTargetFrameworks": [
         "net6.0"

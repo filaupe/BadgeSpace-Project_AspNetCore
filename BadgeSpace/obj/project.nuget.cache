@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "+UCO8q8gyHrrqspOIviRg/Gr0vGXM49AU7PkcOPC1gtqecIAlGFWCJx/aUzuk7U3hExXbbxxY6sYltf+ovdb9w==",
+=======
+  "dgSpecHash": "djb8KYja4TuzGob8DdhCQ6Bt3kr8TbUN/Qp+hD3SLMfcwB36UyOTeBUzlqf+xMyu7dcWxcY7oA8VQEKZNb48jw==",
+>>>>>>> 6ac1cf292f7824063d7ad464b85758659b06c6fa
   "success": true,
   "projectFilePath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
   "expectedPackageFiles": [
