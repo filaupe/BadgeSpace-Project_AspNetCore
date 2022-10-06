@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {}
+    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj": {
+    "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
-        "projectName": "BadgeSpace",
-        "projectPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
+        "projectUniqueName": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\API\\API.csproj",
+        "projectName": "API",
+        "projectPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\API\\API.csproj",
         "packagesPath": "C:\\Users\\android\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\",
+        "outputPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,29 +43,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.0.9, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.9, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
-              "target": "Package",
-              "version": "[6.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "target": "Package",
-              "version": "[6.0.9, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[6.2.3, )"
             }
           },
           "imports": [
