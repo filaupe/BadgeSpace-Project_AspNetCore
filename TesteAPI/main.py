@@ -6,10 +6,10 @@ if __name__ == "__main__":
             case "get":
                 Get(link=input("Insira o link: "))
             case "post":
-                Post(link=input("Insira o link: "))
+                Post(link=input("Insira o link: "), dados=input("Insira os dados"))
             case "put":
-                Put(link=input("Insira o link: "))
+                Put(link=input("Insira o link: "), dados=input("Insira os dados"))
             case "patch":
-                Patch(link=input("Insira o link: "))
+                Patch(link=input("Insira o link: "), dados=input("Insira os dados"))
             case "delete":
                 Delete(link=input("Insira o link: "))
