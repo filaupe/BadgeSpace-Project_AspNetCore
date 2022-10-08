@@ -3,7 +3,7 @@ using BadgeSpace.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BadgeSpace.Controllers
+namespace BadgeSpace.Extensions
 {
     [Controller]
     [Route("[controller]")]

@@ -6,21 +6,21 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item perfil">
-        <button id="" class="nav-link btn btn-link text-dark">Perfil</button>
+        <img src="https://img.icons8.com/windows/96/000000/user-male-circle.png" />
         <ul>
             <li>
                 <img src="#" width="40px" height="40px"/>
-                <span>Nome Empresa</span>
+                <span>Nome de Usuário</span>
             </li>
             <li>
-                <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name!</a>
+                <a  class="nav-link text-dark">@User.Identity?.Name!</a>
             </li>
             <li>
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Ver Perfil</a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Ver Perfil</a>
             </li>
             <li>
                 <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    <button  type="submit" class="nav-link btn btn-link text-dark">Sair da Conta</button>
                 </form>
             </li>
         </ul> 
