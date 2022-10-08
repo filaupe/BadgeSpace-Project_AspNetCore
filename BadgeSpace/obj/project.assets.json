@@ -4642,7 +4642,7 @@
       ]
     },
     "Microsoft.CSharp/4.5.0": {
-      "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
       "path": "microsoft.csharp/4.5.0",
       "files": [
@@ -7825,7 +7825,7 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "Z1UfSF6dlpCdZdxh6LeoGlYH+q6ptG/iiIWgUUeKhE3DbQACmZkU7Sz2nOX0qdHjz72MOdYRbkSJ5Qwl6sZgvg==",
+      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
@@ -10220,31 +10220,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\android\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/gabrielsantana/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
+      "projectUniqueName": "/Users/gabrielsantana/Desktop/pessoais/BadgeSpace-Project/BadgeSpace/BadgeSpace.csproj",
       "projectName": "BadgeSpace",
-      "projectPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\BadgeSpace.csproj",
-      "packagesPath": "C:\\Users\\android\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\",
+      "projectPath": "/Users/gabrielsantana/Desktop/pessoais/BadgeSpace-Project/BadgeSpace/BadgeSpace.csproj",
+      "packagesPath": "/Users/gabrielsantana/.nuget/packages/",
+      "outputPath": "/Users/gabrielsantana/Desktop/pessoais/BadgeSpace-Project/BadgeSpace/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\android\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/gabrielsantana/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/credz-devops/Arquitetura/_packaging/packages/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/credz-devops/Arquitetura/_packaging/symbols/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -10293,8 +10289,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -10306,16 +10301,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\android\\Documents\\GitHub\\BadgeSpace-Project\\BadgeSpace\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
