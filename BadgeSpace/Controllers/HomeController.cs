@@ -1,5 +1,6 @@
 ﻿using BadgeSpace.Data;
 using BadgeSpace.Models;
+using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,23 +19,20 @@ namespace BadgeSpace.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
+
         [Authorize]
         public IActionResult Dashboard()
         {
-            var identidy = "";
-            foreach (var item in _context.Users)
+            var (logado, user) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
+
+            if (logado)
             {
-                if (item.Email == User.Identity.Name)
-                {
-                    identidy = item.CPF_CNPJ;
-                }
+                ViewBag.CPF = user!.CPF_CNPJ;
+                return View(_context.Students.AsEnumerable());
             }
-            ViewBag.CPF = identidy;
-            return View(_context.Students.ToList());
+
+            return Unauthorized();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

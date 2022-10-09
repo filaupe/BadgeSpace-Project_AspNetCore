@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using BadgeSpace.Data;
 using BadgeSpace.Models;
+using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BadgeSpace.Controllers
 {
@@ -24,103 +20,58 @@ namespace BadgeSpace.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            var identidy = false;
-            foreach (var item in _context.Users)
-            {
-                if (item.Email == User.Identity.Name)
-                {
-                    identidy = item.Empresa;
-                }
-            }
-            return _context.Students != null ?
-                    View(await _context.Students.ToListAsync()) :
-                    Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+            var (logado, _) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
+
+            if (!logado) return Unauthorized();
+
+            return _context.Students != null ? View(await _context.Students.ToListAsync()) : BadRequest("Entity set 'ApplicationDbContext.Students'  is null.");
         }
 
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Students == null)
-            {
-                return NotFound();
-            }
+            if (id == null || !id.HasValue) return NotFound();
 
-            var studentModel = await _context.Students
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (studentModel == null)
-            {
-                return NotFound();
-            }
+            var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
+            if (studentModel == null) return NotFound();
 
             return View(studentModel);
         }
 
         // GET: Students/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         // POST: Students/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, string EmpresaId, StudentModel studentModel)
+        public async Task<IActionResult> Create(IFormFile Imagem, StudentModel studentModel)
         {
-            var ok = 0;
-            foreach (var item in _context.Users)
+            var ok = await CheckIfUserIsValid.IsUserValid(_context.Users, studentModel.AlunoCPF);
+            if (!ok || !ModelState.IsValid)
             {
-                if (item.CPF_CNPJ == AlunoCPF)
-                {
-                    ok = 1;
-                    break;
-                }
+                ViewBag.AuthCPF = "Este CPF não existe";
+                return View(studentModel);
             }
-            if (ok == 1)
-            {
-                if (ModelState.IsValid)
-                {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        await Imagem.CopyToAsync(memoryStream);
-                        var file = new StudentModel()
-                        {
-                            Id = Id,
-                            NomeAluno = NomeAluno,
-                            AlunoCPF = AlunoCPF,
-                            Curso = Curso,
-                            Tipo = Tipo,
-                            Nivel = Nivel,
-                            Tempo = Tempo,
-                            Descricao = Descricao,
-                            Imagem = memoryStream.ToArray(),
-                            Habilidades = Habilidades,
-                            EmpresaId = EmpresaId,
-                        };
-                        _context.Add(file);
-                        await _context.SaveChangesAsync();
-                        return RedirectToAction(nameof(Index));
-                    }
-                }
-            }
-            ViewBag.AuthCPF = "Este CPF não existe";
-            return View(studentModel);
+
+            using var memoryStream = new MemoryStream();
+            await Imagem.CopyToAsync(memoryStream);
+            studentModel.Imagem = memoryStream.ToArray();
+            _context.Add(studentModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Students == null)
-            {
+            if (id == null || !id.HasValue || id.Value == 0)
                 return NotFound();
-            }
 
-            var studentModel = await _context.Students.FindAsync(id);
-            if (studentModel == null)
-            {
-                return NotFound();
-            }
+            var studentModel = await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
+            if (studentModel == null) return NotFound();
+
             return View(studentModel);
         }
 
@@ -129,78 +80,38 @@ namespace BadgeSpace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, StudentModel studentModel)
+        public async Task<IActionResult> Edit(int id, IFormFile Imagem, StudentModel studentModel)
         {
-            var ok = 0;
-            if (id != studentModel.Id)
+            if (id != studentModel.Id) return NotFound();
+
+            var ok = await CheckIfUserIsValid.IsUserValid(_context.Users, studentModel.AlunoCPF);
+            if (!ok || !ModelState.IsValid)
             {
-                return NotFound();
+                ViewBag.AuthCPF = "Este CPF não existe";
+                return View(studentModel);
             }
-            foreach (var item in _context.Users)
-            {
-                if (item.CPF_CNPJ == AlunoCPF)
-                {
-                    ok = 1;
-                    break;
-                }
-            }
-            if (ok == 1)
-            {
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await Imagem.CopyToAsync(memoryStream);
-                            var file = new StudentModel()
-                            {
-                                Id = Id,
-                                NomeAluno = NomeAluno,
-                                AlunoCPF = AlunoCPF,
-                                Curso = Curso,
-                                Tipo = Tipo,
-                                Nivel = Nivel,
-                                Tempo = Tempo,
-                                Descricao = Descricao,
-                                Imagem = memoryStream.ToArray(),
-                                Habilidades = Habilidades,
-                            };
-                            _context.Update(file);
-                            await _context.SaveChangesAsync();
-                        }
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        if (!StudentModelExists(studentModel.Id))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            return View(studentModel);
+
+            using var memoryStream = new MemoryStream();
+            await Imagem.CopyToAsync(memoryStream);
+
+            var old = await _context.Students.FirstOrDefaultAsync(x => x.Id == studentModel.Id);
+
+            if (old == null) return BadRequest();
+
+            _context.Update(OldToNewRegister(old, studentModel));
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Students == null)
-            {
+            if (id == null || !id.HasValue || id.Value == 0)
                 return NotFound();
-            }
 
-            var studentModel = await _context.Students
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (studentModel == null)
-            {
-                return NotFound();
-            }
+            var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
+            if (studentModel == null) return NotFound();
 
             return View(studentModel);
         }
@@ -211,22 +122,36 @@ namespace BadgeSpace.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Students == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Students'  is null.");
-            }
+                return BadRequest("Entity set 'ApplicationDbContext.Students'  is null.");
+
             var studentModel = await _context.Students.FindAsync(id);
             if (studentModel != null)
             {
                 _context.Students.Remove(studentModel);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentModelExists(int id)
+        #region Aux methods
+        private static StudentModel OldToNewRegister(StudentModel oldRegister, StudentModel newRegister)
         {
-            return (_context.Students?.Any(e => e.Id == id)).GetValueOrDefault();
+            oldRegister.Id = newRegister.Id;
+            oldRegister.NomeAluno = newRegister.NomeAluno;
+            oldRegister.AlunoCPF = newRegister.AlunoCPF;
+            oldRegister.Curso = newRegister.Curso;
+            oldRegister.Tipo = newRegister.Tipo;
+            oldRegister.Nivel = newRegister.Nivel;
+            oldRegister.Tempo = newRegister.Tempo;
+            oldRegister.Descricao = newRegister.Descricao;
+            oldRegister.Imagem = newRegister.Imagem;
+            oldRegister.Habilidades = newRegister.Habilidades;
+            oldRegister.EmpresaId = newRegister.EmpresaId;
+
+            return oldRegister;
         }
+
+        #endregion
     }
 }
