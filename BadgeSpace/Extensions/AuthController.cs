@@ -25,7 +25,7 @@ namespace BadgeSpace.Extensions
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Authenticate([FromBody] LoginModel model)
+        public async Task<IActionResult> Authenticate([FromBody] ApiLoginModel model)
         {
             var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == model.Login);
             if (user == null)
@@ -41,13 +41,5 @@ namespace BadgeSpace.Extensions
 
             return Ok(token);
         }
-
-        [HttpGet("GetEmpress")]
-        [Authorize(Roles = nameof(Roles.EMPRESS))]
-        public async Task<IActionResult> GetEmpress() => Ok("APENAS EMPRESAS");
-
-        [HttpGet("GetStudents")]
-        [Authorize(Roles = nameof(Roles.STUDENT))]
-        public async Task<IActionResult> GetStudents() => Ok("APENAS ESTUDANTES");
     }
 }

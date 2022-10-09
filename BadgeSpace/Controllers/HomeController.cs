@@ -20,6 +20,8 @@ namespace BadgeSpace.Controllers
 
         public IActionResult Index() => View();
 
+        public IActionResult API() => View();
+
         [Authorize]
         public IActionResult Dashboard()
         {

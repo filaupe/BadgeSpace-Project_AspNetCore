@@ -9,8 +9,6 @@ namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
 {
     public class ApiKeyModel : PageModel
     {
-
-
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -24,5 +22,7 @@ namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
         /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
+
+
     }
 }
