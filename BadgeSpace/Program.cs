@@ -1,6 +1,8 @@
 using BadgeSpace.Data;
 using BadgeSpace.Models;
-using Microsoft.AspNetCore.Identity;
+using BadgeSpace.Services;
+using BadgeSpace.Services.Interfaces;
+using BadgeSpace.Utils.MethodsExtensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();

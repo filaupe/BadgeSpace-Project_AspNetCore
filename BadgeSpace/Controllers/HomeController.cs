@@ -3,7 +3,6 @@ using BadgeSpace.Models;
 using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace BadgeSpace.Controllers
