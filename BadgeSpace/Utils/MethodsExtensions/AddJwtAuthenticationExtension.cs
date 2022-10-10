@@ -10,10 +10,10 @@ namespace BadgeSpace.Utils.MethodsExtensions
         {
             var key = Encoding.ASCII.GetBytes(configuration.GetSection("JwtSecret").Value);
             services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+             {
+                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+             })
             .AddJwtBearer(x =>
             {
                 x.RequireHttpsMetadata = false;

@@ -1,6 +1,5 @@
 ﻿using BadgeSpace.Data;
 using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
 using BadgeSpace.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

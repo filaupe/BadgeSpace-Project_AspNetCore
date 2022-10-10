@@ -13,13 +13,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
-
-builder.Services.AddJwtAuthentication(builder.Configuration);
-
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
+
+//builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 
