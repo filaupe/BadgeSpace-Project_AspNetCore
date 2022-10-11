@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item perfil">
+        <img src="https://img.icons8.com/windows/96/000000/user-male-circle.png" />
+        <ul>
+            <li>
+                <img src="#" width="40px" height="40px"/>
+                <span>Nome de Usuário</span>
+            </li>
+            <li>
+                <a  class="nav-link text-dark">@User.Identity?.Name!</a>
+            </li>
+            <li>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Ver Perfil</a>
+            </li>
+            <li>
+                <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button  type="submit" class="nav-link btn btn-link text-dark">Sair da Conta</button>
+                </form>
+            </li>
+        </ul> 
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrar</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Logar</a>
+    </li>
+}
+</ul>

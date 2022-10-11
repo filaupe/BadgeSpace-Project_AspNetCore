@@ -1,0 +1,53 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.perfil{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.perfil ul li a{
+  text-decoration: none;
+  line-height: 70px;
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.perfil ul{
+  background-color: white;
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.perfil:hover > ul{
+  opacity: 1;
+  visibility: visible; 
+}
+
+.perfil ul li{
+  position: relative;
+  margin: 0;
+  width: 150px;
+  float: none;
+  display: list-item;
+  border-bottom: 1px solid;
+}
