@@ -28,12 +28,12 @@ namespace BadgeSpace.Extensions
         {
             var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == model.Login);
             if (user == null)
-                return NotFound(new { message = "Invalid credentials." });
+                return NotFound(new { message = "Email não encontrado." });
 
             var validPass = await _userManager.CheckPasswordAsync(user, model.Senha);
 
             if (!validPass)
-                return NotFound(new { message = "Invalid credentials." });
+                return NotFound(new { message = "Senha Incorreta." });
 
 
             var token = await _apiAuthService.GenerateToken(user);
