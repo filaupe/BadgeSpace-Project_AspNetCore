@@ -46,7 +46,7 @@ namespace BadgeSpace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile Imagem, StudentModel studentModel)
+        public async Task<IActionResult> Create(IFormFile? Imagem, StudentModel studentModel)
         {
             var ok = await CheckIfUserIsValid.IsUserValid(_context.Users, studentModel.AlunoCPF);
             if (!ok || !ModelState.IsValid)
@@ -55,9 +55,12 @@ namespace BadgeSpace.Controllers
                 return View(studentModel);
             }
 
-            using var memoryStream = new MemoryStream();
-            await Imagem.CopyToAsync(memoryStream);
-            studentModel.Imagem = memoryStream.ToArray();
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                studentModel.Imagem = memoryStream.ToArray();
+            }
 
             _context.Add(studentModel);
             await _context.SaveChangesAsync();
@@ -82,7 +85,7 @@ namespace BadgeSpace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, IFormFile Imagem, StudentModel studentModel)
+        public async Task<IActionResult> Edit(int id, IFormFile? Imagem, StudentModel studentModel)
         {
             if (id != studentModel.Id) return NotFound();
 
@@ -93,9 +96,12 @@ namespace BadgeSpace.Controllers
                 return View(studentModel);
             }
 
-            using var memoryStream = new MemoryStream();
-            await Imagem.CopyToAsync(memoryStream);
-            studentModel.Imagem = memoryStream.ToArray();
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                studentModel.Imagem = memoryStream.ToArray();
+            }
 
             var old = await _context.Students.FirstOrDefaultAsync(x => x.Id == studentModel.Id);
 
