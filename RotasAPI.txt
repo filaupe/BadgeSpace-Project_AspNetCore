@@ -1,0 +1,20 @@
+[Anónimo]
+[Json{Login, Senha}]
+[POST] "/api/auth"
+
+[Aluno]
+[GET(Requisição)] "/api/alunos/{CPF}"
+
+[Empresa]
+[GET(Requisição)] "/api/alunos/listar&{EMAIL}/{CPF?}/{ID?}"
+
+[Empresa]
+[Json{nomeAluno, curso, tipo, nivel, tempo, descricao, imagem, habilidades}]
+[POST(Cadastro)] "/api/alunos/{EMAIL}&cadastrar={CPFdoAluno}"
+
+[Empresa]
+[Json{id, nomeAluno, alunoCPF, curso, tipo, nivel, tempo, descricao, imagem, habilidades, empresaId}]
+[PUT(Editar)] "/api/alunos/{EMAIL}&editar={CPFdoAluno}"
+
+[Empresa]
+[DELETE] "/api/alunos/{EMAIL}&deletar={CPFdoAluno}/{ID?}"
