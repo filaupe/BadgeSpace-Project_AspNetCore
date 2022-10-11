@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
 
-//builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 

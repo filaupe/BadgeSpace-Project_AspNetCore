@@ -58,8 +58,10 @@ namespace BadgeSpace.Controllers
             using var memoryStream = new MemoryStream();
             await Imagem.CopyToAsync(memoryStream);
             studentModel.Imagem = memoryStream.ToArray();
+
             _context.Add(studentModel);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -93,6 +95,7 @@ namespace BadgeSpace.Controllers
 
             using var memoryStream = new MemoryStream();
             await Imagem.CopyToAsync(memoryStream);
+            studentModel.Imagem = memoryStream.ToArray();
 
             var old = await _context.Students.FirstOrDefaultAsync(x => x.Id == studentModel.Id);
 

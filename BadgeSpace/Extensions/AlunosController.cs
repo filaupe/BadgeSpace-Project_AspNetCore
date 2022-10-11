@@ -73,7 +73,7 @@ namespace BadgeSpace.Extensions
             return Ok(Student);
         }
 
-        [HttpDelete("{codigo}")]
+        [HttpDelete("deletar={codigo}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Remover(int codigo)
         {
