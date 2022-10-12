@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\HttpPostedFileBase.cs" />
+    <Compile Remove="Extensions\Task.cs" />
   </ItemGroup>
 
   <ItemGroup>

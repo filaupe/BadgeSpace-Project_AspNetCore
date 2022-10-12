@@ -1,5 +1,6 @@
 ﻿using BadgeSpace.Data;
 using BadgeSpace.Models;
+using BadgeSpace.Models.Enums;
 using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,7 @@ namespace BadgeSpace.Controllers
 
         public IActionResult API() => View();
 
-        [Authorize]
+        [Authorize(Roles = nameof(Roles.STUDENT))]
         public IActionResult Dashboard()
         {
             var (logado, user) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
@@ -38,8 +39,6 @@ namespace BadgeSpace.Controllers
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+            =>  View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

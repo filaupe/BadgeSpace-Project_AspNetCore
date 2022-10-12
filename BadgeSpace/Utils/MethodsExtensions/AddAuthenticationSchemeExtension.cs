@@ -1,7 +1,4 @@
-﻿using BadgeSpace.Data;
-using BadgeSpace.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
@@ -19,11 +16,6 @@ namespace BadgeSpace.Utils.MethodsExtensions
                  x.DefaultAuthenticateScheme = "JWT_Or_Cookie";
                  x.DefaultChallengeScheme = "JWT_Or_Cookie";
              })
-            .AddCookie( x =>
-            {
-                x.LoginPath = "/Login";
-                x.ExpireTimeSpan = TimeSpan.FromDays(1);
-            })
             .AddJwtBearer( x =>
             {
                 x.RequireHttpsMetadata = false;

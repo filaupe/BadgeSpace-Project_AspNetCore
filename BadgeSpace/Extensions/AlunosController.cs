@@ -2,9 +2,11 @@
 using BadgeSpace.Data.Migrations;
 using BadgeSpace.Models;
 using BadgeSpace.Models.Enums;
+using BadgeSpace.Utils.MethodsExtensions.UserCase;
 using BadgeSpace.Utils.Security;
 using Humanizer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,9 +26,9 @@ namespace BadgeSpace.Extensions
         {
             if (ID.HasValue && ID != 0)
             {
-                var student = await _context.Students.FirstOrDefaultAsync(c => c.Id == ID);
-                if (student == null) return NotFound(new { message = "Aluno Inválido." });
-
+                var student = await FindStudentIdAsync(ID.Value);
+                if (student == null)
+                    return NotFound(new { message = "Aluno Inválido." });
                 return Ok(new { student.Id, student.NomeAluno, student.AlunoCPF, student.Curso });
             }
                 
@@ -35,8 +37,9 @@ namespace BadgeSpace.Extensions
                 var students = _context.Students
                     .Where(c => c.AlunoCPF == CPF && c.EmpresaId == email)
                     .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso } );
-                if (students == null) return NotFound(new { message = "Aluno Inválido." });
 
+                if (students == null) 
+                    return NotFound(new { message = "Aluno Inválido." });
                 return Ok(students);
             }
 
@@ -44,12 +47,13 @@ namespace BadgeSpace.Extensions
                 .Where( c => c.EmpresaId == email )
                 .Select( c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso });
 
-            if (dados == null) return NotFound(new { message = "A lista está vazia." });
+            if (dados == null) 
+                return NotFound(new { message = "A lista está vazia." });
 
             return Ok(dados);
         }
 
-        [HttpGet("{CPF}/{empresa?}/{curso?}")]
+        [HttpGet("{CPF}/{empresa?}")]
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public async Task<IActionResult> ListarCertificados(string CPF, string? empresa, string? curso)
         {
@@ -61,12 +65,6 @@ namespace BadgeSpace.Extensions
                 var confirmE = await _context.Users.FirstOrDefaultAsync(c => c.Email == empresa);
                 if (confirmE == null)
                     return NotFound(new { message = "Inválido." });
-            }
-                
-            if (curso != null && curso != "")
-            {
-                var student = _context.Students.Where(c => c.EmpresaId == empresa && c.AlunoCPF == CPF && c.Curso == curso);
-                return Ok(student);
             }
 
             if (empresa != null && empresa != "")
@@ -84,8 +82,7 @@ namespace BadgeSpace.Extensions
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Cadastrar(string CPF, string empresa, [FromBody] StudentModel Student)
         {
-            if (await VerificarDados(empresa, CPF))
-                return NotFound(new { message = "Inválido." });
+            await VerifyDataAsync(empresa, CPF);
 
             Student.AlunoCPF = CPF;
             Student.EmpresaId = empresa;
@@ -98,40 +95,38 @@ namespace BadgeSpace.Extensions
 
         [HttpPut("{empresa}&editar={CPF}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
-        public async Task<IActionResult> Editar(string CPF, string empresa, [FromBody] StudentModel Student)
+        public async Task<IActionResult> Editar(string CPF, string empresa, [FromBody] StudentModel NewStudent)
         {
-            try
-            {
-                if (await VerificarDados(empresa, CPF))
-                    return NotFound(new { message = "Inválido." });
+            await VerifyDataAsync(empresa, CPF);
 
-                if (Student!.EmpresaId != empresa)
-                    return NotFound(new { message = "Id de Empresa Inválido." });
+            NewStudent.AlunoCPF = CPF;
+            NewStudent.EmpresaId = empresa;
 
-                if (Student!.AlunoCPF != CPF)
-                    return NotFound(new { message = "Aluno Inválido." });
+            var OldStudent = await FindStudentIdAsync(NewStudent.Id);
 
-                _context.Students.Update(Student);
-                await _context.SaveChangesAsync();
-                return Ok(Student);
-            }
-            catch (Exception)
-            {
-                return NotFound(new { message = "Id não encontrado" });
-            }
+            if (OldStudent == null)
+                return BadRequest(new { message = "O aluno não existe" });
+            if (OldStudent.EmpresaId != NewStudent.EmpresaId)
+                return BadRequest(new { message = "Empresa incorreta" });
+            if (OldStudent.AlunoCPF != NewStudent.AlunoCPF)
+                return BadRequest(new { message = "CPF incorreto" });
+                    
+            _context.Students.Update(UserCaseExtension.OldToNewRegister(OldStudent, NewStudent));
+            await _context.SaveChangesAsync();
+            return Ok(NewStudent);
         }
 
         [HttpDelete("{empresa}&deletar={CPF}/{ID?}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Remover(string empresa, string CPF, int? ID)
         {
-            if (await VerificarDados(empresa, CPF))
-                return NotFound(new { message = "Inválido." });
+            await VerifyDataAsync(empresa, CPF);
 
             var student = ID.HasValue && ID != 0 
-                ? await _context.Students.FirstOrDefaultAsync(c => c.Id == ID) 
+                ? await FindStudentIdAsync(ID.Value)
                 : await _context.Students.FirstOrDefaultAsync(c => c.AlunoCPF == CPF && c.EmpresaId == empresa);
-            if (student == null) return NotFound(new { message = "Aluno Inválido." });
+            if (student == null) 
+                return NotFound(new { message = "Aluno Inválido." });
 
             _context.Students.Remove(student);
             await _context.SaveChangesAsync();
@@ -140,15 +135,17 @@ namespace BadgeSpace.Extensions
         }
 
         #region Private Methods
-        private async Task<bool> VerificarDados(string empresa, string CPF)
+        private async Task<NotFoundObjectResult?> VerifyDataAsync(string empresa, string CPF)
         {
             var confirmE = await _context.Users.FirstOrDefaultAsync(c => c.Email == empresa);
             var confirmC = await _context.Users.FirstOrDefaultAsync(c => c.CPF_CNPJ == CPF);
 
             if (confirmC == null || confirmE == null)
-                return true;
-            return false;
+                return NotFound(new { message = "Empresa ou CPF não encontrados no sistema" });
+            return null;
         }
+        private async Task<StudentModel?> FindStudentIdAsync(int id)
+            => await _context.Students.FirstOrDefaultAsync(c => c.Id == id);
         #endregion
     }
 }
