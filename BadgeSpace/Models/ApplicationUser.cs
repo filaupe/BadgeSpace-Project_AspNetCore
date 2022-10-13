@@ -8,5 +8,6 @@ namespace BadgeSpace.Models
         [StringLength(14)]
         public string CPF_CNPJ { get; set; }
         public bool Empresa { get; set; }
+        public string? APIKey { get; set; }
     }
 }

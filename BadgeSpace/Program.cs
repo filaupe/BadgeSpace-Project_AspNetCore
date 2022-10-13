@@ -3,11 +3,13 @@ using BadgeSpace.Models;
 using BadgeSpace.Services;
 using BadgeSpace.Services.Interfaces;
 using BadgeSpace.Utils.MethodsExtensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddAuthenticationScheme(builder.Configuration);

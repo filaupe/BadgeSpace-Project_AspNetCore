@@ -9,16 +9,18 @@
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
-        <form id="ApiKey-form">
+        <form id="ApiKey-form" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-floating input-group">
-                <input asp-for="ApiKey" class="form-control" disabled />
-                <div class="input-group-append">
-                    <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
-                </div>
-                <label asp-for="ApiKey" class="form-label"></label>
+                    <input asp-for="APIKey"  class="form-control" disabled />
+                    <div class="input-group-append">
+                        <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
+                    </div>
+                <label asp-for="APIKey" class="form-label"></label>
+                <button type="submit" asp-page-handler="ChangeToken" class="w-100 btn btn-lg btn-primary">Change Token</button>
             </div>
         </form>
+            
     </div>
 </div>
 
