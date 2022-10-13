@@ -23,6 +23,10 @@ namespace BadgeSpace.Controllers
 
         public IActionResult API() => View();
 
+        public IActionResult Sobre() => View();
+
+        public IActionResult Contato() => View();
+
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public IActionResult Dashboard()
         {

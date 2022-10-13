@@ -29,6 +29,8 @@ namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public string Username { get; set; }
 
+        public byte[] Imagem { get; set; }
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -111,6 +113,20 @@ namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostChangeImageAsync(IFormFile imagem)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await imagem.CopyToAsync(memoryStream);
+                Imagem = memoryStream.ToArray();
+                user.Imagem = Imagem;
+            }
+            await _userManager.UpdateAsync(user);
+            return Page();
         }
     }
 }

@@ -28,6 +28,7 @@ namespace BadgeSpace.Data.Migrations
                     Id = table.Column<string>(nullable: false),
                     Empresa = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Imagem = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),

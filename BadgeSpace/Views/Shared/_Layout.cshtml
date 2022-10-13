@@ -1,25 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
-@{
-    bool Empresa = false;
-    bool Enlogado = true;
-    if (UserManager.Users != null)
-    {
-        foreach (var item in UserManager.Users)
-        {
-            if (item.Email == User.Identity.Name && item.Empresa == true)
-            {
-                Empresa = true;
-            }
-        }
-    }
-    if (User.Identity.Name == null)
-    {
-        Enlogado = false;
-    }
-    ViewBag.Enlogado = Enlogado;
-    ViewBag.Empresa = Empresa;
-}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,9 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                            @if (ViewBag.Enlogado)
+                            @if (User.Identity!.Name != null)
                             {
-                                if (ViewBag.Empresa)
+                                if (UserManager.Users!.FirstOrDefault(c => c.Empresa == true && c.Email == User.Identity.Name) != null)
                                 {
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">CRUD</a>
@@ -63,7 +43,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="API">API</a>
                         </li>
-                              
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contato">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
