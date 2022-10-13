@@ -1,19 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
-@{
-    bool Empresa = false;
-    if (UserManager.Users != null)
-    {
-        foreach (var item in UserManager.Users)
-        {
-            if (item.Email == User.Identity.Name && item.Empresa == true)
-            {
-                Empresa = true;
-            }
-        }
-    }
-    ViewBag.Empresa = Empresa;
-}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,19 +25,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                            @if (ViewBag.Empresa)
+                            @if (User.Identity!.Name != null)
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">CRUD</a>
-                                </li>
-
+                                if (UserManager.Users!.FirstOrDefault(c => c.Empresa == true && c.Email == User.Identity.Name) != null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">CRUD</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                                    </li>
+                                }  
                             }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                                </li>
-                            }    
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="API">API</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contato">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

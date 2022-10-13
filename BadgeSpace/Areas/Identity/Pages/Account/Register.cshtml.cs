@@ -2,23 +2,19 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using BadgeSpace.Models;
+using BadgeSpace.Models.Enums;
+using BadgeSpace.Services;
+using BadgeSpace.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace BadgeSpace.Areas.Identity.Pages.Account
 {
@@ -26,22 +22,28 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IApiAuthService _apiAuthService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
+            IApiAuthService apiAuthService,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
+            _apiAuthService = apiAuthService;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -122,19 +124,28 @@ namespace BadgeSpace.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
-                { 
+                {
                     UserName = Input.Email,
                     Email = Input.Email,
                     CPF_CNPJ = Input.CPF,
-                    Empresa = Input.Empresa
+                    Empresa = Input.Empresa,
+                    APIKey = null
                 };
-
+                user.APIKey = await _apiAuthService.GenerateToken(user);
+                
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
+                    if (!await _roleManager.RoleExistsAsync(nameof(Roles.EMPRESS)))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(nameof(Roles.EMPRESS)));
+                        await _roleManager.CreateAsync(new IdentityRole(nameof(Roles.STUDENT)));
+                    }
+                    await _userManager.AddToRoleAsync(user, Input.Empresa == true ? nameof(Roles.EMPRESS) : nameof(Roles.STUDENT));
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
