@@ -82,23 +82,24 @@ namespace BadgeSpace.Extensions
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Cadastrar(string CPF, string empresa, [FromBody] StudentModel Student)
         {
-            await VerifyDataAsync(empresa, CPF);
+            var Verify = await VerifyDataAsync(empresa, CPF);
+            if (Verify == null)
+            {
+                Student.AlunoCPF = CPF;
+                Student.EmpresaId = empresa;
 
-            Student.AlunoCPF = CPF;
-            Student.EmpresaId = empresa;
+                _context.Students.Add(Student);
+                await _context.SaveChangesAsync();
 
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
-
-            return Created("Aluno", Student);
+                return Created("Aluno", Student);
+            }
+            return Verify;
         }
 
         [HttpPut("{empresa}&editar={CPF}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Editar(string CPF, string empresa, [FromBody] StudentModel NewStudent)
         {
-            await VerifyDataAsync(empresa, CPF);
-
             NewStudent.AlunoCPF = CPF;
             NewStudent.EmpresaId = empresa;
 
@@ -120,18 +121,21 @@ namespace BadgeSpace.Extensions
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Remover(string empresa, string CPF, int? ID)
         {
-            await VerifyDataAsync(empresa, CPF);
-
-            var student = ID.HasValue && ID != 0 
+            var Verify = await VerifyDataAsync(empresa, CPF);
+            if (Verify == null)
+            {
+                var student = ID.HasValue && ID != 0
                 ? await FindStudentIdAsync(ID.Value)
                 : await _context.Students.FirstOrDefaultAsync(c => c.AlunoCPF == CPF && c.EmpresaId == empresa);
-            if (student == null) 
-                return NotFound(new { message = "Aluno Inválido." });
+                if (student == null)
+                    return NotFound(new { message = "Aluno Inválido." });
 
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Aluno Deletado." });
+                return Ok(new { message = "Aluno Deletado." });
+            }
+            return Verify;
         }
 
         #region Private Methods

@@ -31,7 +31,7 @@ namespace BadgeSpace.Services
                             new Claim(ClaimTypes.Sid, appUser.Id),
                             new Claim(ClaimTypes.Role, isAdm)
                    }),
-                    Expires = DateTime.UtcNow.AddDays(7),
+                    Expires = DateTime.UtcNow.AddDays(30),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
                 };
 

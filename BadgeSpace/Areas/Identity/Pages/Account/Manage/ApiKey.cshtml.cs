@@ -2,21 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using BadgeSpace.Data;
 using BadgeSpace.Models;
-using BadgeSpace.Services;
 using BadgeSpace.Services.Interfaces;
-using BadgeSpace.Utils.MethodsExtensions.UserCase;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using System.Text;
-using System.Xml.Linq;
 
 namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
 {
