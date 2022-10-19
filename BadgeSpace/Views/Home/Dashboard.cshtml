@@ -16,7 +16,7 @@
                         {
                             var base64 = Convert.ToBase64String(item.Imagem);
                             var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#sitemodal"><img src='@imgSrc' style="max-width:300px; max-height:300px;" /></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalcenter"><img src='@imgSrc' style="max-width:300px; max-height:300px;" /></a>
                         }
                     }
                 }
@@ -26,9 +26,9 @@
 
 
 
-<div class="modal" id="sitemodal" tabindex="1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+<div class="modal fade" id="modalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
             <div class="modal-header">
                 @foreach (var item in Model){
                     if (item.AlunoCPF == ViewBag.CPF){
@@ -37,7 +37,7 @@
                 }
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body py-0">
                 @foreach (var item in Model)
                 {
                     if (item.AlunoCPF == ViewBag.CPF)
@@ -78,3 +78,47 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-body py-0">
+
+            
+            <div class="d-flex main-content">
+              <div class="bg-image promo-img mr-3" style="background-image: url('~/assets/images/img_1.jpg');">
+                <span class="price">$2000</span>
+              </div>
+              <div class="content-text p-4 px-5 align-item-stretch">    
+                <div class="text-center">
+                    <a href="#" class="share"><span class="icon-share"></span></a>
+                    <h3 class="mb-3 line">Grand Prix 4000</h3>
+                    <p class="mb-3">
+                        <span class="icon-star text-warning"></span>
+                        <span class="icon-star text-warning"></span>
+                        <span class="icon-star text-warning"></span>
+                        <span class="icon-star text-warning"></span>
+                        <span class="icon-star"></span>
+                    </p>
+
+                    <p class="mb-5">All their equipment and instruments are alive. The sky was this is cloudless and of a deep dark blue. A shining crescent far beneath the flying vessel.</p>
+
+                    <div class="d-flex text-center social w-50 mx-auto">
+                        <a href="#" class="d-inline-block d-flex align-items-center mr-auto like">
+                            <span class="icon-heart mr-2 icon"></span> <span>25</span>
+                        </a>
+                        <a href="#" class="d-inline-block d-flex align-items-center mx-auto message">
+                            <span class="icon-chat mr-2 icon"></span> <span>10</span>
+                        </a>
+                        <a href="#" class="d-inline-block d-flex align-items-center ml-auto add">
+                            <span class="icon-add mr-2"></span> <span>55</span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
