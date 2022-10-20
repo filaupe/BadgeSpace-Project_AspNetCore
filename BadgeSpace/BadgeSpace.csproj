@@ -33,6 +33,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BadgeSpaceAPI\BadgeSpaceAPI.csproj" />
+    <ProjectReference Include="..\BadgeSpaceLibraryClasses\BadgeSpaceLibraryClasses.csproj" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

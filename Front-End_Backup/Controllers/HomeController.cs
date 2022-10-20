@@ -30,15 +30,10 @@ namespace BadgeSpace.Controllers
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public IActionResult Dashboard()
         {
-            var (logado, user) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
+            var (_, user) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
 
-            if (logado)
-            {
-                ViewBag.CPF = user!.CPF_CNPJ;
-                return View(_context.Students.AsEnumerable());
-            }
-
-            return Unauthorized();
+            ViewBag.CPF = user!.CPF_CNPJ;
+            return View(_context.Students.AsEnumerable());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

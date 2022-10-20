@@ -19,22 +19,16 @@ namespace BadgeSpace.Controllers
 
         public IActionResult Create() => View();
 
-        public async Task<IActionResult> Index()
-        {
-            var (logado, _) = CheckIfUserIsValid.IsUserValid(_context.Users, User);
-
-            if (!logado) return Unauthorized();
-
-            return _context.Students != null ? View(await _context.Students.ToListAsync()) : BadRequest("Entity set 'ApplicationDbContext.Students'  is null.");
-        }
-
+        public async Task<IActionResult> Index() => View(await _context.Students.ToListAsync());
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || !id.HasValue || id.Value == 0)
                 return NotFound();
 
             var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
-            if (studentModel == null) return NotFound();
+
+            if (studentModel == null) 
+                return NotFound();
 
             return View(studentModel);
         }
@@ -45,7 +39,9 @@ namespace BadgeSpace.Controllers
                 return NotFound();
 
             var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
-            if (studentModel == null) return NotFound();
+
+            if (studentModel == null) 
+                return NotFound();
 
             return View(studentModel);
         }
@@ -56,7 +52,9 @@ namespace BadgeSpace.Controllers
                 return NotFound();
 
             var studentModel = await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
-            if (studentModel == null) return NotFound();
+
+            if (studentModel == null) 
+                return NotFound();
 
             return View(studentModel);
         }

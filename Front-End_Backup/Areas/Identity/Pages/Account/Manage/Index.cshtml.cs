@@ -128,5 +128,13 @@ namespace BadgeSpace.Areas.Identity.Pages.Account.Manage
             await _userManager.UpdateAsync(user);
             return Page();
         }
+
+        public async Task<IActionResult> OnPostRemoveImageAsync()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            user.Imagem = null;
+            await _userManager.UpdateAsync(user);
+            return Page();
+        }
     }
 }
