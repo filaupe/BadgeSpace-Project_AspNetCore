@@ -5,27 +5,23 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <li class="nav-item perfil">
-            <img src="https://img.icons8.com/windows/96/000000/user-male-circle.png" />
-            <ul>
-                <li>
-                @{
-                    var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
-                    if (user != null)
-                    {
-                        if (user.Imagem != null)
-                        {
-                            var base64 = Convert.ToBase64String(user.Imagem);
-                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                            <img src='@imgSrc' style="width:40px; height:40px;" />
-                        }
-                        else
-                        {
-                            <img src='#' style="width:40px; height:40px;" />
-                        } 
-                    }
+    <li class="nav-item perfil">
+        @{
+            var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
+            if (user != null)
+            {
+                var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
+                if (user.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(user.Imagem);
+                    img = String.Format("data:image/gif;base64,{0}", base64);
                 }
-                <span>Nome de Usuário</span>
+                <img src=@img style="width:75px; height:75px;border:3px dotted #9F0;border-radius:50px" />
+            }
+        }
+        <ul>
+            <li>
+            <span>Nome de Usuário</span>
             </li>
             <li>
                 <a  class="nav-link text-dark">@User.Identity?.Name!</a>

@@ -18,19 +18,17 @@
                 var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
                 if (user != null)
                 {
+                    var img = "http://ethospsicotestes.com.br/images/sem_foto.png";
                     if (user.Imagem != null)
                     {
                         var base64 = Convert.ToBase64String(user.Imagem);
-                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                        <img src='@imgSrc' style="width:100px; height:100px;" />
+                        img = String.Format("data:image/gif;base64,{0}", base64);
                     }
-                    else
-                    {
-                        <img src='#' style="width:100px; height:100px;" />
-                    }
+                    <img src='@img' style="width:100px; height:100px;" />
                 }
             }
             <button type="submit" asp-page-handler="ChangeImage">Trocar foto de perfil</button>
+            <button type="submit" asp-page-handler="RemoveImage">Remover foto de perfil</button>
             <div class="form-floating">
                 <input asp-for="Username" class="form-control" disabled />
                 <label asp-for="Username" class="form-label"></label>
