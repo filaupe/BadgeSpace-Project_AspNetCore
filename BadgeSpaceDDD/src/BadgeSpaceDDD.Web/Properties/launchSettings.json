@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:25910",
-      "sslPort": 44338
+      "applicationUrl": "http://localhost:29214",
+      "sslPort": 44343
     }
   },
   "profiles": {
-    "BadgeSpaceDDD.Web": {
+    "BadgeSpace": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7115;http://localhost:5115",
+      "applicationUrl": "https://localhost:7131;http://localhost:5131",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

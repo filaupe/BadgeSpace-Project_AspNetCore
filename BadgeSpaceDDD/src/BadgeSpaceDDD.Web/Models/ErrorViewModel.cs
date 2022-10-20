@@ -1,4 +1,4 @@
-namespace BadgeSpaceDDD.Web.Models
+namespace BadgeSpace.Models
 {
     public class ErrorViewModel
     {
