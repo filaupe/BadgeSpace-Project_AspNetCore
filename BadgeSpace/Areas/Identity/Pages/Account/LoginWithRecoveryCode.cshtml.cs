@@ -6,6 +6,7 @@ using BadgeSpace.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
 namespace BadgeSpace.Areas.Identity.Pages.Account
 {

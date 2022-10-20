@@ -5,9 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpace", "BadgeSpace.csproj", "{D730C0F4-AA39-44C0-BA6D-8122770D124D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpaceAPI", "..\BadgeSpaceAPI\BadgeSpaceAPI.csproj", "{2BAE46A8-0675-4A12-AA01-8087608E313D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpaceLibraryClasses", "..\BadgeSpaceLibraryClasses\BadgeSpaceLibraryClasses.csproj", "{4BB779E4-5C32-4693-A84F-B270E6422010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceLibraryClasses", "..\BadgeSpaceLibraryClasses\BadgeSpaceLibraryClasses.csproj", "{4BB779E4-5C32-4693-A84F-B270E6422010}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{D730C0F4-AA39-44C0-BA6D-8122770D124D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D730C0F4-AA39-44C0-BA6D-8122770D124D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D730C0F4-AA39-44C0-BA6D-8122770D124D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BAE46A8-0675-4A12-AA01-8087608E313D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BAE46A8-0675-4A12-AA01-8087608E313D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BAE46A8-0675-4A12-AA01-8087608E313D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BAE46A8-0675-4A12-AA01-8087608E313D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BB779E4-5C32-4693-A84F-B270E6422010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BB779E4-5C32-4693-A84F-B270E6422010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB779E4-5C32-4693-A84F-B270E6422010}.Release|Any CPU.ActiveCfg = Release|Any CPU

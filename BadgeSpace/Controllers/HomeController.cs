@@ -4,6 +4,7 @@ using BadgeSpace.Models.Enums;
 using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace BadgeSpace.Controllers

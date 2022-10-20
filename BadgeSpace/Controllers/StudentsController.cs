@@ -4,6 +4,7 @@ using BadgeSpace.Models.Enums;
 using BadgeSpace.Utils.MethodsExtensions.UserCase;
 using BadgeSpace.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
