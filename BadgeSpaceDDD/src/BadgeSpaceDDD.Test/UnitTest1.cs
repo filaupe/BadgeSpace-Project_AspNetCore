@@ -1,4 +1,4 @@
-namespace BadgeSpaceDDD.Test
+namespace Test
 {
     public class UnitTest1
     {

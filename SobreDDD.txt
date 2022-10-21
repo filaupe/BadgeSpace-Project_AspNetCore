@@ -1,0 +1,15 @@
+Domain:
+	Arguements:
+	Classes DTO com finalidade de deixar 	mais limpo o processo de trafego de 		informações(request e response)
+
+	Entities:
+	Classes que representam as coisas do 	mundo real e se auto validam
+
+	Interfaces:
+	Interfaces de repositório e serviços
+
+	Resource:
+	Mensagem e notificação
+
+	Services:
+	Classes concretas de serviço

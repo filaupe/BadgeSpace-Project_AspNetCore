@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Arguments\Base\" />
+    <Folder Include="Entities\Base\" />
+    <Folder Include="Interfaces\Repository\User\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="prmToolkit.NotificationPattern" Version="1.1.5" />
+  </ItemGroup>
+
 </Project>
