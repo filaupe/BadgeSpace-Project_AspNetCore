@@ -2,10 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
-using BadgeSpace.Services;
-using BadgeSpace.Services.Interfaces;
+using Web.Models;
+using Web.Models.Enums;
+using Web.Services;
+using Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -17,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace BadgeSpace.Areas.Identity.Pages.Account
+namespace Web.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

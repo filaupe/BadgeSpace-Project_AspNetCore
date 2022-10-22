@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BadgeSpace.Models
+namespace Web.Models
 {
     public class StudentModel
     {

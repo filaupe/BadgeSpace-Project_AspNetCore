@@ -1,13 +1,13 @@
-﻿using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
-using BadgeSpace.Services.Interfaces;
+﻿using Web.Models;
+using Web.Models.Enums;
+using Web.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BadgeSpace.Services
+namespace Web.Services
 {
     public class ApiAuthService : IApiAuthService
     {

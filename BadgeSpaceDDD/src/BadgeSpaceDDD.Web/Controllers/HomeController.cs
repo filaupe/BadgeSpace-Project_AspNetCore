@@ -1,13 +1,13 @@
-﻿using BadgeSpace.Data;
-using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
-using BadgeSpace.Utils.Security;
+﻿using Web.Data;
+using Web.Models;
+using Web.Models.Enums;
+using Web.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace BadgeSpace.Controllers
+namespace Web.Controllers
 {
     public class HomeController : Controller
     {

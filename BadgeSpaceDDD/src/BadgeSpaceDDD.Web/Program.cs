@@ -1,8 +1,8 @@
-using BadgeSpace.Data;
-using BadgeSpace.Models;
-using BadgeSpace.Services;
-using BadgeSpace.Services.Interfaces;
-using BadgeSpace.Utils.MethodsExtensions;
+using Web.Data;
+using Web.Models;
+using Web.Services;
+using Web.Services.Interfaces;
+using Web.Utils.MethodsExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

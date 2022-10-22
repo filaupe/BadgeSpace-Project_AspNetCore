@@ -1,6 +1,6 @@
-﻿using BadgeSpace.Models;
+﻿using Web.Models;
 
-namespace BadgeSpace.Utils.MethodsExtensions.UserCase
+namespace Web.Utils.MethodsExtensions.UserCase
 {
     public static class UserCaseExtension
     {

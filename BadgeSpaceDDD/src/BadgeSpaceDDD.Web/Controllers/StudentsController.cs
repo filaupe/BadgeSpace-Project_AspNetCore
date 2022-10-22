@@ -1,14 +1,15 @@
-using BadgeSpace.Data;
-using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
-using BadgeSpace.Utils.MethodsExtensions.UserCase;
-using BadgeSpace.Utils.Security;
+using Web.Data;
+using Web.Models;
+using Web.Models.Enums;
+using Web.Utils.MethodsExtensions.UserCase;
+using Web.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Web.Utils.MethodsExtensions.Methods;
 
-namespace BadgeSpace.Controllers
+namespace Web.Controllers
 {
     [Authorize(Roles = nameof(Roles.EMPRESS))]
     public class StudentsController : Controller
@@ -20,7 +21,9 @@ namespace BadgeSpace.Controllers
 
         public IActionResult Create() => View();
 
-        public async Task<IActionResult> Index() => View(await _context.Students.ToListAsync());
+        public async Task<IActionResult> Index(MethodGet Get)
+            => View(await Get.Listar(_context.Students, null, User.Identity!.Name!).Result.ToListAsync());
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || !id.HasValue || id.Value == 0)

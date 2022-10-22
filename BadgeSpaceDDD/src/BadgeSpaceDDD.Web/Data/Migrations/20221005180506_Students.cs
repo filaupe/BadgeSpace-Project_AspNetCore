@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace BadgeSpace.Data.Migrations
+namespace Web.Data.Migrations
 {
     public partial class Students : Migration
     {

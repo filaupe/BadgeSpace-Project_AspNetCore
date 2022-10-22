@@ -1,6 +1,6 @@
-﻿using BadgeSpace.Models;
+﻿using Web.Models;
 
-namespace BadgeSpace.Services.Interfaces
+namespace Web.Services.Interfaces
 {
     public interface IApiAuthService
     {

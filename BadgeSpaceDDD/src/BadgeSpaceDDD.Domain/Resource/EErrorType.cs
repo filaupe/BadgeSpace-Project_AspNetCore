@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BadgeSpaceDDD.Domain.Resource
 {
-    class Menssages
+    public enum EErrorType
     {
+        CPF,
+        EMAIL,
+        SENHA,
+        USUARIO,
+        VERIFICADO,
+        AUTENTICACAO,
     }
 }

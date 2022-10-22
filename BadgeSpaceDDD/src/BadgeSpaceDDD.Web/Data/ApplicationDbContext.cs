@@ -1,8 +1,8 @@
-﻿using BadgeSpace.Models;
+﻿using Web.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BadgeSpace.Data
+namespace Web.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

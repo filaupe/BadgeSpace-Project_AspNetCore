@@ -1,4 +1,4 @@
-﻿namespace BadgeSpace.Models.Enums
+﻿namespace Web.Models.Enums
 {
     public enum Roles
     {

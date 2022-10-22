@@ -1,8 +1,8 @@
-﻿using BadgeSpace.Models;
+﻿using Web.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 
-namespace BadgeSpace.Utils.Security
+namespace Web.Utils.Security
 {
     public static class CheckIfUserIsValid
     {

@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using System.Text;
 
-namespace BadgeSpace.Utils.MethodsExtensions
+namespace Web.Utils.MethodsExtensions
 {
     public static class AddAuthenticationSchemeExtension
     {

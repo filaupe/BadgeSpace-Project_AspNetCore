@@ -7,17 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Domain", "Bad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Application", "BadgeSpaceDDD.Application\BadgeSpaceDDD.Application.csproj", "{D43BCEFB-B6C2-459E-ACFF-9EF27A51C346}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Infra.Data", "BadgeSpaceDDD.Infra.Data\BadgeSpaceDDD.Infra.Data.csproj", "{35E3070E-F1D5-4697-8F49-7FEA65B7995D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Infra.CrossCutting", "BadgeSpaceDDD.Infra.CrossCutting\BadgeSpaceDDD.Infra.CrossCutting.csproj", "{116AF052-C572-4352-87DA-1870C0D77B8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Infra", "BadgeSpaceDDD.Infra.Data\BadgeSpaceDDD.Infra.csproj", "{35E3070E-F1D5-4697-8F49-7FEA65B7995D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Web", "BadgeSpaceDDD.Web\BadgeSpaceDDD.Web.csproj", "{BC297C21-59C5-4C22-869E-882182B45E2B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.Test", "BadgeSpaceDDD.Test\BadgeSpaceDDD.Test.csproj", "{735375DA-47FC-4DF4-B2F5-3BFD019D4191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpaceDDD.IoC", "IoC\BadgeSpaceDDD.IoC.csproj", "{24E03153-6566-4B35-B089-7EB1B920F20F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.IoC", "IoC\BadgeSpaceDDD.IoC.csproj", "{24E03153-6566-4B35-B089-7EB1B920F20F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadgeSpaceDDD.API", "BadgeSpaceDDD.API\BadgeSpaceDDD.API.csproj", "{20E8DEB9-833D-46A8-86AD-626224370993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadgeSpaceDDD.API", "BadgeSpaceDDD.API\BadgeSpaceDDD.API.csproj", "{20E8DEB9-833D-46A8-86AD-626224370993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{35E3070E-F1D5-4697-8F49-7FEA65B7995D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E3070E-F1D5-4697-8F49-7FEA65B7995D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E3070E-F1D5-4697-8F49-7FEA65B7995D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{116AF052-C572-4352-87DA-1870C0D77B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{116AF052-C572-4352-87DA-1870C0D77B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{116AF052-C572-4352-87DA-1870C0D77B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{116AF052-C572-4352-87DA-1870C0D77B8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC297C21-59C5-4C22-869E-882182B45E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC297C21-59C5-4C22-869E-882182B45E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC297C21-59C5-4C22-869E-882182B45E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU

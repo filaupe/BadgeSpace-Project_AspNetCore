@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace BadgeSpace.Models
+namespace Web.Models
 {
     public class ApplicationUser : IdentityUser
     {

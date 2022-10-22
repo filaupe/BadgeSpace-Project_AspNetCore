@@ -1,12 +1,12 @@
-﻿using BadgeSpace.Data;
-using BadgeSpace.Models;
-using BadgeSpace.Services.Interfaces;
+﻿using Web.Data;
+using Web.Models;
+using Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BadgeSpace.Extensions.API.Controllers
+namespace Web.Extensions.API.Controllers
 {
     [Controller]
     [Route("api/[controller]")]

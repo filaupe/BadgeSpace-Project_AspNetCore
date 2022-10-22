@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra.Data.Persistence.AutoMapper
+namespace Infra.Persistence.AutoMapper
 {
     public class AutoMapperConfig
     {

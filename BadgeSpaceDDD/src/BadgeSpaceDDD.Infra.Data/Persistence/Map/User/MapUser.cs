@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra.Data.Persistence.Map.User
+namespace Infra.Persistence.Map.User
 {
     internal class MapUser : EntityTypeConfiguration<Domain.Entities.User.User>
     {

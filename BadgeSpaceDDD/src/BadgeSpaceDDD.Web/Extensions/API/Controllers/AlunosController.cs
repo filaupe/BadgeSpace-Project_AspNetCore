@@ -1,15 +1,16 @@
-﻿using BadgeSpace.Data;
-using BadgeSpace.Data.Migrations;
-using BadgeSpace.Models;
-using BadgeSpace.Models.Enums;
-using BadgeSpace.Utils.MethodsExtensions.UserCase;
-using BadgeSpace.Utils.Security;
+﻿using Web.Data;
+using Web.Data.Migrations;
+using Web.Models;
+using Web.Models.Enums;
+using Web.Utils.MethodsExtensions.UserCase;
+using Web.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Web.Utils.MethodsExtensions.Methods;
 
-namespace BadgeSpace.Extensions.API.Controllers
+namespace Web.Extensions.API.Controllers
 {
     [Controller]
     [Route("api/[controller]")]
@@ -21,30 +22,12 @@ namespace BadgeSpace.Extensions.API.Controllers
 
         [HttpGet("listar&{email}/{CPF?}/{ID?}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
-        public async Task<IActionResult> Listar(string email, string? CPF, int? ID)
+        public async Task<IActionResult> Listar(MethodGet Get, string email, string? CPF, int? ID)
         {
-            if (ID.HasValue && ID != 0)
-            {
-                var student = await FindStudentIdAsync(ID.Value);
-                if (student == null)
-                    return NotFound(new { message = "Aluno Inválido." });
-                return Ok(new { student.Id, student.NomeAluno, student.AlunoCPF, student.Curso });
-            }
-
-            if (CPF != null && CPF != "")
-            {
-                var students = _context.Students
-                    .Where(c => c.AlunoCPF == CPF && c.EmpresaId == email)
-                    .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso });
-
-                if (students == null)
-                    return NotFound(new { message = "Aluno Inválido." });
-                return Ok(students);
-            }
-
-            var dados = _context.Students
-                .Where(c => c.EmpresaId == email)
-                .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso });
+            var dados = await Get.Listar(_context.Students, ID, email, CPF)
+                .Result
+                .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso })
+                .ToListAsync();
 
             if (dados == null)
                 return NotFound(new { message = "A lista está vazia." });
