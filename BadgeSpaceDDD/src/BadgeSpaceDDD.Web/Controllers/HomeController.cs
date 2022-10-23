@@ -26,8 +26,6 @@ namespace Web.Controllers
 
         public IActionResult Sobre() => View();
 
-        public IActionResult Contato() => View();
-
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public IActionResult Dashboard()
         {
