@@ -12,8 +12,9 @@ namespace Web.Models
         public string? NomeAluno { get; set; }
 
         [Required]
+        [DisplayName("CPF do Aluno")]
         [RegularExpression(@"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")]
-        public string AlunoCPF { get; set; }
+        public string? AlunoCPF { get; set; }
 
         [DisplayName("Curso")]
         public string? Curso { get; set; }
@@ -24,7 +25,7 @@ namespace Web.Models
         [DisplayName("Nivel")]
         public string? Nivel { get; set; }
 
-        [DisplayName("Tempo de Curso")]
+        [DisplayName("Duração do Curso")]
         public string? Tempo { get; set; }
 
         [DisplayName("Descrição")]

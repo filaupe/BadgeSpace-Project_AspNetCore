@@ -1,7 +1,7 @@
 ﻿@page
 @model ApiKeyModel
 @{
-    ViewData["Title"] = "Manage API Key";
+    ViewData["Title"] = "Gerenciar Chave API";
     ViewData["ActivePage"] = ManageNavPages.ApiKey;
 }
 
@@ -17,7 +17,7 @@
                         <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
                     </div>
                 <label asp-for="APIKey" class="form-label"></label>
-                <button type="submit" asp-page-handler="ChangeToken" class="w-100 btn btn-lg btn-primary">Change Token</button>
+                <button type="submit" asp-page-handler="ChangeToken" class="w-100 btn btn-lg btn-primary">Mudar Token</button>
             </div>
         </form>
             
