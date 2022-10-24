@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Arguments\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Arguments\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Arguments\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\Base\" />
+    <Folder Include="Interfaces\Repository\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="prmToolkit.NotificationPattern" Version="1.1.5" />
+  </ItemGroup>
+
+</Project>
