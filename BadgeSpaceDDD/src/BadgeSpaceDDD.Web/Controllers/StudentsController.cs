@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Web.Utils.MethodsExtensions.Methods;
+using Web.Utils.MethodsExtensions.AddMethods.Interfaces;
 
 namespace Web.Controllers
 {
@@ -15,14 +15,19 @@ namespace Web.Controllers
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMethods _Method;
 
-        public StudentsController(ApplicationDbContext context) => _context = context;
+        public StudentsController(ApplicationDbContext context, IMethods Method)
+        {
+            _context = context;
+            _Method = Method;
+        } 
 
 
         public IActionResult Create() => View();
 
-        public async Task<IActionResult> Index(MethodGet Get)
-            => View(await Get.Listar(_context.Students, null, User.Identity!.Name!).Result.ToListAsync());
+        public async Task<IActionResult> Index()
+            => View(await _Method.Get(_context.Students, null, User.Identity!.Name!).ToListAsync());
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -66,7 +71,7 @@ namespace Web.Controllers
 
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile? Imagem, StudentModel studentModel)
+        public async Task<IActionResult> Create(IFormFile Imagem, StudentModel studentModel)
         {
             var ok = await CheckIfUserIsValid.IsUserValid(_context.Users, studentModel.AlunoCPF);
             if (!ok || !ModelState.IsValid)
@@ -90,7 +95,7 @@ namespace Web.Controllers
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, IFormFile? Imagem, StudentModel studentModel)
+        public async Task<IActionResult> Edit(int id, IFormFile Imagem, StudentModel studentModel)
         {
             if (id != studentModel.Id) return NotFound();
 

@@ -5,6 +5,8 @@ using Web.Services.Interfaces;
 using Web.Utils.MethodsExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Web.Utils.MethodsExtensions.AddMethods.Interfaces;
+using Web.Utils.MethodsExtensions.AddMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
+
+builder.Services.AddScoped<IMethods, Methods>();
 
 var app = builder.Build();
 

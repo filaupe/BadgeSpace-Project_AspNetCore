@@ -8,29 +8,32 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Web.Utils.MethodsExtensions.Methods;
+using Web.Utils.MethodsExtensions.AddMethods.Interfaces;
 
 namespace Web.Extensions.API.Controllers
 {
+    // fazer as áreas se auto validarem
     [Controller]
     [Route("api/[controller]")]
     public class AlunosController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMethods _Method;
 
-        public AlunosController(ApplicationDbContext context) => _context = context;
-
+        public AlunosController(ApplicationDbContext context, IMethods Method)
+        {
+            _context = context;
+            _Method = Method;
+        }
+            
+        
         [HttpGet("listar&{email}/{CPF?}/{ID?}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
-        public async Task<IActionResult> Listar(MethodGet Get, string email, string? CPF, int? ID)
+        public async Task<IActionResult> Listar(string email, string? CPF, int? ID)
         {
-            var dados = await Get.Listar(_context.Students, ID, email, CPF)
-                .Result
+            var dados = await _Method.Get(_context.Students, ID, email, CPF)
                 .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso })
                 .ToListAsync();
-
-            if (dados == null)
-                return NotFound(new { message = "A lista está vazia." });
 
             return Ok(dados);
         }
@@ -39,25 +42,9 @@ namespace Web.Extensions.API.Controllers
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public async Task<IActionResult> ListarCertificados(string CPF, string? empresa)
         {
-            var confirmC = await _context.Users.FirstOrDefaultAsync(c => c.CPF_CNPJ == CPF);
-            if (confirmC == null)
-                return NotFound(new { message = "Inválido." });
-            if (empresa != null)
-            {
-                var confirmE = await _context.Users.FirstOrDefaultAsync(c => c.Email == empresa);
-                if (confirmE == null)
-                    return NotFound(new { message = "Inválido." });
-            }
+            var dados = await _Method.Get(_context.Students, null, CPF, empresa).ToListAsync();
 
-            if (empresa != null && empresa != "")
-            {
-                var student = _context.Students.Where(c => c.EmpresaId == empresa && c.AlunoCPF == CPF);
-                return Ok(student);
-            }
-
-            var Student = _context.Students.Where(c => c.AlunoCPF == CPF);
-
-            return Ok(Student);
+            return Ok(dados);
         }
 
         [HttpPost("{empresa}&cadastrar={CPF}")]
