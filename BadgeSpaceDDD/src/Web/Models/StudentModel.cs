@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Web.Data;
 
 namespace Web.Models
 {
@@ -44,5 +45,5 @@ namespace Web.Models
         public string? Habilidades { get; set; }
 
         public string EmpresaId { get; set; }
-    }
+    } 
 }

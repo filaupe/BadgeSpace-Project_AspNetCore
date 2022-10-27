@@ -30,22 +30,14 @@ namespace Web.Extensions.API.Controllers
         [HttpGet("listar&{email}/{CPF?}/{ID?}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Listar(string email, string? CPF, int? ID)
-        {
-            var dados = await _Method.Get(_context.Students, ID, email, CPF)
-                .Select(c => new { c.Id, c.NomeAluno, c.AlunoCPF, c.Curso })
-                .ToListAsync();
-
-            return Ok(dados);
-        }
+            => Ok(await _Method.Get(_context.Students, ID, email, CPF)
+                .Select(c => new { c.Id, c.NomeAluno, c.Codigo, c.AlunoCPF, c.Curso })
+                .ToListAsync());
 
         [HttpGet("{CPF}/{empresa?}")]
         [Authorize(Roles = nameof(Roles.STUDENT))]
         public async Task<IActionResult> ListarCertificados(string CPF, string? empresa)
-        {
-            var dados = await _Method.Get(_context.Students, null, CPF, empresa).ToListAsync();
-
-            return Ok(dados);
-        }
+            => Ok(await _Method.Get(_context.Students, null, CPF, empresa).ToListAsync());
 
         [HttpPost("{empresa}&cadastrar={CPF}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]

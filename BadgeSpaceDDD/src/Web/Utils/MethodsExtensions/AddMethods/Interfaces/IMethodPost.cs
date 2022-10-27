@@ -3,8 +3,8 @@ using Web.Models;
 
 namespace Web.Utils.MethodsExtensions.AddMethods.Interfaces
 {
-    public interface IMethods : IMethodGet, IMethodPost, IMethodPut, IMethodDelete
+    public interface IMethodPost
     {
-
+        public void Post();
     }
 }

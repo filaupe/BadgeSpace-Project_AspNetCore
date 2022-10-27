@@ -43,8 +43,11 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) { 
     <tr>
+       @{
+           var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+        }
         <td>
             @Html.DisplayFor(modelItem => item.NomeAluno)
         </td>
@@ -67,14 +70,7 @@
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @{
-                if (item.Imagem != null)
-                {
-                    var base64 = Convert.ToBase64String(item.Imagem);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                    <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
-                }
-            }
+            <img src=@img style="max-width:100px; max-height:100px;" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Habilidades)
