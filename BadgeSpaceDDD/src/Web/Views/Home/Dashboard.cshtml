@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Web.Models.StudentModel>
 @{
+    var modal = "Modal";
+}   
+@{
     ViewData["Title"] = "Dashboard";
 }
 <div>
@@ -11,57 +14,58 @@
             @foreach (var item in Model)
             {
                 var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
-                <a href="#" data-bs-toggle="modal" data-bs-target="#modalcenter"><img src='@img' style="max-width:300px; max-height:300px;" /></a>
+                <a href="#" data-bs-toggle="modal" data-bs-target='#@modal@item.Codigo'><img src='@img' style="max-width:300px; max-height:300px;" /></a>
             }
         </dd>
     </dl>
 </div>
 
-<div class="modal fade" id="modalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                @foreach (var item in Model){
-                    <h5 class="modal-title fs-5">@item.Curso</h5>
-                }
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body py-0">
-                @foreach (var item in Model)
-                {
-                    var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
-                    <a href="#" data-toggle="modal" data-target="#sitemodal"><img class="col-md-4" src='@img' style="max-width:400px; max-height:400px;" /></a>
-                        
-                    <div class="col-md-4">
-                        <h4>Nome do aluno: </h4><h5>@item.NomeAluno</h5>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Código: </h4><h5>@item.Codigo</h5>
-                    </div>
-                    <div class="col-md-3 ms-auto">
-                        <h4>Descrição: </h4><h5>@item.Descricao</h5>
-                    </div>
+@foreach (var item in Model){
+    <div class="modal fade" id="@modal@item.Codigo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                        <h5 class="modal-title fs-5" style="font-weight: 600">@item.Curso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-0 container-sm">
+                        @{var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";}
+                        <a href="#" data-toggle="modal" data-target="#sitemodal"><img class="col-md-4" src='@img' style="max-width:400px; max-height:400px;" /></a>
 
-                    <div class="row">
-                    <div class="col-sm-9">
-                        <h5>Tipo do Curso:</h5> <h5>@item.Tipo</h5>
-                        <div class="row">
-                        <div class="col-8 col-sm-6">
-                            <h5>Duração do Curso:</h5> <h5>@item.Tempo</h5>
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col">
+                                    <h4>Nome do aluno: </h4><h5>@item.NomeAluno</h5>
+                                </div>
+                                <div class="col"><h4>Código: </h4><h5>@item.Codigo</h5></div>
+                            </div>
                         </div>
                         <br>
-                        <div class="col-4 col-sm-6">
-                            <h5>Nível do Curso:</h5>  <h5>@item.Nivel</h5>
+                        <div class="ms-auto">
+                            <h4>Descrição: </h4><h5>@item.Descricao</h5>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                        <div class="col-sm-9">
+                            <h5>Tipo do Curso:</h5> <h5>@item.Tipo</h5>
+                            <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h5>Duração do Curso:</h5> <h5>@item.Tempo</h5>
+                            </div>
+                            <br>
+                            <div class="col-4 col-sm-6">
+                                <h5>Nível do Curso:</h5>  <h5>@item.Nivel</h5>
+                            </div>
+                            </div>
                         </div>
                         </div>
-                    </div>
-                    </div>
-                        <h5>Habilidades:</h5>  <h5>@item.Habilidades</h5>
-                }
+                            <h5>Habilidades:</h5>  <h5>@item.Habilidades</h5>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 
 <div class="modal fade" id="modalcenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
