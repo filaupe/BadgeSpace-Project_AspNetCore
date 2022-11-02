@@ -5,6 +5,6 @@ namespace Web.Utils.MethodsExtensions.AddMethods.Interfaces
 {
     public interface IMethodDelete
     {
-        public void Delete();
+        public Task<object> Delete();
     }
 }

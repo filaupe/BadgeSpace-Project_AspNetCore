@@ -5,6 +5,6 @@ namespace Web.Utils.MethodsExtensions.AddMethods.Interfaces
 {
     public interface IMethodPut
     {
-        public void Put();
+        public Task<object> Put();
     }
 }

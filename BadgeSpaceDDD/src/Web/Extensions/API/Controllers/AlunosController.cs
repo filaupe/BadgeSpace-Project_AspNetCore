@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Utils.MethodsExtensions.AddMethods.Interfaces;
-using Web.Data.Migrations;
 
 namespace Web.Extensions.API.Controllers
 {
@@ -24,18 +23,21 @@ namespace Web.Extensions.API.Controllers
             _Method = Method;
         }
             
-        
         [HttpGet("listar&{email}/{CPF?}/{ID?}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
         public async Task<IActionResult> Listar(string email, string? CPF, int? ID)
-            => Ok(await _Method.Get(_context.Students, ID, email, CPF)
-                .Select(c => new { c.Id, c.NomeAluno, c.Codigo, c.AlunoCPF, c.Curso })
-                .ToListAsync());
+        {
+            if(ID.HasValue && ID != 0)
+            {
+                var Result = _Method.GetById(_context, ID.Value).Result!;
+                return Ok(new { Result.Id, Result.NomeAluno, Result.Codigo, Result.AlunoCPF, Result.Curso });
+            }
+            return Ok(await _Method.Get(_context.Students, email, CPF!).Select(c => new { c.Id, c.NomeAluno, c.Codigo, c.AlunoCPF, c.Curso }).ToListAsync());
+        }
 
         [HttpGet("{CPF}/{empresa?}")]
         [Authorize(Roles = nameof(Roles.STUDENT))]
-        public async Task<IActionResult> ListarCertificados(string CPF, string? empresa)
-            => Ok(await _Method.Get(_context.Students, null, CPF, empresa).ToListAsync());
+        public async Task<IActionResult> ListarCertificados(string CPF, string? empresa) => Ok(await _Method.Get(_context.Students, CPF, empresa).ToListAsync());
 
         [HttpPost("{empresa}&cadastrar={CPF}")]
         [Authorize(Roles = nameof(Roles.EMPRESS))]
@@ -103,7 +105,7 @@ namespace Web.Extensions.API.Controllers
         }
 
         #region Private Methods
-        private async Task<NotFoundObjectResult?> VerifyDataAsync(string empresa, string CPF)
+        private async Task<IActionResult?> VerifyDataAsync(string empresa, string CPF)
         {
             var confirmE = await _context.Users.FirstOrDefaultAsync(c => c.Email == empresa);
             var confirmC = await _context.Users.FirstOrDefaultAsync(c => c.CPF_CNPJ == CPF);

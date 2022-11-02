@@ -26,8 +26,7 @@ namespace Web.Controllers
 
         public IActionResult Create() => View();
 
-        public async Task<IActionResult> Index()
-            => View(await _Method.Get(_context.Students, null, User.Identity!.Name!).ToListAsync());
+        public async Task<IActionResult> Index() => View(await _Method.Get(_context.Students, User.Identity!.Name!).ToListAsync());
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -57,13 +56,7 @@ namespace Web.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || !id.HasValue || id.Value == 0)
-                return NotFound();
-
             var studentModel = await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (studentModel == null) 
-                return NotFound();
 
             return View(studentModel);
         }

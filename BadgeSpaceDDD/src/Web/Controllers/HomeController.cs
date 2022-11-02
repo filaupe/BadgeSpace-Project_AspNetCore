@@ -33,17 +33,13 @@ namespace Web.Controllers
         public IActionResult Sobre() => View();
 
         [Authorize(Roles = nameof(Roles.STUDENT))]
-        public IActionResult Dashboard()
-            => View(_Method.Get(_context.Students, null, LinkData(User.Identity!.Name!.ToString()).Result!.CPF_CNPJ));
-
+        public IActionResult Dashboard() => View(_Method.Get(_context.Students, LinkData(User.Identity!.Name!.ToString()).Result!.CPF_CNPJ));
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-            =>  View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
         #region Private Methods
-        private async Task<ApplicationUser?> LinkData(string identity) 
-            => await _context.Users.FirstOrDefaultAsync(c => c.Email == identity);
+        private async Task<ApplicationUser?> LinkData(string identity) => await _context.Users.FirstOrDefaultAsync(c => c.Email == identity);
         #endregion
     }
 }
