@@ -1,14 +1,12 @@
 ﻿using Web.Data;
-using Web.Data.Migrations;
 using Web.Models;
 using Web.Models.Enums;
 using Web.Utils.MethodsExtensions.UserCase;
-using Web.Utils.Security;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Utils.MethodsExtensions.AddMethods.Interfaces;
+using Web.Data.Migrations;
 
 namespace Web.Extensions.API.Controllers
 {
@@ -49,6 +47,9 @@ namespace Web.Extensions.API.Controllers
                 Student.AlunoCPF = CPF;
                 Student.EmpresaId = empresa;
 
+                if (Student.Imagem == null)
+                    return BadRequest(new { message = "Imagem aceita apenas o tipo byte" });
+
                 _context.Students.Add(Student);
                 await _context.SaveChangesAsync();
 
@@ -72,6 +73,8 @@ namespace Web.Extensions.API.Controllers
                 return BadRequest(new { message = "Empresa incorreta" });
             if (OldStudent.AlunoCPF != NewStudent.AlunoCPF)
                 return BadRequest(new { message = "CPF incorreto" });
+            if (OldStudent.Imagem != null)
+                return BadRequest(new { message = "Imagem aceita apenas o tipo byte" });
 
             _context.Students.Update(UserCaseExtension.OldToNewRegister(OldStudent, NewStudent));
             await _context.SaveChangesAsync();
