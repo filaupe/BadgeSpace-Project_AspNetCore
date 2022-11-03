@@ -9,80 +9,34 @@
 <p>
     <a asp-action="Create">Adicionar um Novo Badge</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeAluno)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlunoCPF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Curso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nivel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tempo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Habilidades)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) { 
-    <tr>
-       @{
-           var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
-        }
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeAluno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AlunoCPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Curso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nivel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tempo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            <img src=@img style="max-width:100px; max-height:100px;" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habilidades)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
-            <br>
-            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a>
-            <br>
-            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
-        </td>
-    </tr>
-}
-    </tbody>
-</table>
+<div class="row gap-3 justify-content-start">
+    @foreach (var item in Model)
+    {
+        var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0 justify-content-center align-items-center">
+                <div class="col-md-4">
+                    <img src="@img" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.NomeAluno</h5>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex"><strong>Curso:</strong>@item.Curso</li>
+                        <li class="list-group-item d-flex"><strong>CPF:</strong>@item.AlunoCPF</li>
+                        <li class="list-group-item "><strong>Código:</strong>@item.Codigo</li>
+                        <li class="list-group-item ">
+                            <div class="col-md-4 ms-3 gap-3">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ms-2 d-flex justify-content-between">Editar</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info ms-2 d-flex justify-content-between">Detalhes</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger ms-2 d-flex justify-content-between">Deletar</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+    }
+</div>
