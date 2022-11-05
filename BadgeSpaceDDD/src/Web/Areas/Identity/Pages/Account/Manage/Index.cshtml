@@ -10,35 +10,58 @@
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
-    <div class="col-md-6">
+    <div class="container-fluid">
         <form id="profile-form" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="file" accept="image/png" asp-for="Imagem">
-            @{
-                var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
-                if (user != null)
-                {
-                    var img = "http://ethospsicotestes.com.br/images/sem_foto.png";
-                    if (user.Imagem != null)
-                    {
-                        var base64 = Convert.ToBase64String(user.Imagem);
-                        img = String.Format("data:image/gif;base64,{0}", base64);
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @{
+                        var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
+                        if (user != null)
+                        {
+                            var img = "http://ethospsicotestes.com.br/images/sem_foto.png";
+                            if (user.Imagem != null)
+                            {
+                                var base64 = Convert.ToBase64String(user.Imagem);
+                                img = String.Format("data:image/gif;base64,{0}", base64);
+                            }
+                            <img src='@img' style="width:200px; height:200px;" />
+                        }
                     }
-                    <img src='@img' style="width:100px; height:100px;" />
-                }
-            }
-            <button type="submit" asp-page-handler="ChangeImage">Trocar foto de perfil</button>
-            <button type="submit" asp-page-handler="RemoveImage">Remover foto de perfil</button>
-            <div class="form-floating">
+                </div>
+                <div class="col-lg-5">
+                    <div class="d-flex pt-4 mb-3">
+                        <div>
+                            <input type="file" accept="image/png" asp-for="Imagem">
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div>
+                            <button type="submit" class="btn btn-secondary btn-sm" style="text-transform:lowcase;" asp-page-handler="ChangeImage">Trocar foto de perfil</button>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <button type="submit"  class="btn btn-danger btn-sm" asp-page-handler="RemoveImage">Remover foto de perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating col-md-6" style="margin-top: 1em;">
                 <input asp-for="Username" class="form-control" disabled />
                 <label asp-for="Username" class="form-label"></label>
             </div>
-            <div class="form-floating">
+            <br>
+            <div class="form-floating col-md-6">
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-outline-success">Salvar</button>
+            <br>
+            <div class="col-md-6">
+                <button id="update-profile-button" type="submit" class="w-100 btn btn-outline-success">Salvar</button>
+            </div>
         </form>
     </div>
 </div>
