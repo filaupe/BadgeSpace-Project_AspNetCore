@@ -3,47 +3,48 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item perfil">
-        @{
-            var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
-            if (user != null)
-            {
-                var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
-                if (user.Imagem != null)
+    @if (SignInManager.IsSignedIn(User))
+
+    {
+        <li class="nav-item perfil">
+            @{
+
+                var user = UserManager.Users!.FirstOrDefault(c => c.Email == User.Identity!.Name);
+
+                if (user != null)
+
                 {
-                    var base64 = Convert.ToBase64String(user.Imagem);
-                    img = String.Format("data:image/gif;base64,{0}", base64);
+
+                    var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
+
+                    if (user.Imagem != null)
+
+                    {
+
+                        var base64 = Convert.ToBase64String(user.Imagem);
+
+                        img = String.Format("data:image/gif;base64,{0}", base64);
+
+                    }
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index"><img src=@img
+                    style="width:80px; height:80px; border-radius:50px" /></a>
+
+
                 }
-                <img src=@img style="width:75px; height:75px;border:3px dotted #9F0;border-radius:50px" />
             }
-        }
-        <ul>
-            <li>
-            <span>Nome de Usuário</span>
-            </li>
-            <li>
-                <a  class="nav-link text-dark">@User.Identity?.Name!</a>
-            </li>
-            <li>
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Ver Perfil</a>
-            </li>
-            <li>
-                <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button  type="submit" class="nav-link btn btn-link text-dark">Sair da Conta</button>
-                </form>
-            </li>
-        </ul> 
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrar</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+        </li>
+
+    }
+
+    else
+
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+
+    }
 </ul>

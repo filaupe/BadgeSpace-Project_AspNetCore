@@ -20,21 +20,24 @@
                         </div>
                     <label asp-for="Email" class="form-label"></label>
                 </div>
+                <br>
             }
             else
             {
                 <div class="form-floating">
                     <input asp-for="Email" class="form-control" disabled />
                     <label asp-for="Email" class="form-label"></label>
-                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Enviar email de verificação</button>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link" style="text-transform: capitalize;">Enviar email de verificação</button>
                 </div>
+                <br>
             }
             <div class="form-floating">
                 <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" />
                 <label asp-for="Input.NewEmail" class="form-label"></label>
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Trocar de email</button>
+            <br>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary" style="text-transform: capitalize;">Trocar de email</button>
         </form>
     </div>
 </div>
