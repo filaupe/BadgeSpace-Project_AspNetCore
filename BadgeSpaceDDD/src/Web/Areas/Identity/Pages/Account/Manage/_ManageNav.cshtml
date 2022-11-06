@@ -10,10 +10,10 @@
     <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Senha</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Dados Pessoais</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ApiKeyNavClass(ViewContext)" id="personal-data" asp-page="./ApiKey">API Key</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ApiKeyNavClass(ViewContext)" id="personal-data" asp-page="./ApiKey" style="text-transform: capitalize;">API Key</a></li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-        <button  id="logout" type="submit" class="nav-link btn btn-danger text-red">Sair da Conta</button>
+        <button  id="logout" type="submit" class="nav-link btn btn-danger text-red" style="text-transform: capitalize;">Sair da Conta</button>
         </form>
     </li>
 </ul>
