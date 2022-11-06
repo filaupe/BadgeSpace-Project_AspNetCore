@@ -1,0 +1,14 @@
+﻿@using Domain.Argumentos.Usuario
+@model UsuarioRequest
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form asp-controller="Autenticacao" asp-action="Logar" method="post">
+    <label>Email:</label>
+    <input type="text" asp-for="Email" />
+    <label>Senha:</label>
+    <input type="password" asp-for="Senha" />
+    <br />
+    <input type="submit" value="Enviar" />
+</form>

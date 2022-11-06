@@ -1,0 +1,19 @@
+﻿@using Domain.Argumentos.Usuario
+@model UsuarioRequest
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form asp-controller="Autenticacao" asp-action="Registrar" method="post">
+    <label>Nome Usuário:</label>
+    <input type="text" asp-for="Nome" />
+    <label>CPF:</label>
+    <input type="text" asp-for="CPFouCNPJ" />
+    <label>Email:</label>
+    <input type="text" asp-for="Email" />
+    <label>Senha:</label>
+    <input type="password" asp-for="Senha" />
+    <span>Empresa?</span><input type="checkbox" asp-for="Claim" />
+    <br />
+    <input type="submit" value="Enviar" />
+</form>

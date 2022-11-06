@@ -14,12 +14,13 @@ dotnet-aspnet-codegenerator controller -name StudentsController -dc ApplicationD
 dotnet tool update -g Dotnet-ef
 dotnet-ef migrations add CreateTodoTable
 dotnet-ef database update
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
 
 dotnet clean
 dotnet build
 
-add-migrate ****
-update-database
+EntityFrameworkCore\Add-Migration ****
+EntityFrameworkCore\Update-Database
 
 int Id, string NomeAluno, string AlunoCPF, string Curso, string Tipo, string Nivel, string Tempo, string Descricao, IFormFile Imagem, string Habilidades, StudentModel studentModel
 
