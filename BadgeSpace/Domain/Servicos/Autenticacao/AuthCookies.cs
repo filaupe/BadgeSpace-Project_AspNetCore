@@ -16,7 +16,7 @@ namespace Domain.Servicos.Autenticacao
                 {
                     new Claim(ClaimTypes.NameIdentifier, request!.Id.ToString()),
                     new Claim(ClaimTypes.Name, request.Nome),
-                    new Claim(ClaimTypes.Role, request.Claim ? nameof(Roles.Empresa) : nameof(Roles.Usuario))
+                    new Claim(ClaimTypes.Role, request.Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO))
                 };
 
             var identity = new ClaimsIdentity(direitosAcesso, "Identity.Login");

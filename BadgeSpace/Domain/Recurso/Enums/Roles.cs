@@ -2,7 +2,7 @@
 {
     public enum Roles
     {
-        Usuario,
-        Empresa
+        USUARIO,
+        EMPRESA
     }
 }

@@ -2,8 +2,10 @@
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Usuario;
+using Domain.Recurso.Enums;
 using Infra;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Utils;
 
@@ -26,7 +28,7 @@ namespace Web.Controllers
             _servicoAutenticacao = authCookies;
             _utils = utils;
         }
-        
+
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)

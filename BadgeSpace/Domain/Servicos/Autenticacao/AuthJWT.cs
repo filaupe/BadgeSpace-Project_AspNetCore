@@ -27,7 +27,7 @@ namespace Domain.Servicos.Autenticacao
                 var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtSecret").Value);
 
                 // Configs
-                var isEmpress = request.Claim ? nameof(Roles.Empresa) : nameof(Roles.Usuario);
+                var isEmpress = request.Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO);
 
                 // Descriptor
                 var tokenDescriptor = new SecurityTokenDescriptor
