@@ -161,29 +161,28 @@ img {
     flex: none;
 }
 
-#progress{
+/*SCROLLUP*/
+.go-top-btn {
     position: fixed;
     bottom: 20px;
     right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
     height: 70px;
     width: 70px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #4e57d4;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .go-top-btn img {
+    height: 32px;
+    width: 32px;
 }
 
-#progress-value{
-    display: block;
-    height: calc(100% - 15px);
-    width: calc(100% - 15px);
-    background-color: white;
-    border-radius: 50%;
-    display: none;
-    font-size: 35px;
-    color: #001a2e;
-}
 
 /* SERVICE */
 .service {
