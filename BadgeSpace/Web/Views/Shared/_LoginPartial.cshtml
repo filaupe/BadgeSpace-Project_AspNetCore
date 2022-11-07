@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+
+    {
+        <li class="nav-item perfil">
+            @{
+
+                var user = User.Identity.IsAuthenticated;
+
+                if (user != null)
+
+                {
+
+                    var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
+
+
+
+                                        <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Login"><img src=@img
+                    style="width:80px; height:80px; border-radius:50px" /></a>
+
+
+                }
+            }
+        </li>
+
+    }
+
+    else
+
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Register">Registrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Login">Login</a>
+        </li>
+
+    }
+</ul>
