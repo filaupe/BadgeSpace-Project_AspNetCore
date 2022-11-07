@@ -1,0 +1,4 @@
+Auto validação dos campos (avisos e erros)
+Criptografia das áreas sensíveis
+Colocar o Email em UpperCase
+Salvar automaticamente ao executar uma ação
