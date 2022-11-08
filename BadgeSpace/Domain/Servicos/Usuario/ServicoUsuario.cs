@@ -21,14 +21,11 @@ namespace Domain.Servicos.Usuario
 
         public async Task<UsuarioResponse> Adicionar(UsuarioRequest request)
         {
-            if (request == null)
-                return null!;
+            if (request.Nome == null) request.Nome = String.Join("", request.Email!.All(e => e != '@'));
 
             request.Token = (await _authJWT.GenerateToken(request)).ToString();
 
             var entidade = new Entidades.Usuario.Usuario(request);
-
-            // if (ModelState.IsValid) return null!;
 
             return _mapper.Map<UsuarioResponse>(_repositorio.Adicionar(entidade));
         }

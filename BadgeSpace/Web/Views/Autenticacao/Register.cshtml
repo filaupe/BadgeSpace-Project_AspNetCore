@@ -32,31 +32,37 @@
                                 <div class="text-danger"></div>
                                 <div class="form-check form-switch">
                                     <input asp-for="Claim" class="form-check-input" type="checkbox" id="Switch">
-                                    <label asp-for="Claim" class="form-check-label">Usuário / Empresa</label>
+                                    <label asp-for="Claim" class="form-check-label"></label>
                                 </div>
                                 <br>
                                 <div class="form-floating">
-                                    <input asp-for="Nome" class="form-control" autocomplete="username" aria-required="true" />
-                                    <label asp-for="Nome">Nome</label>
+                                    <input asp-for="Nome" class="form-control" autocomplete="username" />
+                                    <label asp-for="Nome"></label>
+                                    <span asp-validation-for="Nome" class="text-danger"></span>
                                 </div>
+                                <br>
                                 <div class="form-floating">
                                     <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
-                                    <label asp-for="Email">Email</label>
+                                    <label asp-for="Email"></label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
-                                    <input asp-for="CPFouCNPJ" class="form-control" autocomplete="CPF" id="CPF" maxlength="14" required />
-                                    <label asp-for="CPFouCNPJ">CPFouCNPJ</label>
+                                    <input asp-for="CPFouCNPJ" class="form-control" autocomplete="username" id="CPF" maxlength="14" aria-required="true" />
+                                    <label asp-for="CPFouCNPJ" id="labelcpf"></label>
+                                    <span asp-validation-for="CPFouCNPJ" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
                                     <input asp-for="Senha" class="form-control" autocomplete="new-password" aria-required="true" />
                                     <label asp-for="Senha"></label>
+                                    <span asp-validation-for="Senha" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
                                     <input asp-for="ConfirmarSenha" class="form-control" autocomplete="new-password" aria-required="true" />
                                     <label asp-for="ConfirmarSenha"></label>
+                                    <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <button id="registerSubmit" type="submit" class="w-100 btn btn-outline-primary">Cadastrar-se</button>

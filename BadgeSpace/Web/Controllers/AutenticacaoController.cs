@@ -27,27 +27,17 @@ namespace Web.Controllers
             _utils = utils;
         }
 
-        public IActionResult Login()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
+        public IActionResult Login() 
+            => User.Identity!.IsAuthenticated 
+                ? RedirectToAction("Index", "Home") : View();
 
-        public IActionResult Register()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
+        public IActionResult Register() 
+            => User.Identity!.IsAuthenticated 
+                ? RedirectToAction("Index", "Home") : View();
 
         [HttpPost]
-        [ActionName("Logar")]
-        public async Task<IActionResult> Logar(UsuarioRequest request)
+        [ActionName("Login")]
+        public async Task<IActionResult> Login(UsuarioRequest request)
         { 
             if (_repositorio.Existe(u => u.Email == request.Email && u.Senha == request.Senha))
             {
@@ -55,26 +45,33 @@ namespace Web.Controllers
                 await _servicoAutenticacao.GenerateCookies(request, HttpContext);
                 return RedirectToAction("Index", "Home");
             }
-            return Redirect(nameof(Login));
+            if (!_repositorio.Existe(u => u.Email == request.Email))
+                ViewBag.errorMessageEmail = "Email incorreto";
+            if (!_repositorio.Existe(u => u.Senha == request.Senha))
+                ViewBag.errorMessageSenha = "Senha incorreta";
+            return View(request);
         }
 
         [HttpPost]
         [ActionName("Register")]
-        public async Task<IActionResult> Registrar(UsuarioRequest request)
+        public async Task<IActionResult> Register(UsuarioRequest request)
         {
-            await _servicoUsuario.Adicionar(request);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                await _servicoUsuario.Adicionar(request);
+                await _context.SaveChangesAsync();
+                await Login(request);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(request);
         }
 
         [ActionName("Logout")]
         public async Task<IActionResult> Logout()
         {
-            if (User.Identity.IsAuthenticated)
-            {
+            if (User.Identity!.IsAuthenticated)
                 await HttpContext.SignOutAsync();
-            }
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Index", "Home");
         }
     }
 }
