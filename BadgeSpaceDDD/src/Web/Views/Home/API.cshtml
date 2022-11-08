@@ -9,8 +9,23 @@
     alocação de código do certificado, disponibilidade do badge e fácil manuseio do sistema para empresas, e simples
     formas de compartilhamento dos dados direcionado a camada de usuário não empresarial.</p>
 <br>
-<h3 class="text-red">Avisos!!</h3>
-<p>Os Endpoints não são abertos publicamente, utilizamos o sistema de autenticação JWT (Jason Web Token)</p>
+<h3 class="text-danger">Avisos!!</h3>
+<p>Os Endpoints não são abertos publicamente, utilizamos o sistema de autenticação JWT (Jason Web Token), sendo necessário
+    que a pessoa que tenha uma conta em nosso sistema para acessar a aplicação. </p>
+<p class="fw-semibold">"Então terei que ter uma conta para acessar meu certificado?"</p>
+<p>Não, não é bem assim, nosso sistema conta com um endpoint que disponibiliza o acesso aos dados do certificado utilizando
+    o código do certificado entregue pelas empresas, podendo assim que empresas visualizem seu certificado hospedado em nosso
+    sistema. A autenticação será utilizada apenas para as empresas que irão disponibilizar os certificados e o usuário que
+    desejar ver seus certificados em nosso dashboard ou até mesmo expor eles em seu site de portfólio.</p>
 <br>
 <h4>1 - Endpoint (Login / Registro) </h4>
 <p>Recebe métodos Post de qualquer tipo de usuário para fazer login /api/auth/login e /api/auth/register</p>
+<p>/api/auth/login recebe as áreas de Email e Senha para a autenticação.</p>
+<p>Enquanto o registrar irá receber as áreas de Nome, CPFouCNPJ, Email, Senha e Confirmar Senha, além da área Empresa que
+    aceitará um valor verdadeiro ou falso, permitindo você ter uma flexibilidade de escolha. Porém, ao deixar a área de empresa
+    como “true”, no caso verdadeiro, a área CPFouCNPJ irá aceitar unicamente os padrões presentes em um CNPJ, já caso esteja como
+    “null”, “falso”, ou até mesmo sem a área Empresa, como padrão o sistema irá colocar seu perfil como usuário, e só irá aceitar
+    um CPF como parâmetro.</p>
+<h4>2 - Autenticação </h4>
+<p>Ambas as formas de autenticação por fim irão retornar um Token JWT que é o método de login criptografado para ter acesso aos dados Exemplo:</p>
+<p class="fst-italic">zb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJjMmUzMTgwOC0zMjk0LTRmMGItOTM2Mi0xMzgzMjAwNzJmYTQiLCJyb2xlIjoiU1RVREVOVCI</p>
