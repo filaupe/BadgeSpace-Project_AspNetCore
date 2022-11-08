@@ -21,10 +21,11 @@
   
    ## 🚀 How to acess the application:
  
-Click in this <link href="#">link<link/>
+Click in this <a href="#">link<a/>
   
-  
-  ## 🚀 How to run the application:
+<br>
+
+  ## 🔁 How to run the application:
  
 1) Instal the .NET SDK 6.0
 2) Install the .zip file
