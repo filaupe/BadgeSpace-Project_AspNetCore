@@ -2,10 +2,8 @@
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Usuario;
-using Domain.Recurso.Enums;
 using Infra;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Utils;
 
@@ -48,6 +46,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [ActionName("Logar")]
         public async Task<IActionResult> Logar(UsuarioRequest request)
         { 
             if (_repositorio.Existe(u => u.Email == request.Email && u.Senha == request.Senha))
@@ -60,6 +59,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [ActionName("Register")]
         public async Task<IActionResult> Registrar(UsuarioRequest request)
         {
             await _servicoUsuario.Adicionar(request);
@@ -67,6 +67,7 @@ namespace Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [ActionName("Logout")]
         public async Task<IActionResult> Logout()
         {
             if (User.Identity.IsAuthenticated)

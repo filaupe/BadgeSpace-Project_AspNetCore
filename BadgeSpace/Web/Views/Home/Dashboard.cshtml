@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Entidades.Estudante.Estudante>
+﻿@model IEnumerable<Domain.Argumentos.Estudante.EstudanteResponse>
 @{
     var modal = "Modal";
 }   
@@ -39,70 +39,81 @@
         }
 
 </style>
+@if(Model != null)
+{
+    <div>
+        <h3>Dashboard</h3>
+        <hr />
+        <dl class="row">
+            <h5>Badges</h5>
+            <dd class="col-sm-10 dsh">
+                @foreach (var item in Model)
+                {
+                    var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+                    <a href="#" data-bs-toggle="modal" data-bs-target='#@modal@item.Codigo'><img src='@img' style="max-width:300px; max-height:300px;" /></a>
+                }
+            </dd>
+        </dl>
+    </div>
 
-<div>
-    <h3>Dashboard</h3>
-    <hr />
-    <dl class="row">
-        <h5>Badges</h5>
-        <dd class="col-sm-10 dsh">
-            @foreach (var item in Model)
-            {
-                var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
-                <a href="#" data-bs-toggle="modal" data-bs-target='#@modal@item.Codigo'><img src='@img' style="max-width:300px; max-height:300px;" /></a>
-            }
-        </dd>
-    </dl>
-</div>
-
-@foreach (var item in Model){
-    <div class="modal fade" id="@modal@item.Codigo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
+    @foreach (var item in Model)
+    {
+        <div class="modal fade" id="@modal@item.Codigo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
                         <h5 class="modal-title fs-5" style="font-weight: 600">@item.Curso</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body py-0 container-sm">
-                    <div class="container text-center">   
-                        <div class="row">
-                            @{var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0 container-sm">
+                        <div class="container text-center">
+                            <div class="row">
+                                @{
+                                    var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+                                }
                                 <a href="#" data-toggle="modal" data-target="#sitemodal"><img class="text-center img-fluid" src='@img' style="margin-bottom: 3em" /></a>
-                            <div class="col">
-                                <h3>Nome do aluno</h3><h5>@item.Nome</h5>
-                            </div>
-                            <div class="col">
-                                <h3>Código</h3><h5>@item.Codigo</h5>
-                            </div>
+                                <div class="col">
+                                    <h3>Nome do aluno</h3><h5>@item.Nome</h5>
+                                </div>
+                                <div class="col">
+                                    <h3>Código</h3><h5>@item.Codigo</h5>
+                                </div>
 
-                            <div class="col">
-                                <h3>Tipo do Curso</h3> <h5>@item.Tipo</h5>
+                                <div class="col">
+                                    <h3>Tipo do Curso</h3> <h5>@item.Tipo</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="container text-center" style="margin-top:1.5em;">
-                        <div class="row">
-                            <div class="col">
-                                <h3>Duração do Curso</h3> <h5>@item.Tempo</h5>
+                        <br>
+                        <br>
+                        <div class="container text-center" style="margin-top:1.5em;">
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Duração do Curso</h3> <h5>@item.Tempo</h5>
+                                </div>
+                                <div class="col">
+                                    <h3>Nível do Curso</h3>  <h5>@item.Nivel</h5>
+                                </div>
                             </div>
-                            <div class="col">
-                                <h3>Nível do Curso</h3>  <h5>@item.Nivel</h5>
+                            <div class="ms-auto" style="margin-top:4em; ">
+                                <h3>Descrição</h3><h5>@item.Habilidades</h5>
                             </div>
                         </div>
-                        <div class="ms-auto" style="margin-top:4em; ">
-                            <h3>Descrição</h3><h5>@item.Habilidades</h5>
+                        <div class="text-end" style="margin-top: 2em;">
+                            <a href="" id="whatsapp-share-btt" rel="nofollow" target="_blank" class="whatsapp-share-button"></a>
+                            <a href="" id="facebook-share-btt" rel="nofollow" target="_blank" class="facebook-share-button"></a>
+                            <a href="" id="linkedin-share-btt" rel="nofollow" target="_blank" class="linkedin-share-button text-end"></a>
                         </div>
-                    </div>
-                    <div class="text-end" style="margin-top: 2em;">
-                        <a href="" id="whatsapp-share-btt" rel="nofollow" target="_blank" class="whatsapp-share-button"></a>
-                        <a href="" id="facebook-share-btt" rel="nofollow" target="_blank" class="facebook-share-button"></a>
-                        <a href="" id="linkedin-share-btt" rel="nofollow" target="_blank" class="linkedin-share-button text-end"></a>
                     </div>
                 </div>
             </div>
         </div>
+    }
+}
+else
+{
+    <div>
+        Vazio
     </div>
 }
 

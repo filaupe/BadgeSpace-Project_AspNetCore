@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Domain.Recurso.Enums
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
-    
-    
+
+
 </head>
 <body>
     <header>
@@ -32,21 +33,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                            @if (User.Identity!.Name != null)
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole(nameof(Roles.EMPRESA)))
                             {
-                                if (User.Identity.IsAuthenticated)
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Estudantes" asp-action="Index">Sistema</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Home" asp-action="Dashboard">Badges</a>
-                                    </li>
-                                }  
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Estudantes" asp-action="Index">Sistema</a>
+                                </li>
                             }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Home" asp-action="Dashboard">Badges</a>
+                                </li>
+                            }
+                        }
 
                         <li class="nav-item">
                             <a class="nav-link text-dark fs-5" href="/#habilidades">Benefícios</a>
@@ -85,8 +86,7 @@
         </div>
     </footer>
 
-    
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -94,4 +94,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
