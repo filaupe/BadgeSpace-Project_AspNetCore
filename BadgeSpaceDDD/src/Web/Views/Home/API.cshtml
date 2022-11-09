@@ -34,10 +34,15 @@
 <br>
 <h4>2 - Autenticação </h4>
 <p>Ambas as formas de autenticação por fim irão retornar um Token JWT que é o método de login criptografado para ter acesso aos dados Exemplo:</p>
-<p class="fst-italic">zb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJjMmUzMTgwOC0zMjk0LTRmMGItOTM2Mi0xMzgzMjAwNzJmYTQiLCJyb2xlIjoiU1RVREVOVCI</p>
+
+<div class="fst-italic">
+<p class="text-break">zb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJjMmUzMTgwOC0zMjk0LTRmMGItOTM2Mi0xMzgzMjAwNzJmYTQiLCJyb2xlIjoiU1RVREVOVCI</p>
+</div> 
+
 <img src="~/assets/images/validarexemple.png" class="img-fluid" id="img-6">
 <br>
 <br>
+<div class="text-break">
 <p>Que será utilizado na área de Bearer Token para ter acesso ao filtro de dados também será disponibilizado o Token de acesso
     dentro do nosso sistema na área de configurações do perfil do usuário na área acima do botão “gerar novo Token JTW” que por sinal,
     possui 30 dias até expirar desde o momento que o mesmo é gerado.
@@ -49,18 +54,19 @@
     limitados. Logo apenas aparecerá o nome, código, CPF, Id e Curso dos alunos).</p>
 <p>E possuirá as opções de filtro no endpoint /api/alunos/.
     </p> 
-<p class="fst-italic">/listar&Email/ (Email da conta obrigatório)</P>
+<p class="fw-semibold">/listar&Email/ (Email da conta obrigatório)</p>
 <p>Dessa forma o sistema não irá filtrar nada e irá retornar todos os Alunos cadastrados por sua empresa</p>
-<p  class="fst-italic">/listar&Emai/CPFdoAluno</p>
+<p class="fw-semibold">/listar&Email/CPFdoAluno</p>
 <p>Dessa forma irá filtrar o Aluno com aquele CPF específico.</p>
-<p class="fst-italic">/listar&Emai/CPFdoAluno/Id</p>
+<p class="fw-semibold">/listar&Email/CPFdoAluno/Id</p>
 <p>Irá filtrar pelo Id do aluno mostrando um aluno específico</p>
 <p>A camada de Empresa também possui métodos de PUT, POST e DELETE, podendo deletar, editar e cadastrar novos alunos através destes endpoints:</p>
-<p>/api/alunos/BadgeSpace@gmail.com&deletar=000.000.000-00/2 caso não haja um Id especificado, por padrão o sistema irá apagar o primeiro aluno
+<p><p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&deletar=000.000.000-00/2</p> Caso não haja um Id especificado, por padrão o sistema irá apagar o primeiro aluno
 da lista com o CPF  especificado.</p>
-<p>Caso queira deletar toda a tabela é só utilizar o endpoint /api/alunos/BadgeSpace@gmail.com&deletar=Tudo </p>
+<p>Caso queira deletar toda a tabela é só utilizar o endpoint <p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&deletar=Tudo</p></p>
 <p>Mas imagino que você não queira isso sendo dono de uma grande empresa, seria uma dor de cabeça!</p>
-<p>/api/alunos/BadgeSpace@gmail.com&editar=000.000.000-00/2 </p>
+<p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&editar=000.000.000-00/2 </p>
 <p>Enquanto ao editar é a mesma lógica do deletar em relação ao CPF e o ID.</p>
+</div>
 
     
