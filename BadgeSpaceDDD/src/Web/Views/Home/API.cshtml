@@ -21,11 +21,30 @@
 <h4>1 - Endpoint (Login / Registro) </h4>
 <p>Recebe métodos Post de qualquer tipo de usuário para fazer login /api/auth/login e /api/auth/register</p>
 <p>/api/auth/login recebe as áreas de Email e Senha para a autenticação.</p>
+<img src="~/assets/images/loginexemple.png" class="img-fluid" id="img-4">
+<br>
+<br>
 <p>Enquanto o registrar irá receber as áreas de Nome, CPFouCNPJ, Email, Senha e Confirmar Senha, além da área Empresa que
     aceitará um valor verdadeiro ou falso, permitindo você ter uma flexibilidade de escolha. Porém, ao deixar a área de empresa
     como “true”, no caso verdadeiro, a área CPFouCNPJ irá aceitar unicamente os padrões presentes em um CNPJ, já caso esteja como
     “null”, “falso”, ou até mesmo sem a área Empresa, como padrão o sistema irá colocar seu perfil como usuário, e só irá aceitar
     um CPF como parâmetro.</p>
+<img src="~/assets/images/registerexemple.png" class="img-fluid" id="img-5">
+<br>
+<br>
 <h4>2 - Autenticação </h4>
 <p>Ambas as formas de autenticação por fim irão retornar um Token JWT que é o método de login criptografado para ter acesso aos dados Exemplo:</p>
 <p class="fst-italic">zb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJjMmUzMTgwOC0zMjk0LTRmMGItOTM2Mi0xMzgzMjAwNzJmYTQiLCJyb2xlIjoiU1RVREVOVCI</p>
+<img src="~/assets/images/validarexemple.png" class="img-fluid" id="img-6">
+<br>
+<br>
+<p>Que será utilizado na área de Bearer Token para ter acesso ao filtro de dados também será disponibilizado o Token de acesso
+    dentro do nosso sistema na área de configurações do perfil do usuário na área acima do botão “gerar novo Token JTW” que por sinal,
+    possui 30 dias até expirar desde o momento que o mesmo é gerado.
+</p>
+<p>Os filtros de dados são os endpoints de fácil manuseio do usuário, tendo em mente facilitar a busca dos dados dentro do banco de
+    certificados tanto da empresa quanto do usuário.
+</p>
+<p>O endpoint de filtro pode ser acessado através do token de Empresa caso sua conta seja uma empresa (Empresas tem dados de alunos
+    limitados. Logo apenas aparecerá o nome, código, CPF, Id e Curso dos alunos).</p>
+    
