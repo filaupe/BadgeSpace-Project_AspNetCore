@@ -11,44 +11,43 @@
     <a class="btn btn-primary btn-sm" asp-action="Create" style="text-transform: capitalize;">Adicionar um Novo Badge</a>
 </div>
 <br>
-   <div class="row gap-3 justify-content-start">
-   <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">CPF</th>
-                <th scope="col">Curso</th>
-                <th scope="col">Badge</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+   <div class="row gap-2 justify-content-start container-fluid">
+    <table class="table">
+            <thead>
                 <tr>
-                    <th scope="row">@item.Id</th>
-                    <td>@item.NomeAluno</td>
-                    <td>@item.AlunoCPF</td>
-                    <td>@item.Curso</td>
-                    <td><img src="@img" style="width: 110px;" class="img-fluid rounded-start"></td>
-                    <td>
-                        <div class="col-3" style="margin-right: 4.5px;">
-                            <a asp-action="Edit" asp-route-id="@item.Id"
-                        class="btn btn-primary">Editar</a>
-                        </div>
-                        <div class="col-4">
-                            <a asp-action="Details" asp-route-id="@item.Id"
-                        class="btn btn-info text-white">Detalhes</a>
-                        </div>
-                        <div class="col-4">
-                            <a asp-action="Delete" asp-route-id="@item.Id"
-                        class="btn btn-danger">Deletar</a>
-                    </td>
+                    <th scope="col">-</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Badge</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.NomeAluno</td>
+                        <td>@item.AlunoCPF</td>
+                        <td>@item.Curso</td>
+                        <td><img src="@img" style="width: 110px;" class="img-fluid rounded-start"></td>
+                        <td>
+                            <div class="row">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><i class="ri-file-edit-line"></i></a>
+                            </div>
+                            <div class="row">
+                                <a asp-action="Details" asp-route-id="@item.Id"
+                            class="btn"><i class="ri-folder-open-line"></i></a>
+                            </div>
+                            <div class="row">
+                                <a asp-action="Delete" asp-route-id="@item.Id"
+                            class="btn"><i class="ri-delete-bin-line"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 </div>
 
 

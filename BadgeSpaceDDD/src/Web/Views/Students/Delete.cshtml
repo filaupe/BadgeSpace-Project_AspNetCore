@@ -5,13 +5,11 @@
 }
 
 <h1>Deletar</h1>
-
 <h3>Você tem certeza que deseja remover esse aluno?</h3>
 <div>
     @{
         var img = $"data:image/gif;base64,{Convert.ToBase64String(Model.Imagem!)}";
     }
-    <h4>BadgeSpace</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -79,6 +77,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar para a Lista</a>
+        <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
     </form>
 </div>
