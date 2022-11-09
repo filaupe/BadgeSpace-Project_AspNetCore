@@ -47,4 +47,20 @@
 </p>
 <p>O endpoint de filtro pode ser acessado através do token de Empresa caso sua conta seja uma empresa (Empresas tem dados de alunos
     limitados. Logo apenas aparecerá o nome, código, CPF, Id e Curso dos alunos).</p>
+<p>E possuirá as opções de filtro no endpoint /api/alunos/.
+    </p> 
+<p class="fst-italic">/listar&Email/ (Email da conta obrigatório)</P>
+<p>Dessa forma o sistema não irá filtrar nada e irá retornar todos os Alunos cadastrados por sua empresa</p>
+<p  class="fst-italic">/listar&Emai/CPFdoAluno</p>
+<p>Dessa forma irá filtrar o Aluno com aquele CPF específico.</p>
+<p class="fst-italic">/listar&Emai/CPFdoAluno/Id</p>
+<p>Irá filtrar pelo Id do aluno mostrando um aluno específico</p>
+<p>A camada de Empresa também possui métodos de PUT, POST e DELETE, podendo deletar, editar e cadastrar novos alunos através destes endpoints:</p>
+<p>/api/alunos/BadgeSpace@gmail.com&deletar=000.000.000-00/2 caso não haja um Id especificado, por padrão o sistema irá apagar o primeiro aluno
+da lista com o CPF  especificado.</p>
+<p>Caso queira deletar toda a tabela é só utilizar o endpoint /api/alunos/BadgeSpace@gmail.com&deletar=Tudo </p>
+<p>Mas imagino que você não queira isso sendo dono de uma grande empresa, seria uma dor de cabeça!</p>
+<p>/api/alunos/BadgeSpace@gmail.com&editar=000.000.000-00/2 </p>
+<p>Enquanto ao editar é a mesma lógica do deletar em relação ao CPF e o ID.</p>
+
     
