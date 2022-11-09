@@ -56,6 +56,16 @@ namespace Web.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> Register(UsuarioRequest request)
         {
+            if (_repositorio.Existe(u => u.Email == request.Email))
+            {
+                ViewBag.errorMessageRegisterEmail = "Ja existe uma conta com esse Email";
+                return View(request);
+            }
+            if (_repositorio.Existe(u => u.CPFouCNPJ == request.CPFouCNPJ))
+            {
+                ViewBag.errorMessageRegisterCPFouCNPJ = "Ja existe uma conta com esse CPF ou CNPJ";
+                return View(request);
+            }
             if (ModelState.IsValid)
             {
                 await _servicoUsuario.Adicionar(request);
