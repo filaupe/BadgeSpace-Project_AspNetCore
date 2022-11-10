@@ -85,7 +85,8 @@
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/68467958?v=4" target="_blank"  width="100px;" alt="Foto de Kendy Ferreira no GitHub"/><br>
         <sub>
           <b>JOÃO PEDRO</b>
-          <p>Desenvolvedor Front-End</p>
+          <p>Desenvolvedor</p>
+          <p>Front-End</p>
         </sub>
       </a>
     </td>
@@ -94,7 +95,8 @@
         <img style="border-radius:100px;" src="https://i1.sndcdn.com/artworks-sUZuSm54AvHM5DzC-sRJf4A-t500x500.jpg" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
-          <p>Desenvolvedor Back-End</p>
+          <p>Desenvolvedor</p>
+          <p>Back-End</p>
         </sub>
       </a>
     </td>
