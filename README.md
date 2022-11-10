@@ -100,7 +100,7 @@
     </td>
     <td align="center">
       <a href="https://github.com/XxthiagoboyXx" target="_blank">
-        <img style="border-radius:100px;" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fsoundcloud.com%2Fblack-diamond-930543773%2Fcan-you-feel-my-heart-remix&psig=AOvVaw1APTjn6RJ3KwpxKKMJctgh&ust=1668195743528000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIDOqsevpPsCFQAAAAAdAAAAABAf" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/72053163?v=4" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
         <sub>
           <b>ANTONY GUSTAVO</b>
           <p>Designer</p>
