@@ -93,7 +93,7 @@
       <a href="https://github.com/MariaMilena" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/65188572?v=4" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
         <sub>
-          <b>LUIS FELIPE</b>
+          <b>LUIZ FELIPE</b>
           <p>Desenvolvedor</p>
         </sub>
       </a>
