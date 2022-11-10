@@ -82,7 +82,7 @@
     </td>
     <td align="center">
       <a href="https://github.com/Kendy619" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/68467958?v=4" target="_blank"  width="100px;" alt="Foto de Kendy Ferreira no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://media-exp1.licdn.com/dms/image/D4D03AQHVKX4vxLAnvg/profile-displayphoto-shrink_800_800/0/1664719241278?e=2147483647&v=beta&t=2QsB4nPdA5MdnU0GPs__WyCdwbaxDJQU5JGwpKOph6U" target="_blank"  width="100px;" alt="Foto de Kendy Ferreira no GitHub"/><br>
         <sub>
           <b>JOÃO PEDRO</b>
           <p>Desenvolvedor Front-End</p>
