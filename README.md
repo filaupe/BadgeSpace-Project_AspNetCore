@@ -86,6 +86,7 @@
         <sub>
           <b>JOÃO PEDRO</b>
           <p>Desenvolvedor</p>
+          <p>Front-End</p>
         </sub>
       </a>
     </td>
@@ -95,6 +96,7 @@
         <sub>
           <b>LUIZ FELIPE</b>
           <p>Desenvolvedor</p>
+          <p>Back-End</p>
         </sub>
       </a>
     </td>
