@@ -33,7 +33,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark fs-5" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity!.IsAuthenticated)
                         {
                             if (User.IsInRole(nameof(Roles.EMPRESA)))
                             {

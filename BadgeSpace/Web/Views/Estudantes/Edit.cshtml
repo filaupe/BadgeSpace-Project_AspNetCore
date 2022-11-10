@@ -1,19 +1,19 @@
-@model Domain.Argumentos.Estudante.EstudanteResponse
+@model Domain.Argumentos.Estudante.EstudanteRequest
 
 @{
     ViewData["Title"] = "Edit";
 }
 
 <h1>Editar</h1>
-
-<h4>StudentModel</h4>
+<br>
+<h4>BadgeSpace</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <input asp-for="EmpresaId" type="hidden" value="@User.Identity.Name" />
+            <input asp-for="EmpresaId" type="hidden" value="@User.Identity!.Name" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -69,14 +69,14 @@
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" value="Save" />
+                <input type="submit" class="btn btn-success" value="Save" />
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-action="Index">Voltar para lista</a>
+     <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
 </div>
 
 @section Scripts {

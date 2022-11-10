@@ -39,13 +39,13 @@ namespace Web.Controllers
         [ActionName("Login")]
         public async Task<IActionResult> Login(UsuarioRequest request)
         { 
-            if (_repositorio.Existe(u => u.Email == request.Email && u.Senha == request.Senha))
+            if (_repositorio.Existe(u => u.Email == request.Email.ToUpper() && u.Senha == request.Senha))
             {
                 request = await _utils.Completar(request, _context);
                 await _servicoAutenticacao.GenerateCookies(request, HttpContext);
                 return RedirectToAction("Index", "Home");
             }
-            if (!_repositorio.Existe(u => u.Email == request.Email))
+            if (!_repositorio.Existe(u => u.Email == request.Email.ToUpper()))
                 ViewBag.errorMessageEmail = "Email incorreto";
             if (!_repositorio.Existe(u => u.Senha == request.Senha))
                 ViewBag.errorMessageSenha = "Senha incorreta";

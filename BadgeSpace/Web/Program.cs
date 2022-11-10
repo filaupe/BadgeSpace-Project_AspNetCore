@@ -2,14 +2,16 @@ using Domain.Extensoes.Autenticacao;
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Estudante;
-using Domain.Servicos.Estudante;
 using Domain.Interfaces.Servicos.Usuario;
-using Domain.Servicos.Autenticacao;
-using Domain.Servicos.Usuario;
 using Infra;
 using Infra.Repositorios.Usuario;
 using Microsoft.EntityFrameworkCore;
 using Web.Controllers.Utils;
+using Infra.Servicos.Usuario;
+using Infra.Servicos.Estudante;
+using Infra.Servicos.Autenticacao;
+using Domain.Interfaces.Repositorios.Estudante;
+using Infra.Repositorios.Estudante;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,11 +30,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             builder.Configuration.GetConnectionString("DefaultConnection"),
             x => x.MigrationsAssembly("Infra")));
 
+
 builder.Services.AddScoped<IServicoUsuario, ServicoUsuario>();
-//builder.Services.AddScoped<IServicoEstudante, ServicoEstudante>();
+builder.Services.AddScoped<IServicoEstudante, ServicoEstudante>();
+
 builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+builder.Services.AddScoped<IRepositorioEstudante, RepositorioEstudante>();
+
 builder.Services.AddScoped<IServicoAuthJWT, AuthJWT>();
 builder.Services.AddScoped<IServicoAuthCookies, AuthCookies>();
+
 builder.Services.AddScoped<ControllerUtils>();
 
 //API

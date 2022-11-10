@@ -7,7 +7,7 @@ using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Argumentos.Usuario;
 using Domain.Recurso.Enums;
 
-namespace Domain.Servicos.Autenticacao
+namespace Infra.Servicos.Autenticacao
 {
     public class AuthJWT : IServicoAuthJWT
     {

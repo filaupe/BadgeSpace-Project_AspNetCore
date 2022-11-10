@@ -1,12 +1,12 @@
-@model Domain.Argumentos.Estudante.EstudanteResponse
+@model Domain.Argumentos.Estudante.EstudanteRequest
 
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Criar</h1>
-
-<h5>BadgeSpace</h5>
+<br>
+<h4>BadgeSpace</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,7 +21,7 @@
             <br>
             <div class="form-group">
                 <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
+                <input asp-for="CPF" value="@ViewBag.AuthCPF" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
             <br>
@@ -68,7 +68,7 @@
             </div>
             <br>
             <div>
-                <input type="submit" value="Create" class="btn btn-sucess" />
+                <input type="submit" value="Create" class=" btn btn-success" />
             </div>
         </form>
     </div>
@@ -77,7 +77,7 @@
 <br>
 
 <div>
-    <a asp-action="Index">Voltar para lista</a>
+    <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
 </div>
 
 @section Scripts {

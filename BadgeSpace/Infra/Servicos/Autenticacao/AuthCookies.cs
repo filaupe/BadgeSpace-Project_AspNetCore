@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Domain.Servicos.Autenticacao
+namespace Infra.Servicos.Autenticacao
 {
     public class AuthCookies : IServicoAuthCookies
     {

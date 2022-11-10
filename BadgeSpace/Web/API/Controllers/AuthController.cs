@@ -33,7 +33,7 @@ namespace Web.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UsuarioRequest request)
         {
-            if (_repositorio.Existe(u => u.Email == request.Email && u.Senha == request.Senha))
+            if (_repositorio.Existe(u => u.Email == request.Email.ToUpper() && u.Senha == request.Senha))
             {
                 request = await _utils.Completar(request, _context);
                 return Ok((await _servicoAutenticacao.GenerateToken(request)).ToString());
@@ -45,9 +45,24 @@ namespace Web.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UsuarioRequest request)
         {
-            await _servicoUsuario.Adicionar(request);
-            await _context.SaveChangesAsync();
-            return Ok((await _servicoAutenticacao.GenerateToken(request)).ToString());
+            var response = new { request.Nome, request.Email, request.CPFouCNPJ, request.Senha, request.ConfirmarSenha };
+            if (_repositorio.Existe(u => u.Email == request.Email))
+            {
+                request.Email = "Ja existe uma conta com esse Email";
+                return BadRequest(response);
+            }
+            if (_repositorio.Existe(u => u.CPFouCNPJ == request.CPFouCNPJ))
+            {
+                request.CPFouCNPJ = "Ja existe uma conta com esse CPF ou CNPJ";
+                return BadRequest(response);
+            }
+            if (ModelState.IsValid)
+            {
+                await _servicoUsuario.Adicionar(request);
+                await _context.SaveChangesAsync();
+                return Ok((await _servicoAutenticacao.GenerateToken(request)).ToString());
+            }
+            return BadRequest(response);
         }
     }
 }

@@ -1,7 +1,10 @@
+using Domain.Interfaces.Repositorios.Estudante;
+using Domain.Interfaces.Servicos.Estudante;
 using Domain.Recurso.Enums;
 using Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Utils;
 
 namespace Web.Controllers
 {
@@ -9,16 +12,23 @@ namespace Web.Controllers
     public class EstudantesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IServicoEstudante _servicoEstudante;
+        private readonly IRepositorioEstudante _repositorio;
+        private readonly ControllerUtils _utils;
 
-        public EstudantesController(ApplicationDbContext context)
+        public EstudantesController(ApplicationDbContext context, IServicoEstudante servicoEstudante,
+            IRepositorioEstudante repositorio, ControllerUtils utils)
         {
             _context = context;
+            _servicoEstudante = servicoEstudante;
+            _repositorio = repositorio;
+            _utils = utils;
         } 
 
         public IActionResult Create() => View();
 
         //public async Task<IActionResult> Index() => View(await _Method.Get(_context.Students, User.Identity!.Name!).ToListAsync());
-        public async Task<IActionResult> Index() => View();
+        public IActionResult Index() => View(_servicoEstudante.Listar());
 
         public async Task<IActionResult> Delete(int? id)
         {

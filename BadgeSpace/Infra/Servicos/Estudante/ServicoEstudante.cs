@@ -3,17 +3,19 @@ using Domain.Argumentos.Estudante;
 using Domain.Interfaces.Repositorios.Estudante;
 using Domain.Interfaces.Servicos.Estudante;
 
-namespace Domain.Servicos.Estudante
+namespace Infra.Servicos.Estudante
 {
     public class ServicoEstudante : IServicoEstudante
     {
+        private readonly ApplicationDbContext _context;
         private readonly IRepositorioEstudante _repositorio;
         private readonly IMapper _mapper;
 
-        public ServicoEstudante(IRepositorioEstudante repositorio, IMapper mapper)
+        public ServicoEstudante(IRepositorioEstudante repositorio, IMapper mapper, ApplicationDbContext context)
         {
             _repositorio = repositorio;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<EstudanteResponse> Adicionar(EstudanteRequest request)
@@ -21,9 +23,7 @@ namespace Domain.Servicos.Estudante
             if (request == null)
                 return null!;
 
-            var entidade = new Entidades.Estudante.Estudante(request);
-
-            // if (ModelState.IsValid) return null!;
+            var entidade = new Domain.Entidades.Estudante.Estudante(request);
 
             return _mapper.Map<EstudanteResponse>(_repositorio.Adicionar(entidade));
         }
@@ -38,15 +38,9 @@ namespace Domain.Servicos.Estudante
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EstudanteResponse> Listar()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<EstudanteResponse> Listar() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes).ToList();
 
-        public IEnumerable<EstudanteResponse> ListarAtivos()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<EstudanteResponse> ListarAtivos() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes).ToList();
 
         public EstudanteResponse Selecioanr(int id)
         {

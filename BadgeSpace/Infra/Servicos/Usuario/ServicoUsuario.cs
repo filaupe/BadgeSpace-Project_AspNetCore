@@ -4,7 +4,7 @@ using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Usuario;
 
-namespace Domain.Servicos.Usuario
+namespace Infra.Servicos.Usuario
 {
     public class ServicoUsuario : IServicoUsuario
     {
@@ -21,11 +21,11 @@ namespace Domain.Servicos.Usuario
 
         public async Task<UsuarioResponse> Adicionar(UsuarioRequest request)
         {
-            if (request.Nome == null) request.Nome = String.Join("", request.Email!.All(e => e != '@'));
-
+            request.Nome ??= request.Email![0..request.Email!.IndexOf("@")];
+            request.Email = request.Email.ToUpper();
             request.Token = (await _authJWT.GenerateToken(request)).ToString();
 
-            var entidade = new Entidades.Usuario.Usuario(request);
+            var entidade = new Domain.Entidades.Usuario.Usuario(request);
 
             return _mapper.Map<UsuarioResponse>(_repositorio.Adicionar(entidade));
         }

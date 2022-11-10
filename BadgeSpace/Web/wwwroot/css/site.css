@@ -1,7 +1,7 @@
 /* FONTS */
 @import url(../css/clash-display.css);
 
-/* VARIABLES */
+/* VAR */
 :root {
     --c-dark: #212529;
     --c-brand: #4e57d4;
@@ -64,7 +64,7 @@ img {
     box-shadow: var(--box-shadow);
 }
 
-/* IMAGE ZOOM */
+/* IMAGEM ZOOM */
 .image-zoom {
     position: relative;
     /* overflow: hidden; */
@@ -84,7 +84,7 @@ img {
 }
 
 
-/* NAVBAR */
+/* BARRA DE NAVEGAÇÃO */
 .navbar {
     box-shadow: var(--box-shadow);
 }
@@ -99,7 +99,7 @@ img {
 }
 
 
-/* BTN */
+/* BOTÃO */
 .btn {
     font-weight: 600;
     font-size: 14px;
@@ -121,15 +121,7 @@ img {
 }
 
 
-/* HERO */
-#hero {
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url(../images/hero-1.jpg);
-    background-position: center;
-    background-size: cover;
-}
-
-
-/* SECTION TITLE */
+/* TÍTULO DA SEÇÃO */
 .section-title {
     margin-bottom: 60px;
 }
@@ -161,7 +153,30 @@ img {
     flex: none;
 }
 
-/* SERVICE */
+/*SCROLLUP*/
+.go-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    background: #fff;
+    border: 3px solid #4e57d4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+  
+.go-top-btn img {
+    height: 32px;
+    width: 32px;
+}
+
+
+/* BENEFICIOS */
 .service {
     position: relative;
     overflow: hidden;
@@ -197,7 +212,7 @@ img {
     color: white;
 }
 
-/* COUNTER */
+/* CONTADOR */
 #counter {
     background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.8)), url(../images/counter.jpg);
     background-position: center;
@@ -220,7 +235,7 @@ img {
     top: 50%;
 }
 
-/* REVIEW */
+/* REVISÃO */
 .review small {
     font-weight: 600;
     text-transform: uppercase;
@@ -241,7 +256,7 @@ img {
     transform: rotate(45deg);
 }
 
-/* TEAM */
+/* TIME */
 .team-member-content {
     background-color: var(--c-brand);
     position: absolute;
@@ -259,7 +274,7 @@ img {
     bottom: 24px;
 }
 
-/* CONTACT */
+/* CONTATO */
 #contact {
     position: relative;
     z-index: 2;
@@ -301,21 +316,20 @@ img {
     z-index: 10;
     transition: .3s;
   
-  }
+}
   
-  .scrollup:hover{
+.scrollup:hover{
     transform: translateY(-.25rem);
     color: hsl(228, 66%, 53%);
-  }
+}
   
   
-  /* Show Scroll Up*/
+/*Aparecer Scroll Up*/
   
-  .show-scroll{
+.show-scroll{
   bottom: 8rem;
-  }
+}
 
-/* FOOTER */
 
 @font-face {
   font-family: 'ClashDisplay';
