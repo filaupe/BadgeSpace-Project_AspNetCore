@@ -66,7 +66,7 @@
       <a href="https://github.com/Ericles-Porty" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/67772327?v=4" width="100px;" alt="Foto de Éricles dos Santos no GitHub"/><br>
         <sub>
-          <b>MARIA VITÓRIA</b>
+          <p>MARIA VITÓRIA</p>
           <p>Designer</p>
         </sub>
       </a>
@@ -75,7 +75,7 @@
       <a href="https://github.com/joannestephany" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/58868281?v=4"  width="100px;" alt="Foto de Joanne Stephany no GitHub"/><br>
         <sub>
-          <b>JHONATA</b>
+          <p>JHONATA</p>
           <p>Copywritter</p>
         </sub>
       </a>
@@ -84,7 +84,7 @@
       <a href="https://github.com/Kendy619" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/68467958?v=4" target="_blank"  width="100px;" alt="Foto de Kendy Ferreira no GitHub"/><br>
         <sub>
-          <b>JOÃO PEDRO</b>
+          <p>JOÃO PEDRO</p>
           <p>Desenvolvedor</p>
           <p>Front-End</p>
         </sub>
@@ -94,7 +94,7 @@
       <a href="https://github.com/MariaMilena" target="_blank">
         <img style="border-radius:100px;" src="https://i1.sndcdn.com/artworks-sUZuSm54AvHM5DzC-sRJf4A-t500x500.jpg" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
         <sub>
-          <b>LUIZ FELIPE</b>
+          <p>LUIZ FELIPE</p>
           <p>Desenvolvedor</p>
           <p>Back-End</p>
         </sub>
@@ -113,7 +113,7 @@
       <a href="https://github.com/XxthiagoboyXx" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/72053163?v=4" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
         <sub>
-          <b>HEIDY LARYSSA</b>
+          <p>HEIDY LARYSSA</p>
           <p>Gerenciamento do projeto</p>
         </sub>
       </a>
@@ -126,7 +126,7 @@
       <a href="https://github.com/marcosdosea" target="_blank">
         <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/7799935?v=4" target="_blank" width="100px;" alt="Foto de Marcos Dósea no GitHub"/><br>
         <sub>
-          <b>REGINALDO SANTANA</b>
+          <p>REGINALDO SANTANA</p>
           <p>Docente</p>
         </sub>
       </a>
