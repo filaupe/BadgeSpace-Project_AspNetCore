@@ -91,7 +91,7 @@
     </td>
     <td align="center" >
       <a href="https://github.com/MariaMilena" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/65188572?v=4" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://i1.sndcdn.com/artworks-sUZuSm54AvHM5DzC-sRJf4A-t500x500.jpg" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
           <p>Desenvolvedor</p>
@@ -100,7 +100,7 @@
     </td>
     <td align="center">
       <a href="https://github.com/XxthiagoboyXx" target="_blank">
-        <img style="border-radius:100px;" src="https://i1.sndcdn.com/artworks-sUZuSm54AvHM5DzC-sRJf4A-t500x500.jpg" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/72053163?v=4" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
         <sub>
           <b>ANTONY GUSTAVO</b>
           <p>Designer</p>
