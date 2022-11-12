@@ -7,7 +7,7 @@ namespace Domain.Interfaces.Servicos.Usuario
     {
         Task<UsuarioResponse> Adicionar(UsuarioRequest request);
         UsuarioResponse Alterar(UsuarioRequest request);
-        UsuarioResponse Selecioanr(int id);
+        UsuarioResponse Selecionar(int id);
         IEnumerable<UsuarioResponse> Listar();
         IEnumerable<UsuarioResponse> ListarAtivos();
     }

@@ -21,6 +21,8 @@ namespace Web.Controllers
         private readonly IMapper _mapper;
         private readonly ControllerUtils _utils;
 
+        private Task<Domain.Entidades.Usuario.Usuario> GetUsuarioAsync { get => _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;}
+
         public EstudantesController(ApplicationDbContext context, IServicoEstudante servicoEstudante,
             IRepositorioEstudante repositorio, ControllerUtils utils, IMapper mapper)
         {
@@ -31,67 +33,26 @@ namespace Web.Controllers
             _mapper = mapper;
         } 
 
-        public IActionResult Create() => View();
-
         public async Task<IActionResult> Index(int skip = 0, int take = 8)
         {
             ViewBag.Pages = Convert.ToInt32(Math.Ceiling(await _context.Estudantes.CountAsync()*1M / take));
             return View(_servicoEstudante.Listar(skip, take));
         }
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            return View();
-        }
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null || !id.HasValue || id.Value == 0)
-        //        return NotFound();
-        //
-        //    var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
-        //
-        //    if (studentModel == null)
-        //        return NotFound();
-        //
-        //    return View(studentModel);
-        //}
+        public IActionResult Delete(int id) => View(_servicoEstudante.Selecionar(id));
 
+        public IActionResult Details(int id) => View(_servicoEstudante.Selecionar(id));
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            return View();
-        }   
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null || !id.HasValue)
-        //        return NotFound();
-        //
-        //    var studentModel = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
-        //
-        //    if (studentModel == null)
-        //        return NotFound();
-        //
-        //    return View(studentModel);
-        //}
+        public async Task<IActionResult> Edit(int id) => View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.FindAsync(id)));
 
-        public async Task<IActionResult> Edit(int? id)
-        {
-            return View();
-        }
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    var studentModel = await _context.Students.FirstOrDefaultAsync(x => x.Id == id);
-        //
-        //    return View(studentModel);
-        //}
+        public IActionResult Create() => View();
 
 
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile Imagem, EstudanteRequest request)
+        public async Task<IActionResult> OnCreate(IFormFile Imagem, EstudanteRequest request)
         {
-            var claim = User.Claims.ToList();
-            request.Empresa = await _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == claim[2].Value);
+            request.Empresa = await GetUsuarioAsync;
 
             if (Imagem != null)
             {
@@ -112,61 +73,29 @@ namespace Web.Controllers
 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> OnEdit(int id, IFormFile Imagem, EstudanteRequest request)
         {
-            return View();
-        }
-        //[HttpPost, ActionName("Edit")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, IFormFile Imagem, StudentModel studentModel)
-        //{
-        //    if (id != studentModel.Id) return NotFound();
-        //
-        //    var ok = await CheckIfUserIsValid.IsUserValid(_context.Users, studentModel.AlunoCPF);
-        //    if (!ok || !ModelState.IsValid)
-        //    {
-        //        ViewBag.AuthCPF = "Este CPF não existe";
-        //        return View(studentModel);
-        //    }
-        //
-        //    if (Imagem != null)
-        //    {
-        //        using var memoryStream = new MemoryStream();
-        //        await Imagem.CopyToAsync(memoryStream);
-        //        studentModel.Imagem = memoryStream.ToArray();
-        //    }
-        //
-        //    var old = await _context.Students.FirstOrDefaultAsync(x => x.Id == studentModel.Id);
-        //
-        //    if (old == null) return BadRequest();
-        //
-        //    _context.Update(UserCaseExtension.OldToNewRegister(old, studentModel));
-        //    await _context.SaveChangesAsync();
-        //
-        //    return RedirectToAction(nameof(Index));
-        //}
+            request.Empresa = await GetUsuarioAsync;
 
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                request.Imagem = memoryStream.ToArray();
+            }
+
+            _servicoEstudante.Alterar(_repositorio.OrdenarPorId(id), request);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete()
+        public async Task<IActionResult> OnDelete(int id)
         {
-            return View();
+            _repositorio.Remover((await _context.Estudantes.FindAsync(id))!);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    if (_context.Students == null)
-        //        return BadRequest("Entity set 'ApplicationDbContext.Students'  is null.");
-        //
-        //    var studentModel = await _context.Students.FindAsync(id);
-        //    if (studentModel != null)
-        //    {
-        //        _context.Students.Remove(studentModel);
-        //        await _context.SaveChangesAsync();
-        //    }
-        //
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }

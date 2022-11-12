@@ -7,6 +7,7 @@
 <div class="row">
     <div class="col-md-6">
         <form id="email-form" asp-action="ChangeEmail" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <input asp-for="EmailAntigo" class="form-control" disabled />
                 <label asp-for="EmailAntigo" class="form-label"></label>

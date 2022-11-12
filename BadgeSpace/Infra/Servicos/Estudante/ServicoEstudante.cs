@@ -29,21 +29,17 @@ namespace Infra.Servicos.Estudante
             return _mapper.Map<EstudanteResponse>(_repositorio.Adicionar(entidade));
         }
 
-        public EstudanteResponse Alterar(EstudanteRequest request)
+        public EstudanteResponse Alterar(Domain.Entidades.Estudante.Estudante old, EstudanteRequest request)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            old.Atualizar(request);
+            return _mapper.Map<EstudanteResponse>(old);
         }
 
         public IEnumerable<Domain.Entidades.Estudante.Estudante> Listar(int skip, int take) => _context.Estudantes.AsNoTracking().Skip(skip * take).Take(take).ToList();
 
         public IEnumerable<EstudanteResponse> ListarAtivos() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes);
 
-        public EstudanteResponse Selecioanr(int id)
+        public EstudanteResponse Selecionar(int id)
         {
             if (id == 0)
                 return null!;

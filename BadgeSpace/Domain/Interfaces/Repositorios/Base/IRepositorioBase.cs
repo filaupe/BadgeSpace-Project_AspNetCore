@@ -25,7 +25,5 @@ namespace Domain.Interfaces.Repositorios.Base
         TEntidade ObterPor(Func<TEntidade, bool> where, params Expression<Func<TEntidade, object>>[] icludeProperties);
 
         TEntidade OrdenarPorId(TId id, params Expression<Func<TEntidade, object>>[] icludeProperties);
-
-        void Dispose();
     }
 }

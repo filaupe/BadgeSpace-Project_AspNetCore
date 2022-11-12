@@ -15,6 +15,7 @@ namespace Infra.AutoMapper
             CreateMap<Usuario, UsuarioEmail>(); 
             CreateMap<Usuario, UsuarioToken>(); 
             CreateMap<Estudante, EstudanteResponse>(); 
+            CreateMap<Estudante, EstudanteRequest>(); 
         }
     }
 }

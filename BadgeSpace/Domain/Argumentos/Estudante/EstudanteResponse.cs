@@ -33,6 +33,7 @@ namespace Domain.Argumentos.Estudante
         {
             return new EstudanteResponse()
             {
+                Id = entidade.Id,
                 Nome = entidade.Nome,
                 CPF = entidade.CPF,
                 Codigo = entidade.Codigo,

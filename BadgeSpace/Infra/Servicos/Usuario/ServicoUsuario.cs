@@ -50,7 +50,7 @@ namespace Infra.Servicos.Usuario
             throw new NotImplementedException();
         }
 
-        public UsuarioResponse Selecioanr(int id)
+        public UsuarioResponse Selecionar(int id)
         {
             if(id == 0)
                 return null!;

@@ -54,14 +54,6 @@ namespace Infra.Repositorios.Base
             throw new NotImplementedException();
         }
 
-        public TEntidade OrdenarPorId(TId id, params Expression<Func<TEntidade, object>>[] icludeProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        public TEntidade OrdenarPorId(TId id, params Expression<Func<TEntidade, object>>[] icludeProperties) => _context.Set<TEntidade>().Find(id)!;
     }
 }
