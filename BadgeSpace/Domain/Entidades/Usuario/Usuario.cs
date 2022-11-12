@@ -9,6 +9,8 @@ namespace Domain.Entidades.Usuario
 
         public string Email { get; private set; }
 
+        public string NormalizedEmail { get; private set; }
+
         public string CPFouCNPJ { get; private set; }
 
         public byte[]? Imagem { get; private set; }
@@ -23,31 +25,29 @@ namespace Domain.Entidades.Usuario
 
         public Usuario(UsuarioRequest request)
         {
-            Nome = request.Nome;
+            Nome = request.Nome!;
             Email = request.Email;
+            NormalizedEmail = request.NormalizedEmail!;
             CPFouCNPJ = request.CPFouCNPJ;
             Senha = request.Senha;
             Imagem = request.Imagem;
             Claim = request.Claim;
-            Token = request.Token;
+            Token = request.Token!;
             Status = true;
         }
 
         public void Atualizar(UsuarioRequest request)
         {
-            Nome = request.Nome;
+            Nome = request.Nome!;
             Email = request.Email;
+            NormalizedEmail = request.NormalizedEmail!;
             CPFouCNPJ = request.CPFouCNPJ;
             Senha = request.Senha;
             Imagem = request.Imagem;
             Claim = request.Claim;
-            Token = request.Token;
+            Token = request.Token!;
 
             if (request.Status.HasValue) Status = request.Status.Value;
-        }
-        public void AtualizarToken(string token)
-        {
-            Token = token;
         }
     }
 }

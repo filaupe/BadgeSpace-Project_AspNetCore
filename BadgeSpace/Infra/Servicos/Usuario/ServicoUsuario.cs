@@ -22,7 +22,7 @@ namespace Infra.Servicos.Usuario
         public async Task<UsuarioResponse> Adicionar(UsuarioRequest request)
         {
             request.Nome ??= request.Email![0..request.Email!.IndexOf("@")];
-            request.Email = request.Email.ToUpper();
+            request.NormalizedEmail = request.Email.ToUpper();
             request.Token = (await _authJWT.GenerateToken(request.Id, request.Claim, request.Email)).ToString();
 
             var entidade = new Domain.Entidades.Usuario.Usuario(request);

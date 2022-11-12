@@ -17,6 +17,7 @@ namespace Infra.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPFouCNPJ = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Imagem = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),

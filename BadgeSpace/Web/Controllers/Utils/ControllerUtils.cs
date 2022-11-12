@@ -8,10 +8,12 @@ namespace Web.Controllers.Utils
     {
         public async Task<UsuarioRequest> Completar(UsuarioRequest request, ApplicationDbContext context)
         {
-            var usuario = await context.Usuarios.FirstOrDefaultAsync(u => u.Email == request.Email && u.Senha == request.Senha);
+            var usuario = await context.Usuarios.FirstOrDefaultAsync(u => u.NormalizedEmail == request.Email.ToUpper() && u.Senha == request.Senha);
 
             request.Nome = usuario!.Nome;
             request.CPFouCNPJ = usuario.CPFouCNPJ;
+            request.NormalizedEmail = usuario.Email.ToUpper();
+            request.ConfirmarSenha = usuario.Senha;
             request.Imagem = usuario.Imagem;
             request.Claim = usuario.Claim;
             request.Token = usuario.Token;

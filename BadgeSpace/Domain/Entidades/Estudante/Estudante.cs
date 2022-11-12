@@ -26,7 +26,7 @@ namespace Domain.Entidades.Estudante
         public string Descricao { get; private set; }
 
         [ForeignKey("Empresa")]
-        public int EmpresaId { get; set; }
+        public int EmpresaId { get; private set; }
 
         public Domain.Entidades.Usuario.Usuario? Empresa { get; private set; }
 

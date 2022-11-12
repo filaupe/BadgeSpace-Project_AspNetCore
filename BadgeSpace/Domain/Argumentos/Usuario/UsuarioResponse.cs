@@ -8,6 +8,8 @@ namespace Domain.Argumentos.Usuario
 
         public string Email { get; set; }
 
+        public string NormalizedEmail { get; set; }
+
         public string CPFouCNPJ { get; set; }
 
         public byte[]? Imagem { get; set; }
