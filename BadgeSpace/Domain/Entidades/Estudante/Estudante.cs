@@ -1,4 +1,5 @@
 ﻿using Domain.Argumentos.Estudante;
+using Domain.Argumentos.Usuario;
 using Domain.Entidades.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,12 +23,12 @@ namespace Domain.Entidades.Estudante
 
         public byte[]? Imagem { get; private set; }
 
-        public string Habilidades { get; private set; }
+        public string Descricao { get; private set; }
 
         [ForeignKey("Empresa")]
-        public int EmpresaId { get; private set; }
+        public int EmpresaId { get; set; }
 
-        public Domain.Entidades.Usuario.Usuario Empresa { get; set; }
+        public Domain.Entidades.Usuario.Usuario? Empresa { get; private set; }
 
         public Estudante() { }
 
@@ -41,7 +42,8 @@ namespace Domain.Entidades.Estudante
             Tipo = request.Tipo;
             Nivel = request.Nivel;
             Tempo = request.Tempo;
-            Habilidades = request.Habilidades;
+            Descricao = request.Descricao;
+            Empresa = request.Empresa;
             Status = true;
         }
 
@@ -55,7 +57,8 @@ namespace Domain.Entidades.Estudante
             Tipo = request.Tipo;
             Nivel = request.Nivel;
             Tempo = request.Tempo;
-            Habilidades = request.Habilidades;
+            Descricao = request.Descricao;
+            Empresa = request.Empresa;
 
             if (request.Status.HasValue) Status = request.Status.Value;
         }

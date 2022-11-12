@@ -14,8 +14,9 @@ namespace Infra.Servicos.Autenticacao
         {
             List<Claim> direitosAcesso = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, request!.Id.ToString()),
+                    new Claim(ClaimTypes.Sid, request!.Id.ToString()),
                     new Claim(ClaimTypes.Name, request.Nome!),
+                    new Claim(ClaimTypes.NameIdentifier, request.CPFouCNPJ!),
                     new Claim(ClaimTypes.Role, request.Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO))
                 };
 

@@ -23,7 +23,7 @@ namespace Infra.Migrations
                     Nivel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tempo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Imagem = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Habilidades = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmpresaId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: true),
                     DataInclusao = table.Column<DateTime>(type: "datetime2", nullable: false),

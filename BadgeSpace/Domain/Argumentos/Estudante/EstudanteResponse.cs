@@ -1,4 +1,5 @@
 ﻿using Domain.Argumentos.Base;
+using Domain.Argumentos.Usuario;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Argumentos.Estudante
@@ -21,12 +22,12 @@ namespace Domain.Argumentos.Estudante
 
         public byte[]? Imagem { get; set; }
 
-        public string Habilidades { get; set; }
+        public string Descricao { get; set; }
 
         [ForeignKey("Empresa")]
-        public int EmpresaId { get; set; }
+        public int EmpresaId { get => this.Empresa!.Id; }
 
-        public Domain.Entidades.Usuario.Usuario Empresa { get; set; }
+        public Domain.Entidades.Usuario.Usuario? Empresa { get; set; }
 
         public static explicit operator EstudanteResponse(Domain.Entidades.Estudante.Estudante entidade)
         {
@@ -40,8 +41,8 @@ namespace Domain.Argumentos.Estudante
                 Nivel = entidade.Nivel,
                 Tempo = entidade.Tempo,
                 Imagem = entidade.Imagem,
-                Habilidades = entidade.Habilidades,
-                EmpresaId = entidade.EmpresaId,
+                Descricao = entidade.Descricao,
+                Empresa = entidade.Empresa,
             };
         }
     }

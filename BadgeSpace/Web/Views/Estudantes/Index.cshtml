@@ -1,7 +1,8 @@
-@model IEnumerable<Domain.Argumentos.Estudante.EstudanteResponse>
+@model IEnumerable<Domain.Entidades.Estudante.Estudante>
 
 @{
     ViewData["Title"] = "Index";
+    var modal = "Badge";
 }
 
 <h1>Sistema - BadgeSpace</h1>
@@ -13,41 +14,66 @@
 <br>
    <div class="row gap-2 justify-content-start container-fluid">
     <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">-</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col">Badge</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Código</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Badge</th>
+                <th scope="col">Ferramentas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var img = $"data:image/gif;base64,{Convert.ToBase64String(item.Imagem!)}";
                     <tr>
-                        <th scope="row">@item.Id</th>
-                        <td>@item.Nome</td>
-                        <td>@item.CPF</td>
-                        <td>@item.Curso</td>
-                        <td><img src="@img" style="width: 110px;" class="img-fluid rounded-start"></td>
-                        <td>
-                            <div class="row">
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><i class="ri-file-edit-line"></i></a>
+                    <td>@item.Nome</td>
+                    <td>@item.CPF</td>
+                    <td>@item.Codigo</td>
+                    <td>@item.Curso</td>
+                    <td>
+                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#@modal@item.Id">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <div class="col">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><i class="ri-file-edit-line"></i></a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn"><i class="ri-folder-open-line"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn"><i class="ri-delete-bin-line"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                <div class="modal fade" id="@modal@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Badge</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="row">
-                                <a asp-action="Details" asp-route-id="@item.Id"
-                            class="btn"><i class="ri-folder-open-line"></i></a>
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <img src="@img" class="img-fluid rounded-start">
                             </div>
-                            <div class="row">
-                                <a asp-action="Delete" asp-route-id="@item.Id"
-                            class="btn"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+    <nav class="d-inline-block">
+        <ul class="pagination pagination-sm my-0">
+            @for (int i = 0; i != ViewBag.Pages; i++)
+            {
+                var o = i + 1;
+                <li class="page-item"><a class="page-link" href="/Estudantes?skip=@i">@o</a></li>
+            }
+        </ul>
+    </nav>
 </div>
 
 

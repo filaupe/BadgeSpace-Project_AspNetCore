@@ -2,6 +2,7 @@
 using Domain.Argumentos.Estudante;
 using Domain.Interfaces.Repositorios.Estudante;
 using Domain.Interfaces.Servicos.Estudante;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Servicos.Estudante
 {
@@ -38,9 +39,9 @@ namespace Infra.Servicos.Estudante
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EstudanteResponse> Listar() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes).ToList();
+        public IEnumerable<Domain.Entidades.Estudante.Estudante> Listar(int skip, int take) => _context.Estudantes.AsNoTracking().Skip(skip * take).Take(take).ToList();
 
-        public IEnumerable<EstudanteResponse> ListarAtivos() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes).ToList();
+        public IEnumerable<EstudanteResponse> ListarAtivos() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes);
 
         public EstudanteResponse Selecioanr(int id)
         {

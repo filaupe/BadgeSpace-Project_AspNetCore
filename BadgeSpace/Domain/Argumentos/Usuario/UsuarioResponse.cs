@@ -22,12 +22,9 @@ namespace Domain.Argumentos.Usuario
         {
             return new UsuarioResponse()
             {
-                Nome = entidade.Nome,
+                Id = entidade.Id,
                 Email = entidade.Email,
                 CPFouCNPJ = entidade.CPFouCNPJ,
-                Token = entidade.Token,
-                Claim = entidade.Claim,
-                Imagem = entidade.Imagem,
             };
         }
     }

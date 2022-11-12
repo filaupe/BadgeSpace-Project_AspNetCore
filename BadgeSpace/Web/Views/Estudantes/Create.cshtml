@@ -12,7 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for ="EmpresaId" type="hidden" value="@User.Identity!.Name"/>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -21,7 +20,7 @@
             <br>
             <div class="form-group">
                 <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" value="@ViewBag.AuthCPF" class="form-control" />
+                <input asp-for="CPF" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
             <br>
@@ -56,9 +55,9 @@
             </div>
             <br>
             <div class="form-group">
-                <label asp-for="Habilidades" class="control-label"></label>
-                <input asp-for="Habilidades" class="form-control" />
-                <span asp-validation-for="Habilidades" class="text-danger"></span>
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">

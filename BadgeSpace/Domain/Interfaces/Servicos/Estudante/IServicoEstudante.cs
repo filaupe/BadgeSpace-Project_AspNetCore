@@ -8,7 +8,7 @@ namespace Domain.Interfaces.Servicos.Estudante
         Task<EstudanteResponse> Adicionar(EstudanteRequest request);
         EstudanteResponse Alterar(EstudanteRequest request);
         EstudanteResponse Selecioanr(int id);
-        IEnumerable<EstudanteResponse> Listar();
+        IEnumerable<Domain.Entidades.Estudante.Estudante> Listar(int skip, int take);
         IEnumerable<EstudanteResponse> ListarAtivos();
     }
 }

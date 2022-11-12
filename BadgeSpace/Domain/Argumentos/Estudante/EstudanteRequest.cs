@@ -1,4 +1,5 @@
 ﻿using Domain.Argumentos.Base;
+using Domain.Argumentos.Usuario;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Argumentos.Estudante
@@ -21,11 +22,11 @@ namespace Domain.Argumentos.Estudante
 
         public byte[]? Imagem { get; set; }
 
-        public string Habilidades { get; set; }
-
+        public string Descricao { get; set; }
+        
         [ForeignKey("Empresa")]
-        public int EmpresaId { get; private set; }
+        public int EmpresaId { get; set; }
 
-        public Domain.Entidades.Usuario.Usuario Empresa { get; set; }
+        public Domain.Entidades.Usuario.Usuario? Empresa { get; set; }
     }
 }
