@@ -36,7 +36,7 @@ namespace Web.API.Controllers
             if (_repositorio.Existe(u => u.Email == request.Email.ToUpper() && u.Senha == request.Senha))
             {
                 request = await _utils.Completar(request, _context);
-                return Ok((await _servicoAutenticacao.GenerateToken(request)).ToString());
+                return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email)).ToString());
             }
             return BadRequest(new { message = "Usuário não existe" });
         }
@@ -60,7 +60,7 @@ namespace Web.API.Controllers
             {
                 await _servicoUsuario.Adicionar(request);
                 await _context.SaveChangesAsync();
-                return Ok((await _servicoAutenticacao.GenerateToken(request)).ToString());
+                return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email)).ToString());
             }
             return BadRequest(response);
         }

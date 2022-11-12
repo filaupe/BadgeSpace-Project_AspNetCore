@@ -1,45 +1,30 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
 <ul class="navbar-nav">
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity!.IsAuthenticated)
 
     {
         <li class="nav-item perfil">
             @{
+                var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
+                var userimg = User.Claims.ToList()[3].Value;
 
-                var user = User.Identity.IsAuthenticated;
-
-                if (user != null)
-
-                {
-
-                    var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
-
-
-
-                                        <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Login"><img src=@img
-                    style="width:80px; height:80px; border-radius:50px" /></a>
-
-
-                }
+                if (userimg != "" && userimg != null)
+                    img = String.Format("data:image/gif;base64,{0}", userimg);
+                    
+                <a class="nav-link text-dark" asp-controller="Conta" asp-action="Index" >
+                    <img src=@img style="width:60px; height:60px; border-radius:50px" />
+                </a>
             }
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Logout">Logout</a>
-        </li>
-
     }
-
     else
-
     {
         <li class="nav-item">
             <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Register">Registrar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Login">Login</a>
+            <a class="nav-link text-dark" asp-controller="Autenticacao" asp-action="Login">Logar</a>
         </li>
-
     }
 </ul>

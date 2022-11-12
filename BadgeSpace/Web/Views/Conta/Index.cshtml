@@ -1,0 +1,57 @@
+﻿@model Domain.Entidades.Usuario.Usuario
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<h3>@ViewData["Title"]</h3>
+<div class="row">
+    <div class="container-fluid">
+        <form id="profile-form" method="post" enctype="multipart/form-data">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @{
+                        var userimg = User.Claims.ToList()[3].Value;
+                        var img = "http://ethospsicotestes.com.br/images/sem_foto.png";
+                        if (userimg != null && userimg != "")
+                            img = String.Format("data:image/gif;base64,{0}", userimg);
+
+                        <img src='@img' style="width:200px; height:200px;" />
+                    }
+                </div>
+                <div class="col-lg-5">
+                    <div class="d-flex pt-4 mb-3">
+                        <div>
+                            <input type="file" accept="image/png" asp-for="Imagem">
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div>
+                            <button type="submit" class="btn btn-secondary btn-sm" style="text-transform:capitalize;" asp-page-handler="ChangeImage">Trocar foto de perfil</button>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <button type="submit"  class="btn btn-danger btn-sm" asp-page-handler="RemoveImage" style="text-transform: capitalize;">Remover foto de perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating col-md-6" style="margin-top: 1em;">
+                <input asp-for="Nome" class="form-control" disabled />
+                <label asp-for="Nome" class="form-label"></label>
+            </div>
+            <br>
+            <div class="form-floating col-md-6">
+                <input  class="form-control" />
+                <label  class="form-label"></label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="col-md-6">
+                <button id="update-profile-button" type="submit" class="w-100 btn btn-outline-success" style="text-transform: capitalize;">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>

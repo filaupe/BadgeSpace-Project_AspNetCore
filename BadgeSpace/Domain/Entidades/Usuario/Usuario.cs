@@ -45,5 +45,9 @@ namespace Domain.Entidades.Usuario
 
             if (request.Status.HasValue) Status = request.Status.Value;
         }
+        public void AtualizarToken(string token)
+        {
+            Token = token;
+        }
     }
 }

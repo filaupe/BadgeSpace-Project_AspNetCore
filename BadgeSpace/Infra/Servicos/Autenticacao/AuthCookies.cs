@@ -17,6 +17,7 @@ namespace Infra.Servicos.Autenticacao
                     new Claim(ClaimTypes.Sid, request!.Id.ToString()),
                     new Claim(ClaimTypes.Name, request.Nome!),
                     new Claim(ClaimTypes.NameIdentifier, request.CPFouCNPJ!),
+                    new Claim(ClaimTypes.UserData, request.Imagem != null ? Convert.ToBase64String(request.Imagem) : ""),
                     new Claim(ClaimTypes.Role, request.Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO))
                 };
 

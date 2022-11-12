@@ -20,22 +20,22 @@ namespace Infra.Servicos.Autenticacao
             throw new NotImplementedException();
         }
 
-        public async Task<string> GenerateToken(UsuarioRequest request)
+        public async Task<string> GenerateToken(int Id, bool Claim, string Email)
             => await Task.Run(() =>
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtSecret").Value);
 
                 // Configs
-                var isEmpress = request.Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO);
+                var isEmpress = Claim ? nameof(Roles.EMPRESA) : nameof(Roles.USUARIO);
 
                 // Descriptor
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                    {
-                            new Claim(ClaimTypes.Sid, request.Id.ToString()),
-                            new Claim(ClaimTypes.Email, request.Email),
+                            new Claim(ClaimTypes.Sid, Id.ToString()),
+                            new Claim(ClaimTypes.Email, Email),
                             new Claim(ClaimTypes.Role, isEmpress)
                    }),
                     Expires = DateTime.UtcNow.AddDays(30),

@@ -1,10 +1,7 @@
-﻿using Domain.Argumentos.Usuario;
-using Domain.Interfaces.Servicos.Base;
-
-namespace Domain.Interfaces.Servicos.Autenticacao
+﻿namespace Domain.Interfaces.Servicos.Autenticacao
 {
     public interface IServicoAuthJWT
     {
-        Task<string> GenerateToken(UsuarioRequest request);
+        Task<string> GenerateToken(int Id, bool Claim, string Email);
     }
 }

@@ -12,6 +12,7 @@ using Infra.Servicos.Estudante;
 using Infra.Servicos.Autenticacao;
 using Domain.Interfaces.Repositorios.Estudante;
 using Infra.Repositorios.Estudante;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 

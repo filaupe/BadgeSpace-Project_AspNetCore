@@ -13,6 +13,8 @@ namespace Domain.Argumentos.Usuario
         [DisplayName("Email")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Isso não é um Email")]
         public string Email { get; set; }
+        
+        public string NovoEmail { get; set; }
 
         [Required(ErrorMessage = "A área de CPF ou CNPJ é obrigatória")]
         [DisplayName("CPF")]
@@ -26,10 +28,15 @@ namespace Domain.Argumentos.Usuario
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
+        [Compare(nameof(Senha))]
+        public string SenhaAntiga { get; set; }
+
+        public string NovaSenha { get; set; }
+
         [Required(ErrorMessage = "A área Confirmar Senha é obrigatória")]
         [DataType(DataType.Password)]
         [DisplayName("Confirmar Senha")]
-        [Compare("Senha", ErrorMessage = "As senhas não são iguais")]
+        [Compare(nameof(Senha) != null || nameof(Senha)!= "" ? nameof(Senha) : nameof(SenhaAntiga), ErrorMessage = "As senhas não são iguais")]
         public string ConfirmarSenha { get; set; }
 
         [DisplayName("Usuário / Empresa")]

@@ -33,7 +33,7 @@ namespace Web.Controllers
 
         public IActionResult Create() => View();
 
-        public async Task<IActionResult> Index(int skip = 0, int take = 25)
+        public async Task<IActionResult> Index(int skip = 0, int take = 8)
         {
             ViewBag.Pages = Convert.ToInt32(Math.Ceiling(await _context.Estudantes.CountAsync()*1M / take));
             return View(_servicoEstudante.Listar(skip, take));
