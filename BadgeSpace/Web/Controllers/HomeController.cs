@@ -16,13 +16,10 @@ namespace Web.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
         [Authorize(Roles = nameof(Roles.USUARIO))]
-        public IActionResult Dashboard() => View();
+        public IActionResult Dashboard() => View(_context.Estudantes.Where(s => s.CPF == User.Claims.ToList()[2].Value));
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

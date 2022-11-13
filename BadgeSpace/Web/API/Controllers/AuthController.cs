@@ -1,4 +1,5 @@
 ﻿using Domain.Argumentos.Usuario;
+using Domain.Argumentos.Usuario.Requests;
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Usuario;
@@ -9,8 +10,9 @@ using Web.Controllers.Utils;
 
 namespace Web.API.Controllers
 {
-    [Controller]
-    [Route("api/[controller]")]
+    [ApiController]
+    [AllowAnonymous]
+    [Route("api/v1/autenticacao")]
     public class AuthController : ControllerBase
     {
         private readonly IServicoAuthJWT _servicoAutenticacao;
@@ -30,19 +32,18 @@ namespace Web.API.Controllers
         }
 
         [HttpPost("login")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] UsuarioRequest request)
+        public async Task<IActionResult> Login([FromBody] UsuarioLogin request)
         {
-            if (_repositorio.Existe(u => u.Email == request.Email.ToUpper() && u.Senha == request.Senha))
+            var usuario = new UsuarioRequest() { Email = request.Email, Senha = request.Senha };
+            if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper() && u.Senha == request.Senha))
             {
-                request = await _utils.Completar(request, _context);
-                return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email)).ToString());
+                usuario = await _utils.Completar(usuario, _context);
+                return Ok((await _servicoAutenticacao.GenerateToken(usuario.Id, usuario.Claim, usuario.Email, usuario.CPFouCNPJ)).ToString());
             }
             return BadRequest(new { message = "Usuário não existe" });
         }
 
         [HttpPost("registrar")]
-        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UsuarioRequest request)
         {
             var response = new { request.Nome, request.Email, request.CPFouCNPJ, request.Senha, request.ConfirmarSenha };
@@ -60,7 +61,7 @@ namespace Web.API.Controllers
             {
                 await _servicoUsuario.Adicionar(request);
                 await _context.SaveChangesAsync();
-                return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email)).ToString());
+                return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email, request.CPFouCNPJ)).ToString());
             }
             return BadRequest(response);
         }

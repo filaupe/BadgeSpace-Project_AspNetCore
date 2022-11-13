@@ -1,113 +1,126 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Infra;
+using Microsoft.AspNetCore.Authorization;
+using Domain.Recurso.Enums;
+using Microsoft.EntityFrameworkCore;
+using Domain.Interfaces.Servicos.Estudante;
+using Domain.Argumentos.Estudante;
+using AutoMapper;
+using Domain.Interfaces.Repositorios.Estudante;
 
 namespace Web.Extensions.API.Controllers
 {
-    // fazer as áreas se auto validarem
-    [Controller]
-    [Route("api/[controller]")]
+    [ApiController]
+    [Route("api/v1/gerenciamento")]
     public class AlunosController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        public string userData { get => User.Claims.ToArray()[1].Value; }
 
-        public AlunosController(ApplicationDbContext context)
+        [HttpGet("listar/alunos")]
+        [Authorize(Roles = nameof(Roles.EMPRESA))]
+        public async Task<IActionResult> ListarAlunos(
+            [FromServices] ApplicationDbContext context,
+            [FromQuery] int skip = 0, 
+            [FromQuery] int take = 25)
         {
-            _context = context;
-        }
+            var where = context.Estudantes.Where(s => s.Empresa!.CPFouCNPJ == userData);
             
-        //[HttpGet("listar&{email}/{CPF?}/{ID?}")]
-        //[Authorize(Roles = nameof(Roles.EMPRESA))]
-        //public async Task<IActionResult> Listar(string email, string? CPF, int? ID)
-        //{
-        //    if(ID.HasValue && ID != 0)
-        //    {
-        //        var Result = _Method.GetById(_context, ID.Value).Result!;
-        //        return Ok(new { Result.Id, Result.NomeAluno, Result.Codigo, Result.AlunoCPF, Result.Curso });
-        //    }
-        //    return Ok(await _Method.Get(_context.Students, email, CPF!).Select(c => new { c.Id, c.NomeAluno, c.Codigo, c.AlunoCPF, c.Curso }).ToListAsync());
-        //}
+            var total = (await where.CountAsync()).ToString();
+            var estudantes = (await where.AsNoTracking().Skip(skip).Take(take).ToListAsync());
 
-        //[HttpGet("{CPF}/{empresa?}")]
-        //[Authorize(Roles = nameof(Roles.USUARIO))]
-        //public async Task<IActionResult> ListarCertificados(string CPF, string? empresa) => Ok(await _Method.Get(_context.Students, CPF, empresa).ToListAsync());
+            return Ok(new 
+            { 
+                count = total,
+                data = estudantes
+            });
+        }
 
-        //[HttpPost("{empresa}&cadastrar={CPF}")]
-        //[Authorize(Roles = nameof(Roles.USUARIO))]
-        //public async Task<IActionResult> Cadastrar(string CPF, string empresa, [FromBody] StudentModel Student)
-        //{
-        //    var Verify = await VerifyDataAsync(empresa, CPF);
-        //    if (Verify == null)
-        //    {
-        //        Student.AlunoCPF = CPF;
-        //        Student.EmpresaId = empresa;
-        //
-        //        if (Student.Imagem == null)
-        //            return BadRequest(new { message = "Imagem aceita apenas o tipo byte" });
-        //
-        //        _context.Students.Add(Student);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return Created("Aluno", Student);
-        //    }
-        //    return Verify;
-        //}
+        [HttpGet("listar/certificados")]
+        [Authorize(Roles = nameof(Roles.USUARIO))]
+        public async Task<IActionResult> ListarCertificados(
+        [FromServices] ApplicationDbContext context,
+        [FromQuery] int skip = 0,
+        [FromQuery] int take = 25)
+        {
+            var where = context.Estudantes.Where(s => s.CPF == userData);
 
-        //[HttpPut("{empresa}&editar={CPF}")]
-        //[Authorize(Roles = nameof(Roles.EMPRESA))]
-        //public async Task<IActionResult> Editar(string CPF, string empresa, [FromBody] StudentModel NewStudent)
-        //{
-        //    NewStudent.AlunoCPF = CPF;
-        //    NewStudent.EmpresaId = empresa;
-        //
-        //    var OldStudent = await FindStudentIdAsync(NewStudent.Id);
-        //    
-        //    if (OldStudent == null)
-        //        return BadRequest(new { message = "O aluno não existe" });
-        //    if (OldStudent.EmpresaId != NewStudent.EmpresaId)
-        //        return BadRequest(new { message = "EMPRESA incorreta" });
-        //    if (OldStudent.AlunoCPF != NewStudent.AlunoCPF)
-        //        return BadRequest(new { message = "CPF incorreto" });
-        //    if (OldStudent.Imagem != null)
-        //        return BadRequest(new { message = "Imagem aceita apenas o tipo byte" });
-        //
-        //    _context.Students.Update(UserCaseExtension.OldToNewRegister(OldStudent, NewStudent));
-        //    await _context.SaveChangesAsync();
-        //    return Ok(NewStudent);
-        //}
+            var total = (await where.CountAsync()).ToString();
+            var certificados = (await where.AsNoTracking().Skip(skip).Take(take).ToListAsync());
 
-        //[HttpDelete("{empresa}&deletar={CPF}/{ID?}")]
-        //[Authorize(Roles = nameof(Roles.EMPRESS))]
-        //public async Task<IActionResult> Remover(string empresa, string CPF, int? ID)
-        //{
-        //    var Verify = await VerifyDataAsync(empresa, CPF);
-        //    if (Verify == null)
-        //    {
-        //        var student = ID.HasValue && ID != 0
-        //        ? await FindStudentIdAsync(ID.Value)
-        //        : await _context.Students.FirstOrDefaultAsync(c => c.AlunoCPF == CPF && c.EmpresaId == empresa);
-        //        if (student == null)
-        //            return NotFound(new { message = "Aluno Inválido." });
-        //
-        //        _context.Students.Remove(student);
-        //        await _context.SaveChangesAsync();
-        //
-        //        return Ok(new { message = "Aluno Deletado." });
-        //    }
-        //    return Verify;
-        //}
+            return Ok(new
+            {
+                count = total,
+                data = certificados
+            });
+        }
 
-        //#region Private Methods
-        //private async Task<IActionResult?> VerifyDataAsync(string empresa, string CPF)
-        //{
-        //    var confirmE = await _context.Users.FirstOrDefaultAsync(c => c.Email == empresa);
-        //    var confirmC = await _context.Users.FirstOrDefaultAsync(c => c.CPF_CNPJ == CPF);
-        //
-        //    if (confirmC == null || confirmE == null)
-        //        return NotFound(new { message = "EMPRESA ou CPF não encontrados no sistema" });
-        //    return null;
-        //}
-        //private async Task<StudentModel?> FindStudentIdAsync(int id)
-        //    => await _context.Students.FirstOrDefaultAsync(c => c.Id == id);
-        //#endregion
+        [HttpPost("cadastrar")]
+        [Authorize(Roles = nameof(Roles.EMPRESA))]
+        public async Task<IActionResult> CadastrarAluno(
+            [FromServices] ApplicationDbContext context,
+            [FromServices] IServicoEstudante service,
+            [FromForm] IFormFile Imagem,
+            [FromForm] EstudanteRequest request)
+        {
+            request.Empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
+
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                request.Imagem = memoryStream.ToArray();
+            }
+            if (ModelState.IsValid)
+            {
+                var response = await service.Adicionar(request);
+                await context.SaveChangesAsync();
+
+                return Created("Aluno", response);
+            }
+            return BadRequest(request);
+        }
+
+        [HttpPut("editar&id={id:int}")]
+        [Authorize(Roles = nameof(Roles.EMPRESA))]
+        public async Task<IActionResult> EditarAluno(
+            [FromServices] ApplicationDbContext context,
+            [FromServices] IServicoEstudante service,
+            [FromServices] IRepositorioEstudante repositorio,
+            [FromRoute] int id,
+            [FromForm] IFormFile Imagem,
+            [FromForm] EstudanteRequest request)
+        {
+            request.Empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
+
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                request.Imagem = memoryStream.ToArray();
+            }
+            if (ModelState.IsValid)
+            {
+                var response = service.Alterar(repositorio.OrdenarPorId(id), request);
+                await context.SaveChangesAsync();
+                return Ok(response);
+            }
+            return BadRequest(request);
+        }
+
+        [HttpDelete("deletar&id={id:int}")]
+        [Authorize(Roles = nameof(Roles.EMPRESA))]
+        public async Task<IActionResult> DeletarAluno(
+            [FromServices] ApplicationDbContext context,
+            [FromServices] IRepositorioEstudante repositorio,
+            [FromRoute] int id)
+        {
+            if (repositorio.Existe(u => u.Id == id))
+            {
+                repositorio.Remover((await context.Estudantes.FindAsync(id))!);
+                await context.SaveChangesAsync();
+                return Ok("Deletado");
+            }
+            return BadRequest($"O id:{id} não existe");
+        }
     }
 }

@@ -49,16 +49,16 @@ namespace Domain.Entidades.Estudante
 
         public void Atualizar(EstudanteRequest request)
         {
-            Nome = request.Nome;
-            CPF = request.CPF;
-            Codigo = request.Codigo;
-            Curso = request.Curso;
-            Imagem = request.Imagem;
-            Tipo = request.Tipo;
-            Nivel = request.Nivel;
-            Tempo = request.Tempo;
-            Descricao = request.Descricao;
-            Empresa = request.Empresa;
+            Nome ??= request.Nome;
+            CPF ??= request.CPF;
+            Codigo ??= request.Codigo;
+            Curso ??= request.Curso;
+            Imagem ??= request.Imagem;
+            Tipo ??= request.Tipo;
+            Nivel ??= request.Nivel;
+            Tempo ??= request.Tempo;
+            Descricao ??= request.Descricao;
+            Empresa ??= request.Empresa;
 
             if (request.Status.HasValue) Status = request.Status.Value;
         }

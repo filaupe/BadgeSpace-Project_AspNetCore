@@ -24,10 +24,7 @@ namespace Domain.Argumentos.Estudante
 
         public string Descricao { get; set; }
 
-        [ForeignKey("Empresa")]
-        public int EmpresaId { get => this.Empresa!.Id; }
-
-        public Domain.Entidades.Usuario.Usuario? Empresa { get; set; }
+        public int EmpresaId { get; set; }
 
         public static explicit operator EstudanteResponse(Domain.Entidades.Estudante.Estudante entidade)
         {
@@ -43,7 +40,7 @@ namespace Domain.Argumentos.Estudante
                 Tempo = entidade.Tempo,
                 Imagem = entidade.Imagem,
                 Descricao = entidade.Descricao,
-                Empresa = entidade.Empresa,
+                EmpresaId = entidade.EmpresaId,
             };
         }
     }

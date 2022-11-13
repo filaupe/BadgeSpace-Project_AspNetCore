@@ -20,7 +20,7 @@ namespace Infra.Servicos.Autenticacao
             throw new NotImplementedException();
         }
 
-        public async Task<string> GenerateToken(int Id, bool Claim, string Email)
+        public async Task<string> GenerateToken(int Id, bool Claim, string Email, string CPFouCNPJ)
             => await Task.Run(() =>
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
@@ -35,6 +35,7 @@ namespace Infra.Servicos.Autenticacao
                     Subject = new ClaimsIdentity(new Claim[]
                    {
                             new Claim(ClaimTypes.Sid, Id.ToString()),
+                            new Claim(ClaimTypes.Name, CPFouCNPJ),
                             new Claim(ClaimTypes.Email, Email),
                             new Claim(ClaimTypes.Role, isEmpress)
                    }),

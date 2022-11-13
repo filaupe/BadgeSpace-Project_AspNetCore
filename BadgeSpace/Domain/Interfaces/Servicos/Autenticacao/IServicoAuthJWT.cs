@@ -2,6 +2,6 @@
 {
     public interface IServicoAuthJWT
     {
-        Task<string> GenerateToken(int Id, bool Claim, string Email);
+        Task<string> GenerateToken(int Id, bool Claim, string Email, string CPFouCNPJ);
     }
 }

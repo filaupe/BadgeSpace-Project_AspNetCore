@@ -42,6 +42,7 @@ namespace Domain.Argumentos.Estudante
                 Tempo = entidade.Tempo,
                 Imagem = entidade.Imagem,
                 Descricao = entidade.Descricao,
+                EmpresaId = entidade.EmpresaId,
                 Empresa = entidade.Empresa,
             };
         }

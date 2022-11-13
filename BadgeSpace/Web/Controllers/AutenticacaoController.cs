@@ -1,4 +1,5 @@
 ﻿using Domain.Argumentos.Usuario;
+using Domain.Argumentos.Usuario.Requests;
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Interfaces.Servicos.Usuario;
@@ -37,18 +38,15 @@ namespace Web.Controllers
 
         [HttpPost]
         [ActionName("Login")]
-        public async Task<IActionResult> Login(UsuarioRequest request)
-        { 
+        public async Task<IActionResult> Login(UsuarioLogin request)
+        {
+            var usuario = new UsuarioRequest() { Email = request.Email, Senha = request.Senha };
             if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper() && u.Senha == request.Senha))
             {
-                request = await _utils.Completar(request, _context);
-                await _servicoAutenticacao.GenerateCookies(request, HttpContext);
+                usuario = await _utils.Completar(usuario, _context);
+                await _servicoAutenticacao.GenerateCookies(usuario, HttpContext);
                 return RedirectToAction("Index", "Home");
             }
-            if (!_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper()))
-                ViewBag.errorMessageEmail = "Email incorreto";
-            if (!_repositorio.Existe(u => u.Senha == request.Senha))
-                ViewBag.errorMessageSenha = "Senha incorreta";
             return View(request);
         }
 
@@ -56,16 +54,6 @@ namespace Web.Controllers
         [ActionName("Register")]
         public async Task<IActionResult> Register(UsuarioRequest request)
         {
-            if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper()))
-            {
-                ViewBag.errorMessageRegisterEmail = "Ja existe uma conta com esse Email";
-                return View(request);
-            }
-            if (_repositorio.Existe(u => u.CPFouCNPJ == request.CPFouCNPJ))
-            {
-                ViewBag.errorMessageRegisterCPFouCNPJ = "Ja existe uma conta com esse CPF ou CNPJ";
-                return View(request);
-            }
             if (ModelState.IsValid)
             {
                 await _servicoUsuario.Adicionar(request);

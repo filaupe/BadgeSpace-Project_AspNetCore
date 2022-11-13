@@ -36,7 +36,14 @@ namespace Web.Controllers
         public async Task<IActionResult> Index(int skip = 0, int take = 8)
         {
             ViewBag.Pages = Convert.ToInt32(Math.Ceiling(await _context.Estudantes.CountAsync()*1M / take));
-            return View(_servicoEstudante.Listar(skip, take));
+            var lista = await _context.Estudantes
+                .Where(s => s.Empresa!.CPFouCNPJ == User.Claims.ToList()[2].Value)
+                .AsNoTracking()
+                .Skip(skip * take)
+                .Take(take)
+                .ToListAsync();
+
+            return View(lista);
         }
 
         public IActionResult Delete(int id) => View(_servicoEstudante.Selecionar(id));

@@ -1,18 +1,13 @@
-﻿using Domain.Argumentos.Base;
+﻿using Domain.Argumentos.Usuario.Requests;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Argumentos.Usuario
 {
-    public class UsuarioRequest : ArgumentosBase
+    public class UsuarioRequest : UsuarioLogin
     {
         [DisplayName("Nome de Usuário")]
         public string? Nome { get; set; }
-
-        [Required(ErrorMessage = "A área Email é obrigatória")]
-        [DisplayName("Email")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Isso não é um Email")]
-        public string Email { get; set; }
 
         public string? NormalizedEmail { get; set; }
 
@@ -22,11 +17,6 @@ namespace Domain.Argumentos.Usuario
         public string CPFouCNPJ { get; set; }
 
         public byte[]? Imagem { get; set; }
-
-        [Required(ErrorMessage = "A área Senha é obrigatória")]
-        [DisplayName("Senha")]
-        [DataType(DataType.Password)]
-        public string Senha { get; set; }
 
         [Required(ErrorMessage = "A área Confirmar Senha é obrigatória")]
         [DataType(DataType.Password)]

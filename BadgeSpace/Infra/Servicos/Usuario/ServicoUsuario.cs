@@ -23,7 +23,7 @@ namespace Infra.Servicos.Usuario
         {
             request.Nome ??= request.Email![0..request.Email!.IndexOf("@")];
             request.NormalizedEmail = request.Email.ToUpper();
-            request.Token = (await _authJWT.GenerateToken(request.Id, request.Claim, request.Email)).ToString();
+            request.Token = (await _authJWT.GenerateToken(request.Id, request.Claim, request.Email, request.CPFouCNPJ)).ToString();
 
             var entidade = new Domain.Entidades.Usuario.Usuario(request);
 

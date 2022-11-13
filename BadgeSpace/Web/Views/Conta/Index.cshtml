@@ -9,7 +9,6 @@
         <form id="profile-form" method="post" enctype="multipart/form-data">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     @{
                         var userimg = User.Claims.ToList()[3].Value;
                         var img = "http://ethospsicotestes.com.br/images/sem_foto.png";
@@ -41,16 +40,6 @@
             <div class="form-floating col-md-6" style="margin-top: 1em;">
                 <input asp-for="Nome" class="form-control" disabled />
                 <label asp-for="Nome" class="form-label"></label>
-            </div>
-            <br>
-            <div class="form-floating col-md-6">
-                <input  class="form-control" />
-                <label  class="form-label"></label>
-                <span  class="text-danger"></span>
-            </div>
-            <br>
-            <div class="col-md-6">
-                <button id="update-profile-button" type="submit" class="w-100 btn btn-outline-success" style="text-transform: capitalize;">Salvar</button>
             </div>
         </form>
     </div>

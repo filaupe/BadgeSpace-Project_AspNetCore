@@ -40,7 +40,7 @@ namespace Web.Controllers
 
         public async Task<IActionResult> ChangeToken()
         {
-            var token = (await _authJWT.GenerateToken(UserCookie.Id, UserCookie.Claim, UserCookie.Email)).ToString();
+            var token = (await _authJWT.GenerateToken(UserCookie.Id, UserCookie.Claim, UserCookie.Email, UserCookie.CPFouCNPJ)).ToString();
             var usuarioLogin = new UsuarioRequest() { Email = UserCookie.Email, Senha = UserCookie.Senha };
             var usuarioCompleto = _utils.Completar(usuarioLogin, _context).Result;
             usuarioCompleto.Token = token;
