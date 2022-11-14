@@ -81,8 +81,8 @@
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/Kendy619" target="_blank">
-        <img style="border-radius:100px;" src="https://media-exp1.licdn.com/dms/image/D4D03AQHVKX4vxLAnvg/profile-displayphoto-shrink_800_800/0/1664719241278?e=2147483647&v=beta&t=2QsB4nPdA5MdnU0GPs__WyCdwbaxDJQU5JGwpKOph6U" target="_blank"  width="100px;" alt="Foto de Kendy Ferreira no GitHub"/><br>
+      <a href="https://github.com/J3ipy" target="_blank">
+        <img style="border-radius:100px;" src="https://github.com/J3ipy.png" target="_blank"  width="100px;" alt="Foto de João Pedro no GitHub"/><br>
         <sub>
           <b>JOÃO PEDRO</b>
           <p>Desenvolvedor Front-End</p>
@@ -90,8 +90,8 @@
       </a>
     </td>
     <td align="center" >
-      <a href="https://github.com/MariaMilena" target="_blank">
-        <img style="border-radius:100px;" src="https://i1.sndcdn.com/artworks-sUZuSm54AvHM5DzC-sRJf4A-t500x500.jpg" target="_blank"  width="100px;" alt="Foto de Maria Milena no GitHub"/><br>
+      <a href="https://github.com/MulinhaGPlays" target="_blank">
+        <img style="border-radius:100px;" src="https://github.com/MulinhaGPlays.png" target="_blank"  width="100px;" alt="Foto de Luis Felipe no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
           <p>Desenvolvedor Back-End</p>
@@ -109,9 +109,9 @@
     </td>
     <td align="center">
       <a href="https://github.com/XxthiagoboyXx" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/72053163?v=4" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201755699-f2119c16-1d7f-4498-af40-36eb21ff505e.JPG" width="60px;"         alt="Foto de Heidy Larissa no Github"/><br>
         <sub>
-          <b>HEIDY LARYSSA</b>
+          <b>HEIDY LARISSA</b>
           <p>Gerenciamento do projeto</p>
         </sub>
       </a>
@@ -121,8 +121,8 @@
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://github.com/marcosdosea" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/7799935?v=4" target="_blank" width="100px;" alt="Foto de Marcos Dósea no GitHub"/><br>
+      <a href="https://github.com/regymatrix" target="_blank">
+        <img style="border-radius:100px;" src="https://github.com/regymatrix.png" target="_blank" width="100px;" alt="Foto de Reginaldo no GitHub"/><br>
         <sub>
           <b>REGINALDO SANTANA</b>
           <p>Docente</p>
