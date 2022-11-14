@@ -6,6 +6,7 @@
 
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![C#](https://img.shields.io/badge/Csharp-%23007ACC.svg?style=for-the-badge&logo=Csharp&logoColor=white)
+![JS](https://img.shields.io/badge/Javascript-%23007ACC.svg?style=for-the-badge&logo=javascript&logoColor=yellow)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
