@@ -19,7 +19,7 @@
   <!-- Badges-->
   [![Made by Equipe BadgeSpace](https://img.shields.io/badge/Made%20by-BadgeSpace-6949FF?logo=github&labelColor=1C1F2A)](https://github.com/J3ipy)
   [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-6949FF?labelColor=1C1F2A)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/pulls)
-  [![Last commit](https://img.shields.io/github/last-commit/darrow12/AluraComics?color=6949FF&labelColor=1C1F2A&label=Last%20commit)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/commits/main)
+  [![Last commit](https://img.shields.io/github/last-commit/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=Last%20commit)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/commits/main)
   ![Repo size](https://img.shields.io/github/repo-size/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=Repo%20size)
   [![License: MIT](https://img.shields.io/github/license/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=License)](https://github.com/darrow12/AluraComics/blob/main/LICENSE)  
 </div>
