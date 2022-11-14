@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Infra;
 using Microsoft.AspNetCore.Authorization;
-using Domain.Recurso.Enums;
+using Domain.Recursos.Enums;
 using Microsoft.EntityFrameworkCore;
 using Domain.Interfaces.Servicos.Estudante;
 using Domain.Argumentos.Estudante;

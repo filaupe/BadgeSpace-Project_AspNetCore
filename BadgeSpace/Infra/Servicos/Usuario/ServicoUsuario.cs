@@ -35,10 +35,11 @@ namespace Infra.Servicos.Usuario
             throw new NotImplementedException();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        public bool VerificarEmail(string Email = "") => _repositorio.Existe(e => e.NormalizedEmail == Email.ToUpper());
+        
+        public bool VerificarCPFouCNPJ(string CPFouCNPJ = "") => _repositorio.Existe(e => e.CPFouCNPJ == CPFouCNPJ);
+        
+        public bool VerificarSenha(string Senha = "") => _repositorio.Existe(e => e.Senha == Senha);
 
         public IEnumerable<UsuarioResponse> Listar()
         {

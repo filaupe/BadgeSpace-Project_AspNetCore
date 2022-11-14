@@ -1,27 +1,38 @@
 ﻿using Domain.Argumentos.Base;
 using Domain.Argumentos.Usuario;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Argumentos.Estudante
 {
     public class EstudanteRequest : ArgumentosBase
     {
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string CPF { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
+        [Remote(action:"VerificarCodigo", controller:"Validation")]
         public string Codigo { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Curso { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Tipo { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Nivel { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Tempo { get; set; }
 
         public byte[]? Imagem { get; set; }
 
+        [Required(ErrorMessage = "Essa área é obrigatória")]
         public string Descricao { get; set; }
         
         [ForeignKey("Empresa")]

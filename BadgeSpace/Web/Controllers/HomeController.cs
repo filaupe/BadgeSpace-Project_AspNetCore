@@ -1,4 +1,4 @@
-﻿using Domain.Recurso.Enums;
+﻿using Domain.Recursos.Enums;
 using Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +16,7 @@ namespace Web.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         public IActionResult Index() => View();
 
         [Authorize(Roles = nameof(Roles.USUARIO))]

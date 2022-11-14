@@ -35,6 +35,8 @@ namespace Infra.Servicos.Estudante
             return _mapper.Map<EstudanteResponse>(old);
         }
 
+        public bool VerificarCodigo(string Codigo = "") => _repositorio.Existe(c => c.Codigo == Codigo);
+
         public IEnumerable<Domain.Entidades.Estudante.Estudante> Listar(int skip, int take) => _context.Estudantes.AsNoTracking().Skip(skip * take).Take(take).ToList();
 
         public IEnumerable<EstudanteResponse> ListarAtivos() => _mapper.Map<List<EstudanteResponse>>(_context.Estudantes);

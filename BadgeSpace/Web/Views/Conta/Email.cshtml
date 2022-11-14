@@ -13,12 +13,16 @@
             </div>
             <br>
             <div class="form-floating">
-                <input asp-for="NovoEmail" class="form-control" autocomplete="email" />
-                <label asp-for="NovoEmail" class="form-label"></label>
-                <span asp-validation-for="NovoEmail" class="text-danger"></span>
+                <input asp-for="Email" class="form-control" autocomplete="email" />
+                <label asp-for="Email" class="form-label"></label>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <br>
             <button id="change-email-button" type="submit" class="w-100 btn btn-lg btn-primary" style="text-transform: capitalize;">Trocar de email</button>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
