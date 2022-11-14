@@ -1,4 +1,5 @@
-﻿using Domain.Argumentos.Usuario;
+﻿using AutoMapper;
+using Domain.Argumentos.Usuario;
 using Domain.Argumentos.Usuario.Requests;
 using Domain.Interfaces.Repositorios.Usuario;
 using Domain.Interfaces.Servicos.Autenticacao;
@@ -17,15 +18,18 @@ namespace Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IRepositorioUsuario _repositorio;
         private readonly ControllerUtils _utils;
+        private readonly IMapper _mapper;
 
         public AutenticacaoController(IServicoUsuario servicoUsuario, ApplicationDbContext context,
-            IRepositorioUsuario repositorio, IServicoAuthCookies authCookies, ControllerUtils utils)
+            IRepositorioUsuario repositorio, IServicoAuthCookies authCookies, ControllerUtils utils,
+            IMapper mapper)
         {
             _servicoUsuario = servicoUsuario;
             _context = context;
             _repositorio = repositorio;
             _servicoAutenticacao = authCookies;
             _utils = utils;
+            _mapper = mapper;
         }
 
         public IActionResult Login() 
@@ -58,7 +62,7 @@ namespace Web.Controllers
             {
                 await _servicoUsuario.Adicionar(request);
                 await _context.SaveChangesAsync();
-                await Login(request);
+                await Login(new UsuarioLogin() { Email = request.Email, Senha = request.Senha });
                 return RedirectToAction("Index", "Home");
             }
             return View(request);

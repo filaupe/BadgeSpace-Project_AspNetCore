@@ -8,6 +8,7 @@ namespace Domain.Interfaces.Servicos.Estudante
         Task<EstudanteResponse> Adicionar(EstudanteRequest request);
         EstudanteResponse Alterar(Domain.Entidades.Estudante.Estudante old, EstudanteRequest request);
         EstudanteResponse Selecionar(int id);
+        bool VerificarCodigo(string Codigo);
         IEnumerable<Domain.Entidades.Estudante.Estudante> Listar(int skip, int take);
         IEnumerable<EstudanteResponse> ListarAtivos();
     }

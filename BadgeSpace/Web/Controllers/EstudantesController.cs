@@ -3,7 +3,7 @@ using Domain.Argumentos.Estudante;
 using Domain.Argumentos.Usuario;
 using Domain.Interfaces.Repositorios.Estudante;
 using Domain.Interfaces.Servicos.Estudante;
-using Domain.Recurso.Enums;
+using Domain.Recursos.Enums;
 using Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,23 +31,24 @@ namespace Web.Controllers
             _repositorio = repositorio;
             _utils = utils;
             _mapper = mapper;
-        } 
+        }
 
-        public async Task<IActionResult> Index(int skip = 0, int take = 8)
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> Index(string searchString = "", int skip = 0, int take = 8)
         {
-            ViewBag.Pages = Convert.ToInt32(Math.Ceiling(await _context.Estudantes.CountAsync()*1M / take));
-            var lista = await _context.Estudantes
-                .Where(s => s.Empresa!.CPFouCNPJ == User.Claims.ToList()[2].Value)
-                .AsNoTracking()
-                .Skip(skip * take)
-                .Take(take)
-                .ToListAsync();
+            var listaPorUsuario = _context.Estudantes.Where(s => s.Empresa!.CPFouCNPJ == User.Claims.ToList()[2].Value);
 
-            return View(lista);
+            ViewBag.Pages = Convert.ToInt32(Math.Ceiling(await listaPorUsuario.CountAsync()*1M / take));
+
+            if (!String.IsNullOrEmpty(searchString))
+                listaPorUsuario = listaPorUsuario.Where(s => s.CPF!.Contains(searchString));
+
+            return View(await listaPorUsuario.AsNoTracking().Skip(skip * take).Take(take).ToListAsync());
         }
 
         public IActionResult Delete(int id) => View(_servicoEstudante.Selecionar(id));
 
+        [AllowAnonymous]
         public IActionResult Details(int id) => View(_servicoEstudante.Selecionar(id));
 
         public async Task<IActionResult> Edit(int id) => View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.FindAsync(id)));

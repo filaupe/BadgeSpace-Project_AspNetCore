@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Domain.Interfaces.Servicos.Autenticacao;
 using Domain.Argumentos.Usuario;
-using Domain.Recurso.Enums;
+using Domain.Recursos.Enums;
 
 namespace Infra.Servicos.Autenticacao
 {

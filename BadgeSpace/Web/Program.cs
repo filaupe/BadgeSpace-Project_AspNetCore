@@ -13,6 +13,8 @@ using Infra.Servicos.Autenticacao;
 using Domain.Interfaces.Repositorios.Estudante;
 using Infra.Repositorios.Estudante;
 using Microsoft.AspNetCore.Identity;
+using Infra.Recursos.Validacao;
+using Web.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +33,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             builder.Configuration.GetConnectionString("DefaultConnection"),
             x => x.MigrationsAssembly("Infra")));
 
-
 builder.Services.AddScoped<IServicoUsuario, ServicoUsuario>();
 builder.Services.AddScoped<IServicoEstudante, ServicoEstudante>();
 
@@ -42,6 +43,7 @@ builder.Services.AddScoped<IServicoAuthJWT, AuthJWT>();
 builder.Services.AddScoped<IServicoAuthCookies, AuthCookies>();
 
 builder.Services.AddScoped<ControllerUtils>();
+builder.Services.AddScoped<Validation>();
 
 //API
 builder.Services.AddEndpointsApiExplorer();

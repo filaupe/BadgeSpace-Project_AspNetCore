@@ -41,13 +41,13 @@
                                 <div class="form-floating">
                                     <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
                                     <label asp-for="Email"></label>
-                                    <span asp-validation-for="Email" class="text-danger">@ViewBag.errorMessageRegisterEmail</span>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
                                     <input asp-for="CPFouCNPJ" class="form-control" autocomplete="username" id="CPF" maxlength="14" aria-required="true" />
                                     <label asp-for="CPFouCNPJ" id="labelcpf"></label>
-                                    <span asp-validation-for="CPFouCNPJ" class="text-danger">@ViewBag.errorMessageRegisterCPFouCNPJ</span>
+                                    <span asp-validation-for="CPFouCNPJ" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
@@ -77,4 +77,9 @@
         <!-- Jumbotron -->
     </section>
 </body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
 </html>

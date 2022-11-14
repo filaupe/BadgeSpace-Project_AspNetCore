@@ -18,7 +18,7 @@ namespace Web.Controllers
         private readonly IMapper _mapper;
         private readonly ControllerUtils _utils;
 
-        private Domain.Entidades.Usuario.Usuario UserCookie { get => Task.Run(async () => await _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)).Result!; }
+        public Domain.Entidades.Usuario.Usuario UserCookie { get => Task.Run(async () => await _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)).Result!; }
 
         public ContaController(ApplicationDbContext context, IServicoAuthJWT authJWT, IServicoUsuario servicoUsuario,
             ControllerUtils utils, IMapper mapper)
@@ -63,11 +63,26 @@ namespace Web.Controllers
         {
             var usuarioLogin = new UsuarioRequest() { Email = UserCookie.Email, Senha = UserCookie.Senha };
             var usuarioCompleto = _utils.Completar(usuarioLogin, _context).Result;
-            usuarioCompleto.Email = request.NovoEmail;
-            usuarioCompleto.NormalizedEmail = request.NovoEmail.ToUpper();
+            usuarioCompleto.Email = request.Email;
+            usuarioCompleto.NormalizedEmail = request.Email.ToUpper();
             UserCookie.Atualizar(usuarioCompleto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Email));
+        }
+
+        public async Task<IActionResult> ChangeImage(IFormFile Imagem)
+        {
+            var usuarioLogin = new UsuarioRequest() { Email = UserCookie.Email, Senha = UserCookie.Senha };
+            var usuarioCompleto = _utils.Completar(usuarioLogin, _context).Result;
+            if (Imagem != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Imagem.CopyToAsync(memoryStream);
+                usuarioCompleto.Imagem = memoryStream.ToArray();
+            }
+            UserCookie.Atualizar(usuarioCompleto);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

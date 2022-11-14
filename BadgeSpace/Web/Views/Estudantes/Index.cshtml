@@ -8,9 +8,19 @@
 <h1>Sistema - BadgeSpace</h1>
 <hr />
 
-<div class="container text-end">
-    <a class="btn btn-primary btn-sm" asp-action="Create" style="text-transform: capitalize;">Adicionar um Novo Badge</a>
+<div class="col d-flex justify-content-center align-items-center">
+    <div class="container text-start">
+        <a class="btn btn-primary btn-sm" asp-action="Create" style="text-transform: capitalize;">Adicionar um Novo Badge</a>
+    </div>
+    <br />
+    <form class="container text-end" asp-action="Index">
+        <p>
+            CPF: <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
 </div>
+
 <br>
    <div class="row gap-2 justify-content-start container-fluid">
     <table class="table">

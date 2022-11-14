@@ -1,16 +1,13 @@
-﻿@using Microsoft.AspNetCore.Identity
-
+﻿@using Infra
+@inject  ApplicationDbContext context
 <ul class="navbar-nav">
     @if (User.Identity!.IsAuthenticated)
 
     {
         <li class="nav-item perfil">
             @{
-                var img = "https://img.icons8.com/windows/96/000000/user-male-circle.png";
-                var userimg = User.Claims.ToList()[3].Value;
-
-                if (userimg != "" && userimg != null)
-                    img = String.Format("data:image/gif;base64,{0}", userimg);
+                var usuario = context.Usuarios.FirstOrDefault(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;
+                var img = usuario.Imagem != null ? String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(usuario.Imagem!)) : "https://img.icons8.com/windows/96/000000/user-male-circle.png";
                     
                 <a class="nav-link text-dark" asp-controller="Conta" asp-action="Index" >
                     <img src=@img style="width:60px; height:60px; border-radius:50px" />
