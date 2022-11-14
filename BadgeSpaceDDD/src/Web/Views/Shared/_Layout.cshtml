@@ -2,7 +2,7 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/BadgeSpace.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/normalize.css">
     
     
@@ -76,7 +77,7 @@
         <div class="bg-gray-200">
             <div>
                 <p class="text-gray-500 text-sm text-center sm:text-left">
-                    © 2022 BadgeSpace - <a href="#" class="text-gray-600" target="_blank" rel="noopener noreferrer">Twitter</a> • Todos os direitos reservados
+                    © 2022 BadgeSpace • Todos os direitos reservados
                 </p>
                 <div class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-right text-center text-gray-500">
                     <p class="text-sm">Feito com ❤️ pela <b>equipe BadgeSpace</b></p>
@@ -86,7 +87,10 @@
     </footer>
 
     
-    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

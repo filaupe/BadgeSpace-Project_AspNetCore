@@ -13,7 +13,7 @@
     --transition: all 0.5s ease;
 }
 
-/* RESET & HELPERS */
+/* RESETAR & HELPERS */
 body {
     font-family: var(--font-base);
     line-height: 1.7;
@@ -67,7 +67,6 @@ img {
 /* IMAGEM ZOOM */
 .image-zoom {
     position: relative;
-    /* overflow: hidden; */
 }
 
 .image-zoom-wrapper {
@@ -160,8 +159,8 @@ img {
     right: 10px;
     border-radius: 50%;
     cursor: pointer;
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     background: #fff;
     border: 3px solid #4e57d4;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -171,8 +170,8 @@ img {
 }
   
 .go-top-btn img {
-    height: 32px;
-    width: 32px;
+    height: 23px;
+    width: 23px;
 }
 
 

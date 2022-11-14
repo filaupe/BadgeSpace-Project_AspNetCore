@@ -66,3 +66,18 @@ function smoothScrollTo(endX, endY, duration) {
     window.scroll(newX, newY);
   }, 1000 / 60);
 }
+
+
+//Animação do sistema
+
+
+AOS.init({
+  offset: 120, 
+  delay: 0, 
+  duration: 900, 
+  easing: 'ease', 
+  once: false, 
+  mirror: false, 
+  anchorPlacement: 'top-bottom', 
+
+});
