@@ -64,7 +64,7 @@
 <br><br>
 
 
-<h2 id="solucao"> Um pouco sobre a nossa solução </h2>
+<h2 id="solucao"> :rocket: Um pouco sobre a nossa solução </h2>
 
    Após a realização de um curso, um usúario recebeu sua badge digital, entretanto não possui local para a empresa hospedar, pensando nisso, desenvolvemos o BadgeSpace, uma plataforma rápida, segura e confiável, onde conseguirá armazenar seus queridos badges, e tambem compartilhar nas suas redes sociais, o seu marketing boca-a-boca nunca ficou tão simples como agora.
 
@@ -77,7 +77,7 @@
 <br><br>
 
 
-## :sparkles: Demo
+## :sparkles: Sistema
 Quer ver uma demo do projeto já pronto? Ele já está no ar!
 
 Clique no link para ver: link do sistema hospedado aqui
@@ -111,7 +111,7 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://github.com/J3ipy.png" target="_blank"  width="100px;" alt="Foto de João Pedro no GitHub"/><br>
         <sub>
           <b>JOÃO PEDRO</b>
-          <p>Desenvolvedor Front-End</p>
+          <p>Desenvolvedor</p>
         </sub>
       </a>
     </td>
@@ -120,7 +120,7 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://github.com/MulinhaGPlays.png" target="_blank"  width="100px;" alt="Foto de Luis Felipe no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
-          <p>Desenvolvedor Back-End</p>
+          <p>Desenvolvedor</p>
         </sub>
       </a>
     </td>
@@ -138,7 +138,7 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201755699-f2119c16-1d7f-4498-af40-36eb21ff505e.JPG" width="60px;"         alt="Foto de Heidy Larissa no Github"/><br>
         <sub>
           <b>HEIDY LARISSA</b>
-          <p>Gerenciamento do projeto</p>
+          <p>Designer</p>
         </sub>
       </a>
     </td>
