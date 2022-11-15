@@ -1,9 +1,9 @@
-﻿using Domain.Argumentos.Usuario;
-using Domain.Argumentos.Usuario.Requests;
-using Domain.Interfaces.Repositorios.Usuario;
-using Domain.Interfaces.Servicos.Autenticacao;
-using Domain.Interfaces.Servicos.Usuario;
-using Infra;
+﻿using Domain_Driven_Design.Domain.Argumentos.Usuario;
+using Domain_Driven_Design.Domain.Argumentos.Usuario.Requests;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Usuario;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Usuario;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Utils;
@@ -35,12 +35,12 @@ namespace Web.API.Controllers
         public async Task<IActionResult> Login([FromBody] UsuarioLogin request)
         {
             var usuario = new UsuarioRequest() { Email = request.Email, Senha = request.Senha };
-            if (ModelState.IsValid)
+            if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper() && u.Senha == request.Senha))
             {
                 usuario = await _utils.Completar(usuario, _context);
                 return Ok((await _servicoAutenticacao.GenerateToken(usuario.Id, usuario.Claim, usuario.Email, usuario.CPFouCNPJ)).ToString());
             }
-            return BadRequest(ModelState);
+            return BadRequest("Credênciais incorretas");
         }
 
         [HttpPost("registrar")]

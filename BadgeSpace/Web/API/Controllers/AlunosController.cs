@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Infra;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Authorization;
-using Domain.Recursos.Enums;
+using Domain_Driven_Design.Domain.Recursos.Enums;
 using Microsoft.EntityFrameworkCore;
-using Domain.Interfaces.Servicos.Estudante;
-using Domain.Argumentos.Estudante;
-using Domain.Interfaces.Repositorios.Estudante;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Estudante;
+using Domain_Driven_Design.Domain.Argumentos.Estudante;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Estudante;
 
 namespace Web.Extensions.API.Controllers
 {
@@ -89,7 +89,9 @@ namespace Web.Extensions.API.Controllers
             [FromForm] IFormFile Imagem,
             [FromForm] EstudanteRequest request)
         {
-            request.Empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
+            var aluno = await context.Estudantes.FindAsync(id);
+            var empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
+            request.Empresa = empresa;
 
             if (Imagem != null)
             {
@@ -99,9 +101,13 @@ namespace Web.Extensions.API.Controllers
             }
             if (ModelState.IsValid)
             {
-                var response = service.Alterar(repositorio.OrdenarPorId(id), request);
-                await context.SaveChangesAsync();
-                return Ok(response);
+                if (aluno!.EmpresaId == empresa!.Id)
+                {
+                    var response = service.Alterar(repositorio.OrdenarPorId(id), request);
+                    await context.SaveChangesAsync();
+                    return Ok(response);
+                }
+                return BadRequest("Acesso Negado");
             }
             return BadRequest(request);
         }
@@ -113,11 +119,18 @@ namespace Web.Extensions.API.Controllers
             [FromServices] IRepositorioEstudante repositorio,
             [FromRoute] int id)
         {
+            var empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
+
             if (repositorio.Existe(u => u.Id == id))
             {
-                repositorio.Remover((await context.Estudantes.FindAsync(id))!);
-                await context.SaveChangesAsync();
-                return Ok("Deletado");
+                var aluno = await context.Estudantes.FindAsync(id);
+                if (aluno!.EmpresaId == empresa!.Id)
+                {
+                    repositorio.Remover((await context.Estudantes.FindAsync(id))!);
+                    await context.SaveChangesAsync();
+                    return Ok("Deletado");
+                }
+                return BadRequest("Acesso Negado");
             }
             return BadRequest($"O id:{id} não existe");
         }

@@ -1,20 +1,18 @@
-using Domain.Extensoes.Autenticacao;
-using Domain.Interfaces.Repositorios.Usuario;
-using Domain.Interfaces.Servicos.Autenticacao;
-using Domain.Interfaces.Servicos.Estudante;
-using Domain.Interfaces.Servicos.Usuario;
-using Infra;
-using Infra.Repositorios.Usuario;
+using Domain_Driven_Design.Domain.Extensoes.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Usuario;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Estudante;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Usuario;
+using Domain_Driven_Design.Infra;
+using Domain_Driven_Design.Infra.Repositorios.Usuario;
 using Microsoft.EntityFrameworkCore;
 using Web.Controllers.Utils;
-using Infra.Servicos.Usuario;
-using Infra.Servicos.Estudante;
-using Infra.Servicos.Autenticacao;
-using Domain.Interfaces.Repositorios.Estudante;
-using Infra.Repositorios.Estudante;
-using Microsoft.AspNetCore.Identity;
-using Infra.Recursos.Validacao;
-using Web.Controllers;
+using Domain_Driven_Design.Infra.Servicos.Usuario;
+using Domain_Driven_Design.Infra.Servicos.Estudante;
+using Domain_Driven_Design.Infra.Servicos.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Estudante;
+using Domain_Driven_Design.Infra.Repositorios.Estudante;
+using Domain_Driven_Design.Infra.Recursos.Validacao;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     options => 
         options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection"),
-            x => x.MigrationsAssembly("Infra")));
+            x => x.MigrationsAssembly("DomainDrivenDesign")));
 
 builder.Services.AddScoped<IServicoUsuario, ServicoUsuario>();
 builder.Services.AddScoped<IServicoEstudante, ServicoEstudante>();

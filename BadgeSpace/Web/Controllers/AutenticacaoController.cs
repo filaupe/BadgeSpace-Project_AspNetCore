@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Domain.Argumentos.Usuario;
-using Domain.Argumentos.Usuario.Requests;
-using Domain.Interfaces.Repositorios.Usuario;
-using Domain.Interfaces.Servicos.Autenticacao;
-using Domain.Interfaces.Servicos.Usuario;
-using Infra;
+using Domain_Driven_Design.Domain.Argumentos.Usuario;
+using Domain_Driven_Design.Domain.Argumentos.Usuario.Requests;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Usuario;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Usuario;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Utils;

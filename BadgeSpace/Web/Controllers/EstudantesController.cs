@@ -1,10 +1,9 @@
 using AutoMapper;
-using Domain.Argumentos.Estudante;
-using Domain.Argumentos.Usuario;
-using Domain.Interfaces.Repositorios.Estudante;
-using Domain.Interfaces.Servicos.Estudante;
-using Domain.Recursos.Enums;
-using Infra;
+using Domain_Driven_Design.Domain.Argumentos.Estudante;
+using Domain_Driven_Design.Domain.Interfaces.Repositorios.Estudante;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Estudante;
+using Domain_Driven_Design.Domain.Recursos.Enums;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +20,7 @@ namespace Web.Controllers
         private readonly IMapper _mapper;
         private readonly ControllerUtils _utils;
 
-        private Task<Domain.Entidades.Usuario.Usuario> GetUsuarioAsync { get => _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;}
+        private Task<Domain_Driven_Design.Domain.Entidades.Usuario.Usuario> GetUsuarioAsync { get => _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;}
 
         public EstudantesController(ApplicationDbContext context, IServicoEstudante servicoEstudante,
             IRepositorioEstudante repositorio, ControllerUtils utils, IMapper mapper)
@@ -46,12 +45,22 @@ namespace Web.Controllers
             return View(await listaPorUsuario.AsNoTracking().Skip(skip * take).Take(take).ToListAsync());
         }
 
-        public IActionResult Delete(int id) => View(_servicoEstudante.Selecionar(id));
+        public async Task<IActionResult> Delete(int id)
+            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync).Id
+                ? View(_servicoEstudante.Selecionar(id)) : BadRequest("Acesso Negado");
 
         [AllowAnonymous]
-        public IActionResult Details(int id) => View(_servicoEstudante.Selecionar(id));
+        public IActionResult Details(int id) 
+        {
+            var estudante = _servicoEstudante.Selecionar(id);
+            if(estudante == null)
+                return NotFound($"O Estudante não existe");
+            return View(estudante);
+        }
 
-        public async Task<IActionResult> Edit(int id) => View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.FindAsync(id)));
+        public async Task<IActionResult> Edit(int id)
+            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync).Id 
+                ? View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.FindAsync(id))) : BadRequest("Acesso Negado");
 
         public IActionResult Create() => View();
 

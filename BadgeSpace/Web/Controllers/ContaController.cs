@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Domain.Argumentos.Usuario;
-using Domain.Argumentos.Usuario.Requests;
-using Domain.Interfaces.Servicos.Autenticacao;
-using Domain.Interfaces.Servicos.Usuario;
-using Infra;
+using Domain_Driven_Design.Domain.Argumentos.Usuario;
+using Domain_Driven_Design.Domain.Argumentos.Usuario.Requests;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Autenticacao;
+using Domain_Driven_Design.Domain.Interfaces.Servicos.Usuario;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Controllers.Utils;
@@ -18,7 +18,7 @@ namespace Web.Controllers
         private readonly IMapper _mapper;
         private readonly ControllerUtils _utils;
 
-        public Domain.Entidades.Usuario.Usuario UserCookie { get => Task.Run(async () => await _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)).Result!; }
+        public Domain_Driven_Design.Domain.Entidades.Usuario.Usuario UserCookie { get => Task.Run(async () => await _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)).Result!; }
 
         public ContaController(ApplicationDbContext context, IServicoAuthJWT authJWT, IServicoUsuario servicoUsuario,
             ControllerUtils utils, IMapper mapper)

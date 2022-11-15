@@ -1,8 +1,11 @@
-@using Domain.Recursos.Enums
-@model Domain.Argumentos.Estudante.EstudanteResponse
+@using Domain_Driven_Design.Domain.Recursos.Enums
+@using Domain_Driven_Design.Infra
+@model Domain_Driven_Design.Domain.Argumentos.Estudante.EstudanteResponse
+@inject ApplicationDbContext context
 
 @{
     ViewData["Title"] = "Details";
+    var empresa = context.Usuarios.FirstOrDefault(e => e.CPFouCNPJ == User.Claims.ToList()[2].Value);
 }
 
 <h1>Detalhes</h1>
@@ -72,8 +75,13 @@
             @Html.DisplayNameFor(model => model.Imagem)
         </dt>
         <dd class = "col-sm-10">
-
             <img src=@img style="max-width:100px; max-height:100px;" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Name("Empresa emissora")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => (context.Usuarios.FirstOrDefault(e => e.Id == Model.EmpresaId))!.CPFouCNPJ!)
         </dd>
     </dl>
 </div
@@ -81,10 +89,13 @@
 {
     if (User.IsInRole(nameof(Roles.EMPRESA)))
     {
-        <div>
-            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Id">Edit</a>  |
-            <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
-        </div>
+        if (Model.EmpresaId == empresa!.Id)
+        {
+            <div>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Id">Edit</a>
+                <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
+            </div>
+        }
     }
 }
 

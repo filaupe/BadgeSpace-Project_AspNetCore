@@ -1,5 +1,5 @@
-﻿using Domain.Recursos.Enums;
-using Infra;
+﻿using Domain_Driven_Design.Domain.Recursos.Enums;
+using Domain_Driven_Design.Infra;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

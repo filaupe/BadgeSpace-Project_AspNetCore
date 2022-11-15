@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Infra.Recursos.Validacao;
-using Infra;
+using Domain_Driven_Design.Infra.Recursos.Validacao;
+using Domain_Driven_Design.Infra;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web.Controllers
