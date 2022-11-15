@@ -91,7 +91,7 @@
   <tr>
     <td align="center">
       <a href="https://github.com" target="_blank">
-        <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201800021-15cda6f6-bb7d-488a-beff-9b244525237b.png" height="120px;" alt="Foto de Maria Vitória no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201800021-15cda6f6-bb7d-488a-beff-9b244525237b.png" height="100px;" alt="Foto de Maria Vitória no GitHub"/><br>
         <sub>
           <b>MARIA VITÓRIA</b>
           <p>Designer</p>
