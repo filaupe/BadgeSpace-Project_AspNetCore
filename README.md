@@ -5,7 +5,7 @@
   </a>
   
   <h3>BadgeSpace</h3>
-  <p>Plataforma web para hospedagem de badges digitais</p>
+  <p>Web platform for hosting digital badges</p>
 
   <!-- Readme languages -->
   <p>
@@ -37,60 +37,60 @@
 </div>
 <br>
 
-<h2 align=center> Navegação </h2>
+<h2 align=center> Navegation </h2>
 <p align="center">
- <a href="#objetivo"> :heavy_check_mark: O que temos a oferecer? </a> |
- <a href="#solucao"> :chart_with_upwards_trend: Nossa solução </a>  <br><br>
- <a href="#usuarios"> :raising_hand_man: Usuários</a> |
- <a href="#autor"> 	:copyright: Realizadores</a>
+ <a href="#objetivo"> :heavy_check_mark: What we have to offer? </a> |
+ <a href="#solucao"> :chart_with_upwards_trend: Our Solution </a>  <br><br>
+ <a href="#usuarios"> :raising_hand_man: Users</a> |
+ <a href="#autor"> 	:copyright: Team</a>
 </p>
 
 
 <br>
-<h2 align=center id="objetivo">  :purple_heart: O que temos a oferecer? :purple_heart:</h2>
+<h2 align=center id="objetivo">  :purple_heart: What we have to offer? :purple_heart:</h2>
 <br>
 
-    - Plataforma Web para acesso de qualquer hora e lugar;
-    - Tenha sua badge em uma plataforma segura e confiável; 
-    - Acompanhe sua evolução laboral;
-    - Comunicação entre empresas e clientes;
-    - Empresas e Usuários podem filtrar área de atuação;
-    - Empresas podem solicitar dados adicionais dos possíveis clientes;
-    - Além de obter acesso a mais informações sobre cada um deles;
-    - Quando receber novas badges você será imediatamente notificado;
-    - Compartilhe suas badges pelo Whatsapp, LinkedIn e Facebook.
-
-
-<br><br>
-
-
-<h2 id="solucao"> :rocket: Um pouco sobre a nossa solução </h2>
-
-   Após a realização de um curso, um usúario recebeu sua badge digital, entretanto não possui local para a empresa hospedar, pensando nisso, desenvolvemos o BadgeSpace, uma plataforma rápida, segura e confiável, onde conseguirá armazenar seus queridos badges, e tambem compartilhar nas suas redes sociais, o seu marketing boca-a-boca nunca ficou tão simples como agora.
-
-<br><br>
-
-<h2 id="usuarios">  :raising_hand_man: Usuários</h2>
-
-   O cliente alvo deste sistema é composto por um grupo de indivíduos que desejam manter suas badges em local seguro e que possam compartilhar em suas redes sociais, o mercado alvo está fortemente associado a soluções de logística e marketing.
+     - Web platform for access from any time and place;
+     - Have your badge on a safe and reliable platform;
+     - Follow your work evolution;
+     - Communication between companies and customers;
+     - Companies and Users can filter area of activity;
+     - Companies may request additional data from potential customers;
+     - In addition to gaining access to more information about each of them;
+     - When you receive new badges you will be immediately notified;
+     - Share your badges via Whatsapp, LinkedIn and Facebook.
 
 <br><br>
 
 
-## :sparkles: Sistema
-Quer ver uma demo do projeto já pronto? Ele já está no ar!
+<h2 id="solucao"> :rocket: A little about our solution </h2>
 
-Clique no link para ver: link do sistema hospedado aqui
+   After completing a course, a user received his digital badge, however he does not have a place for the company to host, thinking about it, we developed BadgeSpace, a fast, safe and reliable platform, where he will be able to store his dear badges, and also share in his social networks, your word-of-mouth marketing has never been as simple as it is now.
+
+<br><br>
+
+<h2 id="usuarios">  :raising_hand_man: Users</h2>
+
+   The target customer of this system is composed of a group of individuals who want to keep their badges in a safe place and that they can share on their social networks, the target market is strongly associated with logistics and marketing solutions.
+
+<br><br>
+
+
+## :sparkles: System
+
+[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)]()
+[![Figma badge](https://img.shields.io/badge/figma%20-%236E40C9.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/g3HipfGasWb7bwMuktysNK/Badges?node-id=97%3A361&t=Ror0BVcPcF4xH36h-1)
+[![Trello badge](https://img.shields.io/badge/trello%20-%236E40C9.svg?&style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/invite/b/hbZehfDL/ATTI878daecf33dec72d9bd9e3e6b411488f9AD04029/badge-space-equipe-omega)
 
 <br>
 
-<h2 id="autor" align=center>Realizadores </h2>
+<h2 id="autor" align=center>Team</h2>
 <br>
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://github.com/Ericles-Porty" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/67772327?v=4" width="100px;" alt="Foto de Éricles dos Santos no GitHub"/><br>
+      <a href="https://github.com" target="_blank">
+        <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201800021-15cda6f6-bb7d-488a-beff-9b244525237b.png" height="120px;" alt="Foto de Maria Vitória no GitHub"/><br>
         <sub>
           <b>MARIA VITÓRIA</b>
           <p>Designer</p>
@@ -98,8 +98,8 @@ Clique no link para ver: link do sistema hospedado aqui
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/joannestephany" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/58868281?v=4"  width="100px;" alt="Foto de Joanne Stephany no GitHub"/><br>
+      <a href="https://github.com/jhontanx" target="_blank">
+        <img style="border-radius:100px;" src="https://github.com/jhontanx.png" width="100px;" alt="Foto de Jhonata no GitHub"/><br>
         <sub>
           <b>JHONATA</b>
           <p>Copywritter</p>
@@ -111,7 +111,7 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://github.com/J3ipy.png" target="_blank"  width="100px;" alt="Foto de João Pedro no GitHub"/><br>
         <sub>
           <b>JOÃO PEDRO</b>
-          <p>Desenvolvedor</p>
+          <p>Developer</p>
         </sub>
       </a>
     </td>
@@ -120,13 +120,13 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://github.com/MulinhaGPlays.png" target="_blank"  width="100px;" alt="Foto de Luis Felipe no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
-          <p>Desenvolvedor</p>
+          <p>Developer</p>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/XxthiagoboyXx" target="_blank">
-        <img style="border-radius:100px;" src="https://avatars.githubusercontent.com/u/72053163?v=4" width="100px;" alt="Foto de Thiago Santos no GitHub"/><br>
+      <a href="https://github.com" target="_blank">
+        <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201800233-d3c5a790-2a86-4a76-bf0f-5904db590417.png" width="100px;" alt="Foto de Antony no GitHub"/><br>
         <sub>
           <b>ANTONY GUSTAVO</b>
           <p>Designer</p>
@@ -134,7 +134,7 @@ Clique no link para ver: link do sistema hospedado aqui
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/XxthiagoboyXx" target="_blank">
+      <a href="https://github.com" target="_blank">
         <img style="border-radius:100px;" src="https://user-images.githubusercontent.com/97753966/201755699-f2119c16-1d7f-4498-af40-36eb21ff505e.JPG" width="60px;"         alt="Foto de Heidy Larissa no Github"/><br>
         <sub>
           <b>HEIDY LARISSA</b>
@@ -151,14 +151,14 @@ Clique no link para ver: link do sistema hospedado aqui
         <img style="border-radius:100px;" src="https://github.com/regymatrix.png" target="_blank" width="100px;" alt="Foto de Reginaldo no GitHub"/><br>
         <sub>
           <b>REGINALDO SANTANA</b>
-          <p>Docente</p>
+          <p>Instructor</p>
         </sub>
       </a>
     </td>
    </tr>
 </table>
 
-<a href='#top'>:arrow_up_small: Voltar para o topo</a>
+<a href='#top'>:arrow_up_small: Back to top</a>
 
 
 ***
