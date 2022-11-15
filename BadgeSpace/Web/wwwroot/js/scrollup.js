@@ -8,6 +8,9 @@ function checkHeight(){
   } else {
     goTopBtn.style.display = "none"
   }
+  if(window.innerWidth < 600){
+    goTopBtn.style.display = "none"
+  }
 }
 
 goTopBtn.addEventListener('click', () => {

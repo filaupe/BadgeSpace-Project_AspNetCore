@@ -5,7 +5,6 @@ using Domain.Recursos.Enums;
 using Microsoft.EntityFrameworkCore;
 using Domain.Interfaces.Servicos.Estudante;
 using Domain.Argumentos.Estudante;
-using AutoMapper;
 using Domain.Interfaces.Repositorios.Estudante;
 
 namespace Web.Extensions.API.Controllers

@@ -12,8 +12,8 @@ namespace Domain.Argumentos.Usuario
 
         [Remote(action: "VerificarEmail", controller: "Validation")]
         [Required(ErrorMessage = "A área Email é obrigatória")]
+        [EmailAddress(ErrorMessage = "Adicione um Email válido")]
         [DisplayName("Email")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Isso não é um Email")]
         public string Email { get; set; }
 
         public string? NormalizedEmail { get; set; }
@@ -29,7 +29,7 @@ namespace Domain.Argumentos.Usuario
         [Required(ErrorMessage = "A área Senha é obrigatória")]
         [DisplayName("Senha")]
         [DataType(DataType.Password)]
-        [StringLength(8, ErrorMessage = "A área deve haver ao menos 8 caractéres")]
+        [MinLength(8, ErrorMessage = "A área deve haver ao menos 8 caracteres")]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "A área Confirmar Senha é obrigatória")]

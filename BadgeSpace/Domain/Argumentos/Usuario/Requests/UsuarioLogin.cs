@@ -8,7 +8,7 @@ namespace Domain.Argumentos.Usuario.Requests
     {
         [Required(ErrorMessage = "A área Email é obrigatória")]
         [DisplayName("Email")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Isso não é um Email")]
+        [EmailAddress(ErrorMessage = "Adicione um Email válido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "A área Senha é obrigatória")]

@@ -35,35 +35,24 @@ namespace Web.API.Controllers
         public async Task<IActionResult> Login([FromBody] UsuarioLogin request)
         {
             var usuario = new UsuarioRequest() { Email = request.Email, Senha = request.Senha };
-            if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper() && u.Senha == request.Senha))
+            if (ModelState.IsValid)
             {
                 usuario = await _utils.Completar(usuario, _context);
                 return Ok((await _servicoAutenticacao.GenerateToken(usuario.Id, usuario.Claim, usuario.Email, usuario.CPFouCNPJ)).ToString());
             }
-            return BadRequest(new { message = "Usuário não existe" });
+            return BadRequest(ModelState);
         }
 
         [HttpPost("registrar")]
         public async Task<IActionResult> Register([FromBody] UsuarioRequest request)
         {
-            var response = new { request.Nome, request.Email, request.CPFouCNPJ, request.Senha, request.ConfirmarSenha };
-            if (_repositorio.Existe(u => u.Email == request.Email))
-            {
-                request.Email = "Ja existe uma conta com esse Email";
-                return BadRequest(response);
-            }
-            if (_repositorio.Existe(u => u.CPFouCNPJ == request.CPFouCNPJ))
-            {
-                request.CPFouCNPJ = "Ja existe uma conta com esse CPF ou CNPJ";
-                return BadRequest(response);
-            }
             if (ModelState.IsValid)
             {
-                await _servicoUsuario.Adicionar(request);
+                  await _servicoUsuario.Adicionar(request);
                 await _context.SaveChangesAsync();
                 return Ok((await _servicoAutenticacao.GenerateToken(request.Id, request.Claim, request.Email, request.CPFouCNPJ)).ToString());
             }
-            return BadRequest(response);
+            return BadRequest(ModelState);
         }
     }
 }
