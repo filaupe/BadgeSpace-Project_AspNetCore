@@ -38,14 +38,21 @@ namespace Domain_Driven_Design.Domain.Entidades.Usuario
 
         public void Atualizar(UsuarioRequest request)
         {
-            Nome = request.Nome!;
-            Email = request.Email;
-            NormalizedEmail = request.NormalizedEmail!;
-            CPFouCNPJ = request.CPFouCNPJ;
-            Senha = request.Senha;
-            Imagem = request.Imagem;
+            Nome = request.Nome
+                ?? Nome;
+            Email = request.Email
+                ?? Email;
+            NormalizedEmail = request.NormalizedEmail
+                ?? NormalizedEmail;
+            CPFouCNPJ = request.CPFouCNPJ
+                ?? CPFouCNPJ;
+            Imagem = request.Imagem
+                ?? Imagem;
+            Senha = request.Senha
+                ?? Senha;
             Claim = request.Claim;
-            Token = request.Token!;
+            Token = request.Token
+                ?? Token;
 
             if (request.Status.HasValue) Status = request.Status.Value;
         }
