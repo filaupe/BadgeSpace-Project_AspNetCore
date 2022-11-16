@@ -19,6 +19,9 @@ namespace Web.Controllers
         [AllowAnonymous]
         public IActionResult Index() => View();
 
+        [AllowAnonymous]
+        public IActionResult API() => View();
+
         [Authorize(Roles = nameof(Roles.USUARIO))]
         public IActionResult Dashboard() => View(_context.Estudantes.Where(s => s.CPF == User.Claims.ToList()[2].Value));
 

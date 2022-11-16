@@ -5,7 +5,7 @@
 
 @{
     ViewData["Title"] = "Details";
-    var empresa = context.Usuarios.FirstOrDefault(e => e.CPFouCNPJ == User.Claims.ToList()[2].Value);
+    var empresa = User.Identity!.IsAuthenticated ? context.Usuarios.FirstOrDefault(e => e.CPFouCNPJ == User.Claims.ToList()[2].Value) : null;
 }
 
 <h1>Detalhes</h1>

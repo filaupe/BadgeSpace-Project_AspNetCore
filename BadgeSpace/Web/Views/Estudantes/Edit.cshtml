@@ -12,6 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Codigo" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -28,11 +29,6 @@
                 <label asp-for="Curso" class="control-label"></label>
                 <input asp-for="Curso" class="form-control" />
                 <span asp-validation-for="Curso" class="text-danger"></span>
-            </div>
-            <br>
-            <div class="form-group">
-                <label asp-for="Codigo" class="control-label"></label>
-                <input asp-for="Codigo" class="form-control" />
             </div>
             <br>
             <div class="form-group">

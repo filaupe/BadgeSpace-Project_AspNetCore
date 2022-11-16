@@ -20,7 +20,7 @@ namespace Web.Controllers
         private readonly IMapper _mapper;
         private readonly ControllerUtils _utils;
 
-        private Task<Domain_Driven_Design.Domain.Entidades.Usuario.Usuario> GetUsuarioAsync { get => _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;}
+        private Task<Domain_Driven_Design.Domain.Entidades.Usuario.Usuario?> GetUsuarioAsync { get => User.Identity!.IsAuthenticated ? _context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)! : null!;}
 
         public EstudantesController(ApplicationDbContext context, IServicoEstudante servicoEstudante,
             IRepositorioEstudante repositorio, ControllerUtils utils, IMapper mapper)
@@ -50,12 +50,20 @@ namespace Web.Controllers
                 ? View(_servicoEstudante.Selecionar(id)) : BadRequest("Acesso Negado");
 
         [AllowAnonymous]
-        public IActionResult Details(int id) 
+        public async Task<IActionResult> Details(string id) 
         {
-            var estudante = _servicoEstudante.Selecionar(id);
-            if(estudante == null)
-                return NotFound($"O Estudante não existe");
-            return View(estudante);
+            var erroMsg = NotFound($"O Estudante não existe");
+            if (int.TryParse(id, out int n))
+            {
+                var estudantePorId = _servicoEstudante.Selecionar(n);
+                if (estudantePorId == null)
+                    return erroMsg;
+                return View(estudantePorId);
+            }
+            var estudantePorCodigo = await _context.Estudantes.FirstOrDefaultAsync(e => e.Codigo == id);
+            if(estudantePorCodigo == null)
+                return erroMsg;
+            return View(_servicoEstudante.Selecionar(estudantePorCodigo.Id));
         }
 
         public async Task<IActionResult> Edit(int id)
