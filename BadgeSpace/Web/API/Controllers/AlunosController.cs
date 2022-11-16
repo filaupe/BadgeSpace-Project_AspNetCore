@@ -58,9 +58,12 @@ namespace Web.Extensions.API.Controllers
         public async Task<IActionResult> CadastrarAluno(
             [FromServices] ApplicationDbContext context,
             [FromServices] IServicoEstudante service,
+            [FromServices] IRepositorioEstudante repositorio,
             [FromForm] IFormFile Imagem,
             [FromForm] EstudanteRequest request)
         {
+            if (repositorio.Existe(u => u.Codigo == request.Codigo))
+                return BadRequest("O Código já está em uso");
             request.Empresa = await context.Usuarios.FirstOrDefaultAsync(u => u.CPFouCNPJ == userData);
 
             if (Imagem != null)

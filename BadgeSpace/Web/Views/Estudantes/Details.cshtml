@@ -41,12 +41,22 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Curso)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Codigo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Codigo)
-        </dd>
+        @if (User.Identity!.IsAuthenticated)
+        {
+            if (User.IsInRole(nameof(Roles.EMPRESA)))
+            {
+                if (Model.EmpresaId == empresa!.Id)
+                {
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Codigo)
+                    </dd>
+                }
+            }
+        }
+        
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Tipo)
         </dt>

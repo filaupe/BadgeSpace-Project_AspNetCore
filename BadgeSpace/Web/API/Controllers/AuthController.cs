@@ -46,6 +46,11 @@ namespace Web.API.Controllers
         [HttpPost("registrar")]
         public async Task<IActionResult> Register([FromBody] UsuarioRequest request)
         {
+            if (_repositorio.Existe(u => u.NormalizedEmail == request.Email.ToUpper()))
+                return BadRequest("O Email já está em uso");
+            if (_repositorio.Existe(u => u.CPFouCNPJ == request.CPFouCNPJ))
+                return BadRequest("O CPF ou CNPJ já está em uso");
+
             if (ModelState.IsValid)
             {
                   await _servicoUsuario.Adicionar(request);
