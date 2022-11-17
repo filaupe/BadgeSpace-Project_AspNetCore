@@ -2,9 +2,11 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var tempo = Model.DataAlteracao ?? Model.DataInclusao;
 }
 
 <h1>Editar</h1>
+<span>Última alteração: @tempo.Year / @tempo.Month / @tempo.Day às @tempo.Hour : @tempo.Minute</span>
 <br>
 <h4>BadgeSpace</h4>
 <hr />
