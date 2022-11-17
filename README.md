@@ -21,7 +21,7 @@
   [![Contributions welcome](https://img.shields.io/badge/Contributions-welcome-6949FF?labelColor=1C1F2A)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/pulls)
   [![Last commit](https://img.shields.io/github/last-commit/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=Last%20commit)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/commits/main)
   ![Repo size](https://img.shields.io/github/repo-size/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=Repo%20size)
-  [![License: MIT](https://img.shields.io/github/license/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=License)](https://github.com/darrow12/AluraComics/blob/main/LICENSE)  
+  [![License: MIT](https://img.shields.io/github/license/MulinhaGPlays/BadgeSpace-Project_AspNetCore?color=6949FF&labelColor=1C1F2A&label=License)](https://github.com/MulinhaGPlays/BadgeSpace-Project_AspNetCore/blob/main/LICENSE)  
 </div>
 
 <div align=center>
@@ -78,7 +78,7 @@
 
 ## :sparkles: System
 
-[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)]()
+[![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)](http://badgespace.herokuapp.com/)
 [![Figma badge](https://img.shields.io/badge/figma%20-%236E40C9.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/g3HipfGasWb7bwMuktysNK/Badges?node-id=97%3A361&t=Ror0BVcPcF4xH36h-1)
 [![Trello badge](https://img.shields.io/badge/trello%20-%236E40C9.svg?&style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/invite/b/hbZehfDL/ATTI878daecf33dec72d9bd9e3e6b411488f9AD04029/badge-space-equipe-omega)
 
