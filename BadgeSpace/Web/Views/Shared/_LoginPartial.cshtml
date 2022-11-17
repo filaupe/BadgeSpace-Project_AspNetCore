@@ -7,10 +7,10 @@
         <li class="nav-item perfil">
             @{
                 var usuario = context.Usuarios.FirstOrDefault(u => u.CPFouCNPJ == User.Claims.ToList()[2].Value)!;
-                var img = usuario.Imagem != null ? String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(usuario.Imagem!)) : "https://img.icons8.com/windows/96/000000/user-male-circle.png";
+                var img = usuario.Imagem != null ? String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(usuario.Imagem!)) : "https://cdn-icons-png.flaticon.com/512/2354/2354573.png";
                     
                 <a class="nav-link text-dark" asp-controller="Conta" asp-action="Index" >
-                    <img src=@img style="width:60px; height:60px; border-radius:50px" />
+                    <img src=@img style="width:48px; height:48px; border-radius:50px" />
                 </a>
             }
         </li>

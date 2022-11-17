@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/register.css">
+    <link rel="stylesheet" href="~/css/responsivo.css">
 </head>
 <body>
     <section class="text-center text-lg-start">
@@ -18,7 +19,7 @@
             <div class="row g-0 align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card cascading-right" style="background: hsla(0, 0%, 100%, 0.55);backdrop-filter: blur(30px); margin-right:-50px;">
-                        <div class="card-body p-5 shadow-5">
+                        <div id="card" class="card-body p-5 shadow-5">
                             <h2 class="fw-bold mb-5">Login</h2>
                             <form asp-action="Login" method="post">
                                 <h2>Bem-vindo de volta!</h2>
@@ -26,13 +27,13 @@
                                 <div class="text-danger"></div>
                                 <div class="form-floating">
                                     <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
-                                    <label asp-for="Email" class="form-label">Email</label>
+                                    <label asp-for="Email" class="form-label" id="label">Email</label>
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <br>
                                 <div class="form-floating">
                                     <input asp-for="Senha" class="form-control" autocomplete="current-password" aria-required="true" />
-                                    <label asp-for="Senha" class="form-label">Senha</label>
+                                    <label asp-for="Senha" class="form-label" id="label" class="form-label">Senha</label>
                                     <span asp-validation-for="Senha" class="text-danger"></span>
                                 </div>
                                 <br>

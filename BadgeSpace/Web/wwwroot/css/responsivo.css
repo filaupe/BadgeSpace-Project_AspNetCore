@@ -2,4 +2,15 @@
     #sobre h1{
         margin-top: 0.5em;
     }
+    #label{
+        display:flex;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    #check{
+        margin-right: 148px;
+    }
+    #card{
+        padding: 3em!important;
+    }
 }

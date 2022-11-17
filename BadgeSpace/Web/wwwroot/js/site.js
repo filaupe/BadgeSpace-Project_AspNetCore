@@ -29,7 +29,7 @@ function nativeScroll(distanceFromTheTop) {
     top: distanceFromTheTop,
     behavior: "smooth",
   });
- }
+}
 
 function scrollToSection(event) {
   event.preventDefault();
