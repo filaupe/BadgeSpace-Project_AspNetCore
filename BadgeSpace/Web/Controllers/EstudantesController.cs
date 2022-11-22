@@ -46,7 +46,7 @@ namespace Web.Controllers
         }
 
         public async Task<IActionResult> Delete(int id)
-            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync).Id
+            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync)!.Id
                 ? View(_servicoEstudante.Selecionar(id)) : BadRequest("Acesso Negado");
 
         [AllowAnonymous]
@@ -67,16 +67,18 @@ namespace Web.Controllers
         }
 
         public async Task<IActionResult> Edit(int id)
-            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync).Id 
+            => (await _context.Estudantes.FindAsync(id))!.EmpresaId == (await GetUsuarioAsync)!.Id 
                 ? View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.FindAsync(id))) : BadRequest("Acesso Negado");
 
-        public IActionResult Create() => View();
+        public async Task<IActionResult> Create() 
+            => View(_mapper.Map<EstudanteRequest>(await _context.Estudantes.OrderBy(s => s.Empresa!.CPFouCNPJ == User.Claims.ToList()[2].Value).LastOrDefaultAsync()));
 
 
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> OnCreate(IFormFile Imagem, EstudanteRequest request)
+        public async Task<IActionResult> OnCreate(IFormFile? Imagem, EstudanteRequest request)
         {
+            var lastUser = await _context.Estudantes.OrderBy(i => i.Id).LastOrDefaultAsync(s => s.Empresa!.CPFouCNPJ == User.Claims.ToList()[2].Value);
             request.Empresa = await GetUsuarioAsync;
 
             if (Imagem != null)
@@ -85,6 +87,12 @@ namespace Web.Controllers
                 await Imagem.CopyToAsync(memoryStream);
                 request.Imagem = memoryStream.ToArray();
             }
+
+            if(lastUser != null)
+                request.Imagem = Imagem == null ? lastUser.Imagem : request.Imagem;
+
+            if (Imagem == null)
+                return View(request);
 
             if (ModelState.IsValid)
             {

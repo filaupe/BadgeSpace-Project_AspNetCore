@@ -1,7 +1,7 @@
 @model Domain_Driven_Design.Domain.Argumentos.Estudante.EstudanteRequest
-
 @{
     ViewData["Title"] = "Create";
+    var imagem = Model != null ? $"data:image/gif;base64,{Convert.ToBase64String(Model.Imagem!)}" : "";
 }
 
 <h1>Criar</h1>
@@ -13,26 +13,26 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" value="" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
                 <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
+                <input asp-for="CPF" value="" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" value="" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
                 <label asp-for="Curso" class="control-label"></label>
                 <input asp-for="Curso" class="form-control" />
                 <span asp-validation-for="Curso" class="text-danger"></span>
-            </div>
-            <br>
-            <div class="form-group">
-                <label asp-for="Codigo" class="control-label"></label>
-                <input asp-for="Codigo" class="form-control" />
-                <span asp-validation-for="Codigo" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
@@ -61,6 +61,7 @@
             <br>
             <div class="form-group">
                 <label asp-for="Imagem" class="control-label"></label>
+                <img src="@imagem" />
                 <input type="file" accept="image/png" asp-for="Imagem" class="form-control" />
                 <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>

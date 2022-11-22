@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
     var tempo = Model.DataAlteracao ?? Model.DataInclusao;
+    var imagem = $"data:image/gif;base64,{Convert.ToBase64String(Model.Imagem!)}";
 }
 
 <h1>Editar</h1>
@@ -59,7 +60,8 @@
             <br>
             <div class="form-group">
                 <label asp-for="Imagem" class="control-label"></label>
-                <input type="file" accept="image/png" asp-for="Imagem" class="form-control" />
+                <img src="@imagem"/>
+                <input type="file" value="@Model.Imagem" accept="image/png" asp-for="Imagem" class="form-control" />
                 <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
             <br>
