@@ -10,7 +10,11 @@ namespace BadgeSpace.API.Controllers.Empress
         [HttpGet] public async Task<IActionResult> GetEmpressAsync() => Ok("you");
 
         #region Student Crud Region
-        [HttpGet("list-all-students")] public async Task<IActionResult> GetAllStudentsList() => Ok(); 
+        // [HttpGet("list-all-students")] public async IAsyncEnumerable<int> GetAllStudentsList() 
+        // {
+        //     foreach (var student in ...)
+        //         yield return 1;
+        // }
         [HttpGet("list-active-students")] public async Task<IActionResult> GetActiveStudentsList() => Ok(); 
         [HttpGet("list-deactive-students")] public async Task<IActionResult> GetDeactiveStudentsList() => Ok(); 
 
