@@ -1,4 +1,5 @@
 ﻿using BadgeSpace.Models.Base;
+using BadgeSpace.Models.User.Certification.Empress;
 using BadgeSpace.Models.User.Certification.Empress.Course;
 using BadgeSpace.Models.User.Certification.Student;
 using System.ComponentModel.DataAnnotations.Schema;
