@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BadgeSpace.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221213113320_Infra")]
+    [Migration("20221213203550_Infra")]
     partial class Infra
     {
         /// <inheritdoc />
@@ -197,7 +197,7 @@ namespace BadgeSpace.Infra.Migrations
                     b.Property<DateTime?>("ChangeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CourseModelId")
+                    b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
@@ -219,7 +219,7 @@ namespace BadgeSpace.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseModelId");
+                    b.HasIndex("CourseId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -314,15 +314,17 @@ namespace BadgeSpace.Infra.Migrations
 
             modelBuilder.Entity("BadgeSpace.Models.User.Certification.Student.StudentModel", b =>
                 {
-                    b.HasOne("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", null)
+                    b.HasOne("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", "Course")
                         .WithMany("Students")
-                        .HasForeignKey("CourseModelId");
+                        .HasForeignKey("CourseId");
 
                     b.HasOne("BadgeSpace.Models.User.UserModel", "User")
                         .WithOne("Student")
                         .HasForeignKey("BadgeSpace.Models.User.Certification.Student.StudentModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Course");
 
                     b.Navigation("User");
                 });

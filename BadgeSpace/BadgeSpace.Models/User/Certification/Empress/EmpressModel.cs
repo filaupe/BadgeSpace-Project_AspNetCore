@@ -6,14 +6,6 @@ namespace BadgeSpace.Models.User.Certification.Empress
 {
     public class EmpressModel : EntityBaseModel
     {
-        public EmpressModel(UserModel user)
-        {
-            UserId = user.Id;
-            User = user;
-            Name = user.Name;
-            Email = user.Email;
-        }
-
         public string Name { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;
 

@@ -1,20 +1,17 @@
 ﻿using BadgeSpace.Models.Base;
+using BadgeSpace.Models.User.Certification.Empress.Course;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BadgeSpace.Models.User.Certification.Student
 {
     public class StudentModel : EntityBaseModel
     {
-        public StudentModel(UserModel user)
-        {
-            UserId = user.Id;
-            User = user;
-            Name = user.Name;
-            Email = user.Email;
-        }
-
         public string Name { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;
+
+        [ForeignKey(nameof(Course))]
+        public int? CourseId { get; set; } = null;
+        public CourseModel? Course { get; set; } = null;
 
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }

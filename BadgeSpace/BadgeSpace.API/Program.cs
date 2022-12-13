@@ -1,6 +1,8 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using BadgeSpace.Infra;
+using BadgeSpace.Services.Authentication.JsonWebToken;
+using BadgeSpace.Services.Extensions;
 
 namespace BadgeSpace.API
 {
@@ -11,13 +13,16 @@ namespace BadgeSpace.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddScoped<AuthJWT>();
             builder.Services.AddControllers();
             // Add database connection.
+            
             builder.Services.AddDbContext<ApplicationDbContext>(
                 options =>
                     options.UseSqlServer(
                         builder.Configuration.GetConnectionString("DefaultConnection"),
                         b => b.MigrationsAssembly("BadgeSpace.Infra")));
+            builder.Services.AddAuthenticationScheme(builder.Configuration);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(opt =>

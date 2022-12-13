@@ -16,8 +16,8 @@ namespace BadgeSpace.Models.User
             Password = password;
             Claim = claim;
             if (claim)
-                Empress = new(this);
-            Student = new(this);
+                Empress = new();
+            Student = new();
         }
 
         public string Name { get; set; } = String.Empty;
