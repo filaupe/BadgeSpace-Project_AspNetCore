@@ -22,7 +22,6 @@ namespace BadgeSpace.API.Models
 
         public bool Claim { get; set; } = false;
 
-        public static implicit operator UserModel(UserViewModel model)
-            => new(model.Name, model.Email, model.Password, model.Claim);
+        public static implicit operator UserModel(UserViewModel model) => new(model.Name, model.Email, model.Password, model.Claim);
     }
 }

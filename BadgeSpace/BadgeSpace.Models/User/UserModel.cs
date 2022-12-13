@@ -1,5 +1,8 @@
 ﻿using BadgeSpace.Models.Base;
+using BadgeSpace.Models.User.Certification.Empress;
+using BadgeSpace.Models.User.Certification.Student;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BadgeSpace.Models.User
 {
@@ -12,20 +15,20 @@ namespace BadgeSpace.Models.User
             NormalizedEmail = email.ToUpper();
             Password = password;
             Claim = claim;
+            if (claim)
+                Empress = new();
+            Student = new();
         }
 
         public string Name { get; set; } = String.Empty;
-
-        [Key] public string Email { get; set; } = String.Empty;
-
+        public string Email { get; set; } = String.Empty;
         public string NormalizedEmail { get; set; } = String.Empty;
-
         public byte[]? Image { get; set; } = null;
-
         public string Password { get; set; } = String.Empty;
-
         public bool Claim { get; set; } = false;
-
         public string Token { get; set; } = String.Empty;
+
+        public StudentModel? Student { get; set; } = null;
+        public EmpressModel? Empress { get; set; } = null;
     }
 }

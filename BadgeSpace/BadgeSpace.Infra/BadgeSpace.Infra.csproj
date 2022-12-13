@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CrossCutting\" />
-    <Folder Include="Data\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <ProjectReference Include="..\BadgeSpace.Models\BadgeSpace.Models.csproj" />
   </ItemGroup>
 
 </Project>
