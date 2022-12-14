@@ -1,0 +1,27 @@
+﻿@using BadgeSpace.Infra
+@inject ApplicationDbContext context
+<ul class="navbar-nav">
+    @if (User.Identity!.IsAuthenticated)
+
+    {
+        <li class="nav-item perfil">
+            @{
+                var usuario = context.Users.FirstOrDefault(u => u.NormalizedEmail == User.Claims.ToList()[2].Value)!;
+                var img = usuario != null  && usuario.Image != null ? String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(usuario.Image!)) : "https://cdn-icons-png.flaticon.com/512/2354/2354573.png";
+                    
+                <a class="nav-link text-dark" asp-controller="Account" asp-action="Index" >
+                    <img src=@img style="width:48px; height:48px; border-radius:50px" />
+                </a>
+            }
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Authentication" asp-action="Register">Registrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Authentication" asp-action="Login">Logar</a>
+        </li>
+    }
+</ul>

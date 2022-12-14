@@ -17,12 +17,12 @@ namespace BadgeSpace.Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.CertificationModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.Certification.CertificationModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,7 +93,7 @@ namespace BadgeSpace.Infra.Migrations
                     b.ToTable("Certifications");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.Course.CourseModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace BadgeSpace.Infra.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.EmpressModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.EmpressModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,7 +183,7 @@ namespace BadgeSpace.Infra.Migrations
                     b.ToTable("Empresses");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Student.StudentModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Student.StudentModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,7 +224,7 @@ namespace BadgeSpace.Infra.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.UserModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.UserModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -272,13 +272,13 @@ namespace BadgeSpace.Infra.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.CertificationModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.Certification.CertificationModel", b =>
                 {
-                    b.HasOne("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", "Course")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.Empress.Course.CourseModel", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId");
 
-                    b.HasOne("BadgeSpace.Models.User.Certification.Student.StudentModel", "Student")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.Student.StudentModel", "Student")
                         .WithMany("Certifications")
                         .HasForeignKey("StudentId");
 
@@ -287,9 +287,9 @@ namespace BadgeSpace.Infra.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.Course.CourseModel", b =>
                 {
-                    b.HasOne("BadgeSpace.Models.User.Certification.Empress.EmpressModel", "Empress")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.Empress.EmpressModel", "Empress")
                         .WithMany("Courses")
                         .HasForeignKey("EmpressId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -298,26 +298,26 @@ namespace BadgeSpace.Infra.Migrations
                     b.Navigation("Empress");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.EmpressModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.EmpressModel", b =>
                 {
-                    b.HasOne("BadgeSpace.Models.User.UserModel", "User")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.UserModel", "User")
                         .WithOne("Empress")
-                        .HasForeignKey("BadgeSpace.Models.User.Certification.Empress.EmpressModel", "UserId")
+                        .HasForeignKey("BadgeSpace.Domain.Entities.User.Empress.EmpressModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Student.StudentModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Student.StudentModel", b =>
                 {
-                    b.HasOne("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", "Course")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.Empress.Course.CourseModel", "Course")
                         .WithMany("Students")
                         .HasForeignKey("CourseId");
 
-                    b.HasOne("BadgeSpace.Models.User.UserModel", "User")
+                    b.HasOne("BadgeSpace.Domain.Entities.User.UserModel", "User")
                         .WithOne("Student")
-                        .HasForeignKey("BadgeSpace.Models.User.Certification.Student.StudentModel", "UserId")
+                        .HasForeignKey("BadgeSpace.Domain.Entities.User.Student.StudentModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -326,22 +326,22 @@ namespace BadgeSpace.Infra.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.Course.CourseModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.Course.CourseModel", b =>
                 {
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Empress.EmpressModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Empress.EmpressModel", b =>
                 {
                     b.Navigation("Courses");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.Certification.Student.StudentModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.Student.StudentModel", b =>
                 {
                     b.Navigation("Certifications");
                 });
 
-            modelBuilder.Entity("BadgeSpace.Models.User.UserModel", b =>
+            modelBuilder.Entity("BadgeSpace.Domain.Entities.User.UserModel", b =>
                 {
                     b.Navigation("Empress");
 

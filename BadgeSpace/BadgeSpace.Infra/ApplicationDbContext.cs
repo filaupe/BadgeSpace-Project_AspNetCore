@@ -1,8 +1,8 @@
-﻿using BadgeSpace.Models.User;
-using BadgeSpace.Models.User.Certification;
-using BadgeSpace.Models.User.Certification.Empress;
-using BadgeSpace.Models.User.Certification.Empress.Course;
-using BadgeSpace.Models.User.Certification.Student;
+﻿using BadgeSpace.Domain.Entities.Certification;
+using BadgeSpace.Domain.Entities.User;
+using BadgeSpace.Domain.Entities.User.Empress;
+using BadgeSpace.Domain.Entities.User.Empress.Course;
+using BadgeSpace.Domain.Entities.User.Student;
 using Microsoft.EntityFrameworkCore;
 
 namespace BadgeSpace.Infra
@@ -11,7 +11,6 @@ namespace BadgeSpace.Infra
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<UserModel> Users { get; set; }

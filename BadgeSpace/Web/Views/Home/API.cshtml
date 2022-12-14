@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Sobre a API";
+}
+
+<h1>Visão Geral</h1>
+<hr />
+<p>
+    A API BadgeSpace é feita com a finalidade de ser aplicada em qualquer tipo de tarefa que envolva gerenciamento de
+    certificados. Oferecemos as opções que achamos mais necessárias na área de certificações, bem como a capacidade de
+    alocação de código do certificado, disponibilidade do badge e fácil manuseio do sistema para empresas, e simples
+    formas de compartilhamento dos dados direcionado a camada de usuário não empresarial.
+</p>
+<br>
+<h3 class="text-danger">Avisos!!</h3>
+<p>
+    Os Endpoints não são abertos publicamente, utilizamos o sistema de autenticação JWT (Jason Web Token), sendo necessário
+    que a pessoa que tenha uma conta em nosso sistema para acessar a aplicação.
+</p>
+<p class="fw-semibold">"Então terei que ter uma conta para acessar meu certificado?"</p>
+<p>
+    Não, não é bem assim, nosso sistema conta com um endpoint que disponibiliza o acesso aos dados do certificado utilizando
+    o código do certificado entregue pelas empresas, podendo assim que empresas visualizem seu certificado hospedado em nosso
+    sistema. A autenticação será utilizada apenas para as empresas que irão disponibilizar os certificados e o usuário que
+    desejar ver seus certificados em nosso dashboard ou até mesmo expor eles em seu site de portfólio.
+</p>
+<br>
+<h4>1 - Endpoint (Login / Registro) </h4>
+<p>Recebe métodos Post de qualquer tipo de usuário para fazer login /api/auth/login e /api/auth/register</p>
+<p>/api/auth/login recebe as áreas de Email e Senha para a autenticação.</p>
+<img src="~/assets/images/loginexemple.png" class="img-fluid" id="img-4">
+<br>
+<br>
+<p>
+    Enquanto o registrar irá receber as áreas de Nome, CPFouCNPJ, Email, Senha e Confirmar Senha, além da área Empresa que
+    aceitará um valor verdadeiro ou falso, permitindo você ter uma flexibilidade de escolha. Porém, ao deixar a área de empresa
+    como “true”, no caso verdadeiro, a área CPFouCNPJ irá aceitar unicamente os padrões presentes em um CNPJ, já caso esteja como
+    “null”, “falso”, ou até mesmo sem a área Empresa, como padrão o sistema irá colocar seu perfil como usuário, e só irá aceitar
+    um CPF como parâmetro.
+</p>
+<img src="~/assets/images/registerexemple.png" class="img-fluid" id="img-5">
+<br>
+<br>
+<h4>2 - Autenticação </h4>
+<p>Ambas as formas de autenticação por fim irão retornar um Token JWT que é o método de login criptografado para ter acesso aos dados Exemplo:</p>
+
+<div class="fst-italic">
+    <p class="text-break">zb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJjMmUzMTgwOC0zMjk0LTRmMGItOTM2Mi0xMzgzMjAwNzJmYTQiLCJyb2xlIjoiU1RVREVOVCI</p>
+</div>
+
+<img src="~/assets/images/validarexemple.png" class="img-fluid" id="img-6">
+<br>
+<br>
+<div class="text-break">
+    <p>
+        Que será utilizado na área de Bearer Token para ter acesso ao filtro de dados também será disponibilizado o Token de acesso
+        dentro do nosso sistema na área de configurações do perfil do usuário na área acima do botão “gerar novo Token JTW” que por sinal,
+        possui 30 dias até expirar desde o momento que o mesmo é gerado.
+    </p>
+    <p>
+        Os filtros de dados são os endpoints de fácil manuseio do usuário, tendo em mente facilitar a busca dos dados dentro do banco de
+        certificados tanto da empresa quanto do usuário.
+    </p>
+    <p>
+        O endpoint de filtro pode ser acessado através do token de Empresa caso sua conta seja uma empresa (Empresas tem dados de alunos
+        limitados. Logo apenas aparecerá o nome, código, CPF, Id e Curso dos alunos).
+    </p>
+    <p>
+        E possuirá as opções de filtro no endpoint /api/alunos/.
+    </p>
+    <p class="fw-semibold">/listar&Email/ (Email da conta obrigatório)</p>
+    <p>Dessa forma o sistema não irá filtrar nada e irá retornar todos os Alunos cadastrados por sua empresa</p>
+    <p class="fw-semibold">/listar&Email/CPFdoAluno</p>
+    <p>Dessa forma irá filtrar o Aluno com aquele CPF específico.</p>
+    <p class="fw-semibold">/listar&Email/CPFdoAluno/Id</p>
+    <p>Irá filtrar pelo Id do aluno mostrando um aluno específico</p>
+    <p>A camada de Empresa também possui métodos de PUT, POST e DELETE, podendo deletar, editar e cadastrar novos alunos através destes endpoints:</p>
+    <p><p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&deletar=000.000.000-00/2</p> Caso não haja um Id especificado, por padrão o sistema irá apagar o primeiro aluno
+    da lista com o CPF  especificado.</p>
+    <p>Caso queira deletar toda a tabela é só utilizar o endpoint <p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&deletar=Tudo</p></p>
+    <p>Mas imagino que você não queira isso sendo dono de uma grande empresa, seria uma dor de cabeça!</p>
+    <p class="fw-semibold">/api/alunos/BadgeSpace@gmail.com&editar=000.000.000-00/2 </p>
+    <p>Enquanto ao editar é a mesma lógica do deletar em relação ao CPF e o ID.</p>
+</div>

@@ -1,0 +1,37 @@
+﻿@model BadgeSpace.Domain.Entities.User.UserModel
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<h3>@ViewData["Title"]</h3>
+<div class="row">
+    <div class="container-fluid">
+        <div id="profile-form">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    @{
+                        var img = Model.Image != null ? String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Image)) : "http://ethospsicotestes.com.br/images/sem_foto.png";
+                        <img src='@img' style="width:200px; height:200px;" />
+                    }
+                </div>
+                <form class="col-lg-5" method="post" asp-action="ChangeImage" enctype="multipart/form-data">
+                    <div class="d-flex pt-4 mb-3">
+                        <div>
+                            <input type="file" accept="image/png" asp-for="Image">
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div>
+                            <button type="submit" class="btn btn-secondary btn-sm" style="text-transform:capitalize;">Trocar foto de perfil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-floating col-md-6" style="margin-top: 1em;">
+                <input asp-for="Name" class="form-control" disabled />
+                <label asp-for="Name" class="form-label"></label>
+            </div>
+        </div>
+    </div>
+</div>
