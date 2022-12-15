@@ -51,6 +51,7 @@
                     </td>
                     <td>
                         <div class="col">
+                            <a asp-controller="Course" asp-action="Index" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Estudantes<i class=""></i></a>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><i class="ri-file-edit-line"></i></a>
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn"><i class="ri-folder-open-line"></i></a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn"><i class="ri-delete-bin-line"></i></a>

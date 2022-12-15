@@ -1,4 +1,5 @@
-﻿using BadgeSpace.Domain.Entities.User.Empress.Course;
+﻿using BadgeSpace.Domain.Entities.User.Empress;
+using BadgeSpace.Domain.Entities.User.Empress.Course;
 using BadgeSpace.Web.Models.Base;
 
 namespace BadgeSpace.Web.Models.Course

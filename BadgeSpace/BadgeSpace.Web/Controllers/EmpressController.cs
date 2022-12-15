@@ -1,4 +1,5 @@
-﻿using BadgeSpace.Domain.Entities.User.Empress;
+﻿using Azure.Core;
+using BadgeSpace.Domain.Entities.User.Empress;
 using BadgeSpace.Domain.Entities.User.Empress.Course;
 using BadgeSpace.Domain.Interfaces.Repository.Course;
 using BadgeSpace.Domain.Interfaces.Repository.Empress;
@@ -9,6 +10,7 @@ using BadgeSpace.Web.Models.Course;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BadgeSpace.Web.Controllers
 {
@@ -77,12 +79,21 @@ namespace BadgeSpace.Web.Controllers
             return View(course);
         }
 
-        public async Task<IActionResult> OnCreate(CourseViewModel model)
+        public async Task<IActionResult> OnCreate(IFormFile Image, CourseViewModel model)
         {
+            if (Image != null)
+            {
+                using var memoryStream = new MemoryStream();
+                await Image.CopyToAsync(memoryStream);
+                model.Image = memoryStream.ToArray();
+            }
+
             model.EmpressId = EmpressUserCookie.Id;
             if (!ModelState.IsValid)
                 return RedirectToAction(nameof(Create));
-            await _repostiroyCourse.AddAsync((CourseModel)model);
+            CourseModel course = model;
+            course.Empress = EmpressUserCookie;
+            await _repostiroyCourse.AddAsync(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
