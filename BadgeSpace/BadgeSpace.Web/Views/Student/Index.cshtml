@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<BadgeSpace.Domain.Entities.Certification.CertificationModel>
-@{
-    var modal = "Modal";
-}   
+ 
 @{
     ViewData["Title"] = "Dashboard";
+    var modal = "Modal";
 }
 
 <style>
@@ -45,6 +44,12 @@
     <hr />
     <dl class="row">
         <h5>Badges</h5>
+        <form class="container text-end" asp-action="Index">
+            <p>
+                Nome do Curso: <input type="text" name="SearchString" />
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
         <dd class="col-sm-10 dsh">
             @foreach (var item in Model)
             {
@@ -54,7 +59,15 @@
         </dd>
     </dl>
 </div>
-
+<nav class="d-inline-block">
+    <ul class="pagination pagination-sm my-0">
+        @for (int i = 0; i != ViewBag.Pages; i++)
+        {
+            var o = i + 1;
+            <li class="page-item"><a class="page-link" href="/Student?skip=@i">@o</a></li>
+        }
+    </ul>
+</nav>
 @foreach (var item in Model)
 {
     <div class="modal fade" id="@modal@item.Code" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

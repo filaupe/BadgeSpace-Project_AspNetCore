@@ -14,6 +14,6 @@ namespace BadgeSpace.Domain.Interfaces.Repository.Base
 
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> where);
 
-        IQueryable<TEntity> ToListAsync(Expression<Func<TEntity, bool>>? icludeProperties);
+        IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> icludeProperties);
     }
 }

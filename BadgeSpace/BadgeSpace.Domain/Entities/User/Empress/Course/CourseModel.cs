@@ -6,9 +6,19 @@ namespace BadgeSpace.Domain.Entities.User.Empress.Course
 {
     public class CourseModel : EntityBaseModel
     {
+        public CourseModel(byte[]? image, string courseName, string type, string level, string time, string description, int empressId)
+        {
+            Image = image;
+            CourseName = courseName;
+            Type = type;
+            Level = level;
+            Time = time;
+            Description = description;
+        }
+
         public byte[]? Image { get; set; } = null;
-        public string Code { get; set; } = String.Empty;
         public string CourseName { get; set; } = String.Empty;
+        public string Identifier { get; set; } = String.Empty;
         public string Type { get; set; } = String.Empty;
         public string Level { get; set; } = String.Empty;
         public string Time { get; set; } = String.Empty;

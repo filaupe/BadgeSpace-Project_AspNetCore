@@ -19,4 +19,8 @@
     <ProjectReference Include="..\BadgeSpace.Infra\BadgeSpace.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Course\" />
+  </ItemGroup>
+
 </Project>

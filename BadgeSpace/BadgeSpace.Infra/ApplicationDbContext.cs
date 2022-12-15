@@ -11,6 +11,7 @@ namespace BadgeSpace.Infra
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            
         }
 
         public DbSet<UserModel> Users { get; set; }

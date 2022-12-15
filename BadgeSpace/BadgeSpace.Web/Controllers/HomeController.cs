@@ -1,4 +1,5 @@
 ﻿using BadgeSpace.Web.Models;
+using BadgeSpace.Web.Models.Error;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

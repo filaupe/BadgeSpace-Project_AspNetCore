@@ -64,8 +64,8 @@ namespace BadgeSpace.Infra.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Identifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Level = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Time = table.Column<string>(type: "nvarchar(max)", nullable: false),

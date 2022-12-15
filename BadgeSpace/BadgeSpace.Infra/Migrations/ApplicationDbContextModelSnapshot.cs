@@ -104,10 +104,6 @@ namespace BadgeSpace.Infra.Migrations
                     b.Property<DateTime?>("ChangeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CourseName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -121,6 +117,10 @@ namespace BadgeSpace.Infra.Migrations
 
                     b.Property<int>("EmpressId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Identifier")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");

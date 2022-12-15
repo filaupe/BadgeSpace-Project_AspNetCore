@@ -15,8 +15,14 @@ namespace BadgeSpace.Domain.Entities.User
             Claim = claim;
             Token = token;
             if (claim)
-                Empress = new();
-            Student = new();
+            {
+                Empress = new() { Name = this.Name, Email = this.Email };
+            }
+            else
+            {
+                Student = new() { Name = this.Name, Email = this.Email };
+            }
+           
         }
 
         public string Name { get; set; } = String.Empty;

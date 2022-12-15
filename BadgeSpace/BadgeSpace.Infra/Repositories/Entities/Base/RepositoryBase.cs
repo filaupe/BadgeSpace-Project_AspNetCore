@@ -1,7 +1,6 @@
 ﻿using BadgeSpace.Domain.Entities.Base;
 using BadgeSpace.Domain.Interfaces.Repository.Base;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace BadgeSpace.Infra.Repositories.Entities.Base
@@ -31,7 +30,7 @@ namespace BadgeSpace.Infra.Repositories.Entities.Base
 
         public void Remove(TEntity entity) => _context.Set<TEntity>().Remove(entity);
 
-        public IQueryable<TEntity> ToListAsync(Expression<Func<TEntity, bool>>? icludeProperties)
-            => icludeProperties == null ? _context.Set<TEntity>() : _context.Set<TEntity>().Where(icludeProperties);
+        public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> icludeProperties)
+            => _context.Set<TEntity>().Where(icludeProperties);
     }
 }
