@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BadgeSpace.Domain.Entities.User.Student.StudentModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sistema - BadgeSpace</h1>
+<hr />
+
+<div class="col d-flex justify-content-center align-items-center">
+    <div class="container text-start">
+        <a class="btn btn-primary btn-sm" asp-action="Create" style="text-transform: capitalize;">Adicionar um Novo Estudante</a>
+    </div>
+    <br />
+    <form class="container text-end" asp-action="Index">
+        <p>
+            Email: <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
+
+<br>
+   <div class="row gap-2 justify-content-start container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Código</th>
+                <th scope="col">Ferramentas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <div class="col">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn"><i class="ri-file-edit-line"></i></a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn"><i class="ri-folder-open-line"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn"><i class="ri-delete-bin-line"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav class="d-inline-block">
+        <ul class="pagination pagination-sm my-0">
+            @for (int i = 0; i != ViewBag.Pages; i++)
+            {
+                var o = i + 1;
+                <li class="page-item"><a class="page-link" href="/Empress?skip=@i">@o</a></li>
+            }
+        </ul>
+    </nav>
+</div>
+
+

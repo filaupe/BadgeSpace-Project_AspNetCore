@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BadgeSpace.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221215141515_Infra")]
+    [Migration("20221220115257_Infra")]
     partial class Infra
     {
         /// <inheritdoc />
@@ -196,6 +196,10 @@ namespace BadgeSpace.Infra.Migrations
 
                     b.Property<DateTime?>("ChangeDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");

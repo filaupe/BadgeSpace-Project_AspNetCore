@@ -6,6 +6,7 @@ using BadgeSpace.Domain.Interfaces.Repository.Empress;
 using BadgeSpace.Domain.Interfaces.Services.Entities.Empress;
 using BadgeSpace.Domain.Resources.Enums;
 using BadgeSpace.Infra;
+using BadgeSpace.Infra.Repositories.Entities.Empress;
 using BadgeSpace.Web.Models.Course;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,20 +19,20 @@ namespace BadgeSpace.Web.Controllers
     public class EmpressController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IRepositoryEmpress _repostiroyEmpress;
-        private readonly IRepositoryCourse _repostiroyCourse;
+        private readonly IRepositoryEmpress _repositoryEmpress;
+        private readonly IRepositoryCourse _repositoryCourse;
         private readonly IServiceEmpress _service;
 
         public EmpressController(IRepositoryEmpress repostiroyEmpress, IRepositoryCourse repositoryCourse,
             IServiceEmpress service, ApplicationDbContext context)
         {
-            _repostiroyEmpress = repostiroyEmpress;
-            _repostiroyCourse = repositoryCourse;   
+            _repositoryEmpress = repostiroyEmpress;
+            _repositoryCourse = repositoryCourse;   
             _service = service;
             _context = context;
         }
 
-        public EmpressModel EmpressUserCookie { get => Task.Run(async () => await _repostiroyEmpress.FirstOrDefaultAsync(u => u.Email.ToUpper() == User.Claims.ToList()[2].Value)).Result!; }
+        public EmpressModel EmpressUserCookie { get => Task.Run(async () => await _repositoryEmpress.FirstOrDefaultAsync(u => u.Email.ToUpper() == User.Claims.ToList()[2].Value)).Result!; }
 
         [AcceptVerbs("GET", "POST")]
         public async Task<IActionResult> Index(string searchString = "", int skip = 0, int take = 8)
@@ -51,7 +52,7 @@ namespace BadgeSpace.Web.Controllers
 
         public async Task<IActionResult> Delete(int Id)
         {
-            var course = await _repostiroyCourse.FirstOrDefaultAsync(c => c.Id == Id);
+            var course = await _repositoryCourse.FirstOrDefaultAsync(c => c.Id == Id);
             if (course == null)
                 return BadRequest();
             if (course.EmpressId != EmpressUserCookie.Id)
@@ -61,7 +62,7 @@ namespace BadgeSpace.Web.Controllers
 
         public async Task<IActionResult> Details(int Id)
         {
-            var course = await _repostiroyCourse.FirstOrDefaultAsync(c => c.Id == Id);
+            var course = await _repositoryCourse.FirstOrDefaultAsync(c => c.Id == Id);
             if (course == null)
                 return BadRequest();
             if (course.EmpressId != EmpressUserCookie.Id)
@@ -71,7 +72,7 @@ namespace BadgeSpace.Web.Controllers
 
         public async Task<IActionResult> Edit(int Id)
         {
-            var course = await _repostiroyCourse.FirstOrDefaultAsync(c => c.Id == Id);
+            var course = await _repositoryCourse.FirstOrDefaultAsync(c => c.Id == Id);
             if (course == null)
                 return BadRequest();
             if (course.EmpressId != EmpressUserCookie.Id)
@@ -93,7 +94,7 @@ namespace BadgeSpace.Web.Controllers
                 return RedirectToAction(nameof(Create));
             CourseModel course = model;
             course.Empress = EmpressUserCookie;
-            await _repostiroyCourse.AddAsync(course);
+            await _repositoryCourse.AddAsync(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

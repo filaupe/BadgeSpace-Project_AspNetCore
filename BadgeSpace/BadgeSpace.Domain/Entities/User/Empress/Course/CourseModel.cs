@@ -14,7 +14,6 @@ namespace BadgeSpace.Domain.Entities.User.Empress.Course
             Level = level;
             Time = time;
             Description = description;
-            Identifier = $"{this.CourseName}{this.EmpressId}{this.Type}{this.Id}";
         }
 
         public byte[]? Image { get; set; } = null;

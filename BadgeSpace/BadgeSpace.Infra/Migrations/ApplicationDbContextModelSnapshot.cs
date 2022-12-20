@@ -194,6 +194,10 @@ namespace BadgeSpace.Infra.Migrations
                     b.Property<DateTime?>("ChangeDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");
 

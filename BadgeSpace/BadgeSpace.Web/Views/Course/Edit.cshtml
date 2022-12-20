@@ -1,0 +1,81 @@
+@model BadgeSpace.Domain.Entities.Certification.CertificationModel
+
+@{
+    ViewData["Title"] = "Edit";
+    var tempo = Model.ChangeDate ?? Model.CreationDate;
+    var imagem = $"data:image/gif;base64,{Convert.ToBase64String(Model.Image!)}";
+}
+
+<h1>Editar</h1>
+<span>Última alteração: @tempo.Year / @tempo.Month / @tempo.Day às @tempo.Hour : @tempo.Minute</span>
+<br>
+<h4>BadgeSpace</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Code" />
+            <div class="form-group">
+                <label asp-for="StudentName" class="control-label"></label>
+                <input asp-for="StudentName" class="form-control" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="StudentEmail" class="control-label"></label>
+                <input asp-for="StudentEmail" class="form-control" />
+                <span asp-validation-for="StudentEmail" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Level" class="control-label"></label>
+                <input asp-for="Level" class="form-control" />
+                <span asp-validation-for="Level" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <img src="@imagem"/>
+                <input type="file" value="@Model.Image" accept="image/png" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div>
+     <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

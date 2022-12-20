@@ -1,0 +1,45 @@
+@model BadgeSpace.Web.Models.Student.StudentViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar</h1>
+<br>
+<h4>BadgeSpace</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="OnCreate" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" value="" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <br>
+            @foreach (var course in Model.Courses!)
+            {
+                <div>@course.CourseName</div>
+            }
+            <br>
+            <div>
+                <input type="submit" value="Create" class=" btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+
+<div>
+    <a asp-action="Index" class="btn"><i class="ri-arrow-left-line"></i> Voltar para lista</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
