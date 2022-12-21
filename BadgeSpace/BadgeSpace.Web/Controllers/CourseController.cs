@@ -1,22 +1,28 @@
-﻿using BadgeSpace.Domain.Entities.User.Empress;
+﻿using BadgeSpace.Domain.Entities.Certification;
+using BadgeSpace.Domain.Entities.User.Empress;
 using BadgeSpace.Domain.Interfaces.Repository.Course;
 using BadgeSpace.Domain.Interfaces.Repository.Empress;
 using BadgeSpace.Domain.Interfaces.Services.Entities.Course;
+using BadgeSpace.Infra;
 using BadgeSpace.Infra.Repositories.Entities.Empress;
 using BadgeSpace.Web.Models.Student;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BadgeSpace.Web.Controllers
 {
     public class CourseController : Controller
     {
+        private readonly ApplicationDbContext _context;
         private readonly IRepositoryCourse _repositoryCourse;
         private readonly IRepositoryEmpress _repositoryEmpress;
         private readonly IServiceCourse _service;
 
-        public CourseController(IRepositoryCourse repositoryCourse, IRepositoryEmpress repositoryEmpress, IServiceCourse service)
+        public CourseController(IRepositoryCourse repositoryCourse, IRepositoryEmpress repositoryEmpress, 
+            IServiceCourse service, ApplicationDbContext context)
         {
+            _context = context;
             _repositoryEmpress = repositoryEmpress;
             _repositoryCourse = repositoryCourse;
             _service = service;
@@ -41,11 +47,24 @@ namespace BadgeSpace.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            StudentViewModel student = new()
-            {
-                Courses = await _repositoryCourse.Where(c => c.EmpressId == EmpressUserCookie.Id).ToListAsync()
-            };
+            StudentViewModel student = new();
+            var courseList = await _repositoryCourse.Where(c => c.EmpressId == EmpressUserCookie.Id).ToListAsync();
+            courseList.ForEach(c => student.Courses.Add(new SelectListItem { Text = c.CourseName, Value = c.Id.ToString() }));
             return View(student);
+        }
+
+        public async Task<IActionResult> OnCreate(StudentViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction(nameof(Create));
+            var course = await _context.Courses.FindAsync(Convert.ToInt32(model.CourseId));
+            CertificationModel certification = course!;
+            certification.StudentEmail = model.Email;
+            certification.StudentName = model.Name;
+            certification.EmpressEmail = EmpressUserCookie.Email;
+            await _context.Certifications.AddAsync(certification);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

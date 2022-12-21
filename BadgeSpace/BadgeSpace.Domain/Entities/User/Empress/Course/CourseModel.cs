@@ -1,4 +1,5 @@
 ﻿using BadgeSpace.Domain.Entities.Base;
+using BadgeSpace.Domain.Entities.Certification;
 using BadgeSpace.Domain.Entities.User.Student;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,5 +30,16 @@ namespace BadgeSpace.Domain.Entities.User.Empress.Course
         public EmpressModel Empress { get; set; } = null!;
 
         public List<StudentModel> Students { get; set; } = new();
+
+        public static implicit operator CertificationModel(CourseModel model)
+            => new()
+            {
+                Image = model.Image,
+                CourseName = model.CourseName,
+                Type = model.Type,
+                Level = model.Level,
+                Time = model.Time,
+                Description = model.Description,
+            };
     }
 }

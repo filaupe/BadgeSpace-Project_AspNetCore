@@ -6,12 +6,10 @@ using BadgeSpace.Domain.Interfaces.Repository.Empress;
 using BadgeSpace.Domain.Interfaces.Services.Entities.Empress;
 using BadgeSpace.Domain.Resources.Enums;
 using BadgeSpace.Infra;
-using BadgeSpace.Infra.Repositories.Entities.Empress;
 using BadgeSpace.Web.Models.Course;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BadgeSpace.Web.Controllers
 {

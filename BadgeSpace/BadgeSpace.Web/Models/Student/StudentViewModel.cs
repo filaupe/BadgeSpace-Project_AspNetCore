@@ -1,6 +1,7 @@
 ﻿using BadgeSpace.Domain.Entities.User.Empress.Course;
 using BadgeSpace.Web.Models.Base;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,8 +20,8 @@ namespace BadgeSpace.Web.Models.Student
         public string Email { get; set; } = String.Empty;
 
         [Required(ErrorMessage = "Escolha um curso")]
-        public CourseModel Course { get; set; } = null!;
+        public string CourseId { get; set; } = String.Empty;
 
-        public List<CourseModel>? Courses { get; set; } = null;
+        public List<SelectListItem> Courses { get; set; } = new();
     }
 }
