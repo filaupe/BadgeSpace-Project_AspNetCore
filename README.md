@@ -117,7 +117,7 @@
     </td>
     <td align="center" >
       <a href="https://github.com/MulinhaGPlays" target="_blank">
-        <img style="border-radius:100px;" src="https://github.com/MulinhaGPlays.png" target="_blank"  width="100px;" alt="Foto de Luis Felipe no GitHub"/><br>
+        <img style="border-radius:100px;" src="https://github.com/filaupe.png" target="_blank"  width="100px;" alt="Foto de Luis Felipe no GitHub"/><br>
         <sub>
           <b>LUIZ FELIPE</b>
           <p>Developer</p>
